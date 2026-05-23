@@ -320,7 +320,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 260px;
+      min-height: 290px;
     }
 
     .link-card .status {
@@ -337,7 +337,8 @@
       letter-spacing: 0.05em;
     }
 
-    .link-card a {
+    .link-card a,
+    .card-actions a {
       margin-top: 20px;
       align-self: flex-start;
       display: inline-flex;
@@ -347,12 +348,25 @@
       padding: 10px 15px;
       border-radius: 999px;
       font-weight: 900;
+      font-size: 0.92rem;
+      line-height: 1.2;
     }
 
     .link-card a.disabled {
       background: #E5EAF1;
       color: #66788A;
       pointer-events: none;
+    }
+
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .card-actions a {
+      margin-top: 0;
     }
 
     .footer {
@@ -424,6 +438,10 @@
       .hero-card {
         min-height: auto;
       }
+
+      .link-card {
+        min-height: auto;
+      }
     }
 
     @media (max-width: 540px) {
@@ -441,6 +459,15 @@
 
       h1 {
         font-size: 2.2rem;
+      }
+
+      .card-actions {
+        flex-direction: column;
+      }
+
+      .card-actions a {
+        width: 100%;
+        justify-content: center;
       }
 
       .footer-privacy {
@@ -529,13 +556,18 @@
           <div>
             <span class="status">Secundário</span>
             <div class="icon blue">S</div>
-            <h3>IA generativa e aprendizagem</h3>
+            <h3>IA generativa, estudo e prompts</h3>
             <p>
-              Guias para compreender modelos de linguagem, escolher ferramentas,
-              estudar melhor e usar IA com responsabilidade no ensino secundário.
+              Recursos para compreender modelos de linguagem, escolher ferramentas,
+              estudar melhor, construir bons prompts e usar IA com responsabilidade
+              no ensino secundário.
             </p>
           </div>
-         <a href="secundario/ia-generativa-modelos.html">Abrir recurso</a>
+          <div class="card-actions" aria-label="Recursos do secundário">
+            <a href="secundario/ia-generativa-modelos.html">IA generativa e modelos</a>
+            <a href="secundario/guia-prompts-ciencias-tecnologias.html">Guia de prompts CT</a>
+            <a href="secundario/aprender-melhor-com-ia.html">Aprender melhor com IA</a>
+          </div>
         </article>
 
         <article class="card link-card" id="seguranca">
@@ -548,7 +580,7 @@
               exposição online, conteúdos gerados por IA e cidadania digital.
             </p>
           </div>
-         <a href="seguranca-digital/capcut-reels-tiktok.html">Abrir recurso</a>
+          <a href="seguranca-digital/capcut-reels-tiktok.html">Abrir recurso</a>
         </article>
       </div>
 
