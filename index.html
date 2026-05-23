@@ -46,6 +46,10 @@
       min-height: 100vh;
     }
 
+    a {
+      color: inherit;
+    }
+
     .wrap {
       width: min(1180px, calc(100% - 36px));
       margin: 0 auto;
@@ -118,6 +122,7 @@
       font-weight: 800;
       transition: 0.2s ease;
       font-size: 0.98rem;
+      min-height: 46px;
     }
 
     .btn.primary {
@@ -131,9 +136,11 @@
       border: 1px solid rgba(255,255,255,0.26);
     }
 
-    .btn:hover {
+    .btn:hover,
+    .btn:focus {
       transform: translateY(-2px);
       box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+      outline: none;
     }
 
     .credit {
@@ -176,7 +183,7 @@
       font-weight: 650;
     }
 
-    nav {
+    .main-nav {
       position: sticky;
       top: 0;
       z-index: 20;
@@ -187,17 +194,17 @@
       padding: 9px;
       margin-bottom: 30px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.92);
       backdrop-filter: blur(14px);
       border: 1px solid rgba(11,31,58,0.08);
       box-shadow: 0 10px 30px rgba(11,31,58,0.08);
     }
 
-    nav::-webkit-scrollbar {
+    .main-nav::-webkit-scrollbar {
       display: none;
     }
 
-    nav a {
+    .main-nav a {
       white-space: nowrap;
       text-decoration: none;
       color: var(--navy);
@@ -205,10 +212,16 @@
       padding: 10px 15px;
       border-radius: 999px;
       font-size: 0.94rem;
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    nav a:hover {
+    .main-nav a:hover,
+    .main-nav a:focus {
       background: var(--soft-teal);
+      outline: none;
     }
 
     section {
@@ -320,7 +333,7 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 290px;
+      min-height: 305px;
     }
 
     .link-card .status {
@@ -342,6 +355,8 @@
       margin-top: 20px;
       align-self: flex-start;
       display: inline-flex;
+      align-items: center;
+      justify-content: center;
       text-decoration: none;
       color: var(--navy);
       background: var(--yellow);
@@ -350,6 +365,17 @@
       font-weight: 900;
       font-size: 0.92rem;
       line-height: 1.2;
+      min-height: 42px;
+      transition: 0.18s ease;
+    }
+
+    .link-card a:hover,
+    .link-card a:focus,
+    .card-actions a:hover,
+    .card-actions a:focus {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(11,31,58,0.12);
+      outline: none;
     }
 
     .link-card a.disabled {
@@ -444,34 +470,153 @@
       }
     }
 
-    @media (max-width: 540px) {
+    @media (max-width: 640px) {
       .wrap {
         width: min(100% - 22px, 1180px);
       }
 
-      .btn {
-        width: 100%;
+      header {
+        margin-top: 14px;
+        padding: 32px 20px;
+        border-radius: 28px;
       }
 
-      nav {
-        border-radius: 22px;
+      .kicker {
+        font-size: 0.82rem;
+        padding: 7px 12px;
+        margin-bottom: 16px;
       }
 
       h1 {
-        font-size: 2.2rem;
+        font-size: clamp(2rem, 12vw, 2.75rem);
+        letter-spacing: -0.045em;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+        margin-bottom: 22px;
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .btn {
+        width: 100%;
+        min-height: 48px;
+        padding: 12px 16px;
+      }
+
+      .credit {
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .hero-card {
+        padding: 20px;
+        border-radius: 24px;
+      }
+
+      .hero-card h2 {
+        font-size: 1.45rem;
+      }
+
+      .hero-card li {
+        padding: 11px 12px;
+        font-size: 0.95rem;
+      }
+
+      .main-nav {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        border-radius: 22px;
+        gap: 8px;
+        padding: 10px;
+        margin-bottom: 26px;
+      }
+
+      .main-nav a {
+        white-space: normal;
+        text-align: center;
+        border-radius: 18px;
+        background: #F8FAFC;
+        border: 1px solid rgba(11,31,58,0.08);
+        padding: 10px 8px;
+        font-size: 0.86rem;
+      }
+
+      section {
+        margin: 28px 0;
+        scroll-margin-top: 18px;
+      }
+
+      h2 {
+        font-size: 1.85rem;
+      }
+
+      .lead {
+        font-size: 0.98rem;
+      }
+
+      .card {
+        padding: 20px;
+        border-radius: 22px;
+      }
+
+      .card:hover {
+        transform: none;
+      }
+
+      .link-card a {
+        width: 100%;
       }
 
       .card-actions {
         flex-direction: column;
+        gap: 9px;
       }
 
       .card-actions a {
         width: 100%;
         justify-content: center;
+        text-align: center;
+      }
+
+      .callout {
+        padding: 19px 20px;
+        border-radius: 20px;
+      }
+
+      .footer {
+        padding: 34px 20px;
+        border-radius: 26px;
+      }
+
+      .footer-description {
+        font-size: 0.96rem;
       }
 
       .footer-privacy {
+        display: block;
         border-radius: 18px;
+        font-size: 0.86rem;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .main-nav {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 1.95rem;
+      }
+
+      .card h3 {
+        font-size: 1.16rem;
       }
     }
   </style>
@@ -518,7 +663,7 @@
       </div>
     </header>
 
-    <nav aria-label="Navegação principal">
+    <nav class="main-nav" aria-label="Navegação principal">
       <a href="#recursos">Recursos</a>
       <a href="#9ano">9.º ano</a>
       <a href="#secundario">Secundário</a>
@@ -563,6 +708,7 @@
               no ensino secundário.
             </p>
           </div>
+
           <div class="card-actions" aria-label="Recursos do secundário">
             <a href="secundario/ia-generativa-modelos.html">IA generativa e modelos</a>
             <a href="secundario/guia-prompts-ciencias-tecnologias.html">Guia de prompts CT</a>
