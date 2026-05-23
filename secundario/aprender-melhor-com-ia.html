@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Guia Prático de Prompts para Aprender Melhor com IA | AEI8 – PALDIM</title>
+
+  <meta name="description" content="Guia prático de prompts para alunos usarem Inteligência Artificial de forma crítica, responsável e orientada para a aprendizagem." />
+  <meta name="author" content="Ana Margarida Fonseca" />
+
+  <style>
+    :root {
+      --navy: #0B1F3A;
+      --blue: #1F4E79;
+      --teal: #2EC4B6;
+      --light: #F2F4F7;
+      --white: #FFFFFF;
+      --ink: #1C2430;
+      --muted: #5B6675;
+      --soft-blue: #EAF2F8;
+      --soft-teal: #E9FAF8;
+      --yellow: #F7D774;
+      --soft-yellow: #FFF6D8;
+      --shadow: 0 18px 45px rgba(11, 31, 58, 0.13);
+      --radius: 26px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 8% 6%, rgba(46, 196, 182, 0.15), transparent 28%),
+        radial-gradient(circle at 92% 12%, rgba(247, 215, 116, 0.18), transparent 30%),
+        linear-gradient(135deg, #F8FAFC 0%, #EEF7F5 55%, #F2F4F7 100%);
+      color: var(--ink);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    header {
+      margin: 28px auto 30px;
+      padding: 52px 42px;
+      border-radius: 38px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 88% 18%, rgba(46, 196, 182, 0.34), transparent 28%),
+        linear-gradient(135deg, var(--navy), var(--blue));
+      box-shadow: var(--shadow);
+    }
+
+    .top-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      background: rgba(255,255,255,0.12);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.24);
+      border-radius: 999px;
+      padding: 9px 15px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      margin-bottom: 22px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: #E9FFFA;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.86rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 5vw, 4.6rem);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+      max-width: 960px;
+      margin-bottom: 18px;
+    }
+
+    .subtitle {
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      max-width: 820px;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 24px;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 9px 14px;
+      background: rgba(255,255,255,0.13);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.9);
+      font-weight: 750;
+      font-size: 0.92rem;
+    }
+
+    nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 9px;
+  margin-bottom: 30px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.93);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(11,31,58,0.08);
+  box-shadow: 0 10px 30px rgba(11,31,58,0.08);
+}
+
+nav::-webkit-scrollbar {
+  display: none;
+}
+
+nav a {
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--navy);
+  font-weight: 850;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+nav a:hover {
+  background: var(--soft-teal);
+}
+    
+
+    section {
+      margin: 34px 0;
+      scroll-margin-top: 92px;
+    }
+
+    .section-head {
+      margin-bottom: 18px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      margin-bottom: 7px;
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: clamp(1.65rem, 3vw, 2.45rem);
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    h3 {
+      color: var(--navy);
+      font-size: 1.24rem;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .lead {
+      color: var(--muted);
+      max-width: 860px;
+      font-size: 1.03rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(11,31,58,0.08);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(11,31,58,0.08);
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .callout {
+      background: linear-gradient(135deg, #FFFFFF, #F5FBFA);
+      border-left: 7px solid var(--teal);
+      border-radius: 24px;
+      padding: 22px 24px;
+      box-shadow: 0 10px 28px rgba(11,31,58,0.08);
+    }
+
+    .callout strong {
+      color: var(--navy);
+    }
+
+    .warning {
+      background: linear-gradient(135deg, #FFFFFF, var(--soft-yellow));
+      border-left-color: var(--yellow);
+    }
+
+    .prompt-grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    .prompt-card {
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(11,31,58,0.08);
+      border-radius: 22px;
+      padding: 20px;
+      box-shadow: 0 8px 24px rgba(11,31,58,0.07);
+    }
+
+    .prompt-card h3 {
+      font-size: 1.08rem;
+      margin-bottom: 8px;
+    }
+
+    .prompt-card .when {
+      color: var(--blue);
+      font-weight: 850;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    .prompt {
+      background: #F8FAFC;
+      border: 1px solid rgba(31,78,121,0.14);
+      border-radius: 18px;
+      padding: 15px;
+      color: var(--ink);
+      font-size: 0.96rem;
+    }
+
+    .prompt strong {
+      color: var(--navy);
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin: 7px 0;
+    }
+
+    .formula {
+      font-weight: 900;
+      color: var(--navy);
+      background: var(--soft-blue);
+      border-radius: 18px;
+      padding: 16px 18px;
+      display: inline-block;
+      margin: 10px 0;
+    }
+
+    .result {
+      margin-top: 14px;
+      background: var(--soft-teal);
+      color: #176B5E;
+      border-radius: 18px;
+      padding: 14px 16px;
+      font-weight: 800;
+    }
+
+    .discipline-table {
+      display: grid;
+      gap: 14px;
+    }
+
+    .discipline-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 16px;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(11,31,58,0.08);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(11,31,58,0.07);
+    }
+
+    .discipline-name {
+      color: var(--navy);
+      font-weight: 950;
+    }
+
+    .footer {
+      margin: 46px 0 28px;
+      padding: 42px 24px;
+      border-radius: 34px;
+      background: var(--navy);
+      color: var(--white);
+      border-top: 7px solid var(--teal);
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .footer-inner {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .footer-kicker {
+      color: var(--teal);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+
+    .footer-description {
+      color: rgba(255,255,255,0.88);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .footer-authorship {
+      color: rgba(255,255,255,0.84);
+      font-size: 0.98rem;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .footer-authorship strong {
+      color: var(--white);
+      font-weight: 900;
+    }
+
+    .footer-privacy {
+      display: inline-block;
+      background: var(--light);
+      color: var(--navy);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        padding: 38px 24px;
+      }
+
+      .grid.two,
+      .grid.three {
+        grid-template-columns: 1fr;
+      }
+
+      .discipline-item {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .wrap {
+        width: min(100% - 22px, 1120px);
+      }
+
+      h1 {
+        font-size: 2.15rem;
+      }
+
+      nav {
+        border-radius: 22px;
+      }
+
+      .footer-privacy {
+        border-radius: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+
+    <header id="inicio">
+      <a class="top-link" href="../index.html">← Voltar ao Portal dos Alunos</a>
+
+      <div class="kicker">Secundário | AEI8 – PALDIM | TEIP4</div>
+
+      <h1>Guia Prático de Prompts para Aprender Melhor com IA</h1>
+
+      <p class="subtitle">
+        Um guia para usares a Inteligência Artificial como apoio ao estudo,
+        à compreensão, à revisão, à preparação para testes e ao pensamento crítico,
+        sem perderes a tua autoria.
+      </p>
+
+      <div class="meta">
+        <span class="pill">Pensado para alunos de Ciências e Tecnologias</span>
+        <span class="pill">Adaptável a outros cursos e disciplinas</span>
+        <span class="pill">Uso crítico, responsável e orientado para a aprendizagem</span>
+      </div>
+    </header>
+
+   <div class="guide-nav-wrapper">
+  <nav class="guide-nav" aria-label="Navegação do guia">
+    <p class="guide-nav-title">Mapa do guia</p>
+
+    <a href="#sobre">Sobre</a>
+    <a href="#regras">Regras</a>
+    <a href="#bom-prompt" class="important">Bom prompt</a>
+    <a href="#rever">Rever</a>
+    <a href="#compreender">Compreender</a>
+    <a href="#explicador">Explicador</a>
+    <a href="#exercicios">Exercícios</a>
+    <a href="#socratico">Pensar</a>
+    <a href="#organizar">Organizar</a>
+    <a href="#literacia">Verificar</a>
+    <a href="#testes">Testes</a>
+    <a href="#trabalhos">Trabalhos</a>
+    <a href="#disciplinas">Disciplinas</a>
+    <a href="#conclusao">Conclusão</a>
+    <a href="#professores">Professores</a>
+  </nav>
+</div>
+
+    <section id="sobre">
+      <div class="section-head">
+        <div class="eyebrow">1. Sobre este guia</div>
+        <h2>IA para compreender, praticar e melhorar</h2>
+        <p class="lead">
+          Este guia ajuda-te a usar a Inteligência Artificial como apoio ao estudo,
+          à compreensão de conteúdos, à organização do trabalho, à preparação para testes
+          e ao desenvolvimento do pensamento crítico.
+        </p>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>O que a IA pode ajudar a fazer</h3>
+          <ul>
+            <li>explicar conceitos difíceis;</li>
+            <li>criar exercícios de treino;</li>
+            <li>rever respostas e identificar erros;</li>
+            <li>organizar ideias e apontamentos;</li>
+            <li>preparar apresentações e testes;</li>
+            <li>verificar informação e fontes.</li>
+          </ul>
+        </div>
+
+        <div class="callout">
+          <strong>Ideia principal:</strong><br>
+          a IA não deve substituir o teu pensamento. Deve ajudar-te a compreender,
+          praticar, verificar e melhorar.
+        </div>
+      </div>
+    </section>
+
+    <section id="regras">
+      <div class="section-head">
+        <div class="eyebrow">2. Antes de começares</div>
+        <h2>Regras essenciais para usar IA sem copiar</h2>
+      </div>
+
+      <div class="grid three">
+        <div class="card">
+          <h3>Não copies sem compreender</h3>
+          <p>Deves conseguir explicar com as tuas palavras aquilo que entregas ou apresentas.</p>
+        </div>
+
+        <div class="card">
+          <h3>Pede explicações, não só respostas</h3>
+          <p>A IA deve ajudar-te a aprender o processo, não apenas a chegar ao produto final.</p>
+        </div>
+
+        <div class="card">
+          <h3>Verifica informação importante</h3>
+          <p>Datas, dados, autores, estudos, fontes científicas e factos devem ser confirmados.</p>
+        </div>
+
+        <div class="card">
+          <h3>Mantém a tua autoria</h3>
+          <p>A versão final deve refletir o teu pensamento, as tuas escolhas e a tua voz.</p>
+        </div>
+
+        <div class="card">
+          <h3>Não partilhes dados pessoais</h3>
+          <p>Não coloques moradas, contactos, documentos, fotografias privadas ou informação sensível.</p>
+        </div>
+
+        <div class="card">
+          <h3>Questiona sempre</h3>
+          <p>Uma resposta bem escrita não é necessariamente uma resposta correta.</p>
+        </div>
+      </div>
+
+      <div class="callout warning">
+        <strong>Sê transparente:</strong> se o professor pedir, explica como usaste a IA
+        no teu processo de trabalho.
+      </div>
+    </section>
+
+    <section id="bom-prompt">
+      <div class="section-head">
+        <div class="eyebrow">3. Como construir um bom prompt</div>
+        <h2>Quanto melhor for o pedido, melhor será o apoio</h2>
+        <p class="lead">
+          Um bom prompt deve dizer claramente o que queres, em que contexto,
+          com que nível de dificuldade e com que formato.
+        </p>
+      </div>
+
+      <p class="formula">
+        Papel + tarefa + contexto + nível + formato + verificação
+      </p>
+
+      <div class="prompt-grid">
+        <article class="prompt-card">
+          <h3>Exemplo</h3>
+          <p class="prompt">
+            Age como um explicador de Biologia e Geologia. Ajuda-me a compreender
+            a fotossíntese. Sou aluno do <strong>[ano]</strong> e tenho dificuldade
+            em distinguir fase luminosa e fase química. Explica com linguagem clara,
+            usa uma analogia e termina com 3 perguntas para eu verificar se percebi.
+          </p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Modelo geral que podes adaptar</h3>
+          <p class="prompt">
+            Age como um explicador paciente e rigoroso de <strong>[disciplina]</strong>,
+            adequado a um aluno do <strong>[ano]</strong>. Quero aprender
+            <strong>[tema/conceito/exercício]</strong>. A minha dificuldade principal é
+            <strong>[dificuldade]</strong>. Explica passo a passo, com linguagem clara,
+            exemplos e perguntas de verificação. Não faças o trabalho por mim:
+            ajuda-me a compreender, a praticar e a melhorar a minha resposta.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="rever">
+      <div class="section-head">
+        <div class="eyebrow">4. Prompts para recordar e rever matéria</div>
+        <h2>Transformar estudo passivo em estudo ativo</h2>
+      </div>
+
+      <div class="prompt-grid">
+        <article class="prompt-card">
+          <h3>Recordar o essencial</h3>
+          <p class="when">Quando queres rever rapidamente uma matéria.</p>
+          <p class="prompt">Ajuda-me a recordar o essencial sobre <strong>[tema]</strong>, da disciplina de <strong>[disciplina]</strong>, ao nível do <strong>[ano]</strong>. Organiza a resposta em: ideias principais, conceitos-chave, erros comuns e mini-resumo final.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Fazer uma revisão final</h3>
+          <p class="when">Antes de um teste ou ficha.</p>
+          <p class="prompt">Faz uma revisão final de <strong>[tema]</strong> para um teste de <strong>[disciplina]</strong>. Inclui conceitos essenciais, fórmulas ou regras, erros comuns, exemplos e 5 perguntas finais.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Criar flashcards</h3>
+          <p class="when">Para memorizar conceitos, fórmulas ou vocabulário.</p>
+          <p class="prompt">Cria 15 flashcards sobre <strong>[tema]</strong>. Cada flashcard deve ter uma pergunta na frente e uma resposta curta no verso. Inclui conceitos, exemplos e erros comuns.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Transformar apontamentos em estudo ativo</h3>
+          <p class="when">Quando tens apontamentos longos ou pouco organizados.</p>
+          <p class="prompt">Transforma estes apontamentos em material de estudo ativo: <strong>[colar apontamentos]</strong>. Cria um resumo, perguntas, flashcards, exercícios e uma checklist final.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Organizar o estudo por níveis</h3>
+          <p class="when">Quando não sabes por onde começar.</p>
+          <p class="prompt">Organiza o estudo de <strong>[tema]</strong> em três níveis: básico, intermédio e avançado. Para cada nível, indica o que devo saber, que exercícios devo fazer e como verificar se estou pronto para avançar.</p>
+        </article>
+      </div>
+
+      <p class="result">Resultado esperado: rever melhor, identificar conteúdos essenciais e estudar de forma mais ativa.</p>
+    </section>
+
+    <section id="compreender">
+      <div class="section-head">
+        <div class="eyebrow">5. Prompts para compreender melhor</div>
+        <h2>Quando um conceito parece difícil</h2>
+      </div>
+
+      <div class="prompt-grid">
+        <article class="prompt-card">
+          <h3>Explicação simples</h3>
+          <p class="when">Quando estás a aprender um conceito pela primeira vez.</p>
+          <p class="prompt">Explica-me <strong>[conceito]</strong> como se eu fosse um aluno do <strong>[ano]</strong> que está a aprender isto pela primeira vez. Usa linguagem simples, um exemplo do quotidiano e termina com 3 perguntas para eu verificar se percebi.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Explicação aprofundada</h3>
+          <p class="when">Quando já percebes o básico e queres ir mais longe.</p>
+          <p class="prompt">Agora explica <strong>[conceito]</strong> de forma mais aprofundada, adequada a <strong>[disciplina]</strong> no <strong>[ano]</strong>. Inclui vocabulário científico correto, relações com outros conceitos e uma aplicação prática.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Explicação por analogia</h3>
+          <p class="when">Quando precisas de uma comparação para visualizar melhor.</p>
+          <p class="prompt">Cria 3 analogias para me ajudar a compreender <strong>[conceito]</strong>. Depois explica os limites de cada analogia, ou seja, em que ponto ela deixa de ser correta.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Explicação em esquema</h3>
+          <p class="when">Quando queres fazer um mapa mental ou resumo visual.</p>
+          <p class="prompt">Explica <strong>[tema]</strong> como se fosse um esquema visual. Descreve caixas, setas, relações de causa-efeito e palavras-chave que eu possa copiar para um mapa mental ou desenho.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Explicação por etapas</h3>
+          <p class="when">Quando estás a estudar um processo.</p>
+          <p class="prompt">Explica o processo <strong>[processo]</strong> por etapas. Para cada etapa, indica o que acontece, por que acontece e que conceito-chave devo memorizar.</p>
+        </article>
+      </div>
+
+      <p class="result">Resultado esperado: compreender conceitos difíceis, explicar ideias com as tuas palavras e relacionar conteúdos.</p>
+    </section>
+
+    <section id="explicador">
+      <div class="section-head">
+        <div class="eyebrow">6. Prompts para usar a IA como explicador</div>
+        <h2>Pedir apoio ajustado à tua dificuldade</h2>
+      </div>
+
+      <div class="prompt-grid">
+        <article class="prompt-card">
+          <h3>Não percebi nada</h3>
+          <p class="prompt">Estou com muita dificuldade em <strong>[tema]</strong>. Explica desde o início, em linguagem muito simples, como se estivesses a construir a ideia passo a passo. No fim, faz-me 3 perguntas fáceis.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Percebo parcialmente</h3>
+          <p class="prompt">Já percebo um pouco de <strong>[tema]</strong>, mas confundo <strong>[parte difícil]</strong>. Explica essa parte com exemplos e mostra a diferença entre uma resposta certa e uma resposta errada.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Preciso de exemplos</h3>
+          <p class="prompt">Dá-me 5 exemplos diferentes de <strong>[conceito]</strong>, começando por exemplos simples e terminando com exemplos mais próximos de um teste.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Preciso de saber aplicar</h3>
+          <p class="prompt">Explica como posso aplicar <strong>[conceito/fórmula/regra]</strong> em exercícios. Dá-me um método em passos e um exemplo resolvido.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Quero testar se percebi</h3>
+          <p class="prompt">Faz-me perguntas sobre <strong>[tema]</strong>. Começa por perguntas simples e aumenta a dificuldade. Depois corrige as minhas respostas.</p>
+        </article>
+      </div>
+
+      <p class="result">Resultado esperado: receber apoio personalizado sem depender de uma resposta pronta.</p>
+    </section>
+
+    <section id="exercicios">
+      <div class="section-head">
+        <div class="eyebrow">7. Prompts para resolver exercícios sem copiar</div>
+        <h2>Treinar raciocínio, não copiar soluções</h2>
+      </div>
+
+      <div class="prompt-grid">
+        <article class="prompt-card">
+          <h3>Resolver passo a passo</h3>
+          <p class="when">Quando queres orientação sem receber logo a solução.</p>
+          <p class="prompt">Quero resolver este exercício: <strong>[colar exercício]</strong>. Não me dês já a resposta final. Orienta-me passo a passo, fazendo perguntas e dando pistas. Só avanças quando eu responder.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Identificar dados e fórmulas</h3>
+          <p class="when">Em Matemática, Física ou Química.</p>
+          <p class="prompt">Ajuda-me a compreender este exercício: <strong>[colar exercício]</strong>. Antes de resolver, identifica os dados, as unidades, as fórmulas possíveis e os cuidados a ter.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Perceber onde errei</h3>
+          <p class="when">Quando já tentaste resolver.</p>
+          <p class="prompt">Resolvi este exercício assim: <strong>[colar resolução]</strong>. Identifica onde errei, explica porquê e dá-me uma pista para corrigir antes de mostrares a solução completa.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Criar exercícios semelhantes</h3>
+          <p class="when">Para treinar mais.</p>
+          <p class="prompt">Cria 5 exercícios semelhantes a este: <strong>[colar exercício]</strong>, mantendo o mesmo nível de dificuldade e o mesmo tipo de raciocínio. Não mostres as soluções no início. Coloca as soluções no final.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Aumentar a dificuldade</h3>
+          <p class="when">Para evoluir progressivamente.</p>
+          <p class="prompt">Cria uma sequência de 6 exercícios sobre <strong>[tema]</strong>, começando por nível fácil e terminando em nível desafiante. Depois de cada exercício, indica que competência está a ser treinada.</p>
+        </article>
+      </div>
+
+      <p class="result">Resultado esperado: treinar mais, perceber erros e desenvolver raciocínio autónomo.</p>
+    </section>
+
+    <section id="socratico">
+      <div class="section-head">
+        <div class="eyebrow">8. IA como interlocutor socrático</div>
+        <h2>A IA também pode fazer perguntas</h2>
+        <p class="lead">
+          Neste tipo de uso, a IA não deve explicar tudo de uma vez. Deve fazer perguntas
+          para te ajudar a pensar.
+        </p>
+      </div>
+
+      <div class="prompt-grid">
+        <article class="prompt-card">
+          <h3>Pensar antes de receber resposta</h3>
+          <p class="prompt">Não me dês a resposta. Faz-me perguntas que me ajudem a descobrir a solução de <strong>[problema/tema]</strong>.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Desenvolver raciocínio</h3>
+          <p class="prompt">Ajuda-me a raciocinar sobre <strong>[tema]</strong>. Faz uma pergunta de cada vez e espera pela minha resposta antes de continuares.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Construir uma opinião fundamentada</h3>
+          <p class="prompt">Quero construir uma opinião fundamentada sobre <strong>[tema]</strong>. Questiona as minhas ideias, pede-me exemplos e ajuda-me a melhorar os argumentos.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Melhorar uma conclusão</h3>
+          <p class="prompt">Lê a minha conclusão: <strong>[colar conclusão]</strong>. Faz-me perguntas que me ajudem a torná-la mais clara, rigorosa e convincente.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Evitar respostas superficiais</h3>
+          <p class="prompt">Sempre que eu der uma resposta simples sobre <strong>[tema]</strong>, pede-me para justificar, dar exemplo e considerar uma exceção ou limite.</p>
+        </article>
+      </div>
+
+      <p class="result">Resultado esperado: pensar melhor, justificar respostas, defender ideias e aprofundar raciocínio.</p>
+    </section>
+
+    <section id="organizar">
+      <div class="section-head">
+        <div class="eyebrow">9. Organizar ideias e relacionar conteúdos</div>
+        <h2>Estudar com mais sentido</h2>
+      </div>
+
+      <div class="prompt-grid">
+        <article class="prompt-card">
+          <h3>Criar mapa mental textual</h3>
+          <p class="prompt">Cria um mapa mental textual sobre <strong>[tema]</strong>. Coloca o conceito principal no centro e organiza os ramos por subtemas, exemplos, causas, consequências, fórmulas ou aplicações.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Comparar conceitos</h3>
+          <p class="prompt">Compara <strong>[conceito A]</strong> e <strong>[conceito B]</strong>. Faz uma tabela com semelhanças, diferenças, exemplos e erros comuns na distinção entre os dois.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Relacionar disciplinas</h3>
+          <p class="prompt">Mostra-me como <strong>[tema de uma disciplina]</strong> se relaciona com <strong>[tema de outra disciplina]</strong>. Dá exemplos concretos e explica por que razão esta relação é importante.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Ligar teoria e prática</h3>
+          <p class="prompt">Mostra como <strong>[tema]</strong> se aplica a uma situação real em <strong>[área]</strong>. Explica a ligação entre a teoria e a prática, passo a passo.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Construir glossário</h3>
+          <p class="prompt">Cria um glossário de 12 conceitos essenciais sobre <strong>[tema]</strong>, com definição simples, exemplo e uma frase que mostre como usar o conceito corretamente.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="literacia">
+      <div class="section-head">
+        <div class="eyebrow">10. Verificar informação e desenvolver literacia digital</div>
+        <h2>Nem tudo o que parece convincente está correto</h2>
+      </div>
+
+      <div class="prompt-grid">
+        <article class="prompt-card">
+          <h3>Analisar uma afirmação</h3>
+          <p class="prompt">Analisa criticamente esta afirmação: <strong>[colar afirmação/notícia/post]</strong>. Indica o que parece plausível, o que deve ser verificado, que fontes seriam fiáveis e que sinais de desinformação podem existir.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Avaliar uma fonte</h3>
+          <p class="prompt">Ajuda-me a avaliar se esta fonte é fiável: <strong>[colar link ou descrição da fonte]</strong>. Considera autoria, data, entidade responsável, evidências apresentadas, linguagem usada e possíveis interesses.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Preparar pesquisa</h3>
+          <p class="prompt">Quero pesquisar sobre <strong>[tema]</strong> para um trabalho de <strong>[disciplina]</strong>. Ajuda-me a formular boas perguntas de pesquisa, palavras-chave e critérios para escolher fontes fiáveis.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Identificar linguagem sensacionalista</h3>
+          <p class="prompt">Analisa este texto: <strong>[colar texto]</strong>. Identifica sinais de linguagem sensacionalista, falta de evidência, generalizações ou possíveis manipulações.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Comparar versões da informação</h3>
+          <p class="prompt">Encontrei duas versões sobre <strong>[tema]</strong>: <strong>[versão A]</strong> e <strong>[versão B]</strong>. Ajuda-me a perceber que informação preciso de verificar e que fontes seriam mais adequadas.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="testes">
+      <div class="section-head">
+        <div class="eyebrow">11. Preparar testes e apresentações</div>
+        <h2>Organizar, treinar e ganhar confiança</h2>
+      </div>
+
+      <div class="prompt-grid">
+        <article class="prompt-card">
+          <h3>Diagnóstico rápido</h3>
+          <p class="prompt">Faz-me um diagnóstico sobre <strong>[tema]</strong> com 10 perguntas. Depois das minhas respostas, diz-me o que domino, o que está frágil e o que devo rever primeiro.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Plano de estudo</h3>
+          <p class="prompt">Tenho um teste/apresentação de <strong>[disciplina]</strong> sobre <strong>[temas]</strong> no dia <strong>[data]</strong>. Tenho <strong>[tempo disponível]</strong> para estudar. Cria um plano realista, com blocos curtos, revisão, exercícios e autoavaliação.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Mini-teste</h3>
+          <p class="prompt">Age como professor de <strong>[disciplina]</strong> e cria um mini-teste sobre <strong>[tema]</strong>, adequado ao <strong>[ano]</strong>. Inclui perguntas de escolha múltipla, resposta curta e desenvolvimento. Só mostra as soluções no final.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Preparação oral</h3>
+          <p class="prompt">Tenho de explicar oralmente <strong>[tema]</strong> durante <strong>[tempo]</strong>. Ajuda-me a preparar uma explicação clara, com uma abertura simples, 3 ideias principais, um exemplo e uma conclusão.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Defesa de trabalho</h3>
+          <p class="prompt">Vou apresentar um trabalho sobre <strong>[tema]</strong>. Faz-me perguntas que um professor poderia colocar, começando por perguntas simples e avançando para perguntas mais críticas.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="trabalhos">
+      <div class="section-head">
+        <div class="eyebrow">12. Melhorar trabalhos sem perder autoria</div>
+        <h2>A versão final deve continuar a ser tua</h2>
+      </div>
+
+      <div class="prompt-grid">
+        <article class="prompt-card">
+          <h3>Planear um trabalho</h3>
+          <p class="prompt">Ajuda-me a planear um trabalho sobre <strong>[tema]</strong>. Quero uma estrutura clara, perguntas orientadoras e sugestões de fontes fiáveis. Não escrevas o trabalho por mim.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Rever uma introdução</h3>
+          <p class="prompt">Lê esta introdução: <strong>[colar texto]</strong>. Diz se apresenta bem o tema, o objetivo e a organização do trabalho. Sugere melhorias.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Melhorar clareza</h3>
+          <p class="prompt">Ajuda-me a tornar este parágrafo mais claro: <strong>[colar parágrafo]</strong>. Mantém as minhas ideias e explica o que melhoraste.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Verificar coerência</h3>
+          <p class="prompt">Analisa se este trabalho está bem organizado: <strong>[colar estrutura]</strong>. Diz se há repetições, falhas, ideias fora do lugar ou ligações fracas.</p>
+        </article>
+
+        <article class="prompt-card">
+          <h3>Criar checklist final</h3>
+          <p class="prompt">Cria uma checklist para eu rever o meu trabalho sobre <strong>[tema]</strong> antes de entregar. Inclui critérios de conteúdo, organização, linguagem, fontes, originalidade e apresentação.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="disciplinas">
+      <div class="section-head">
+        <div class="eyebrow">13. Prompts por disciplina</div>
+        <h2>Exemplos que podes adaptar</h2>
+        <p class="lead">
+          Estes exemplos foram pensados sobretudo para Ciências e Tecnologias, mas muitos
+          podem ser adaptados a outros cursos, disciplinas e níveis de ensino.
+        </p>
+      </div>
+
+      <div class="discipline-table">
+        <div class="discipline-item">
+          <div class="discipline-name">Matemática A</div>
+          <p class="prompt">Ajuda-me a resolver este problema de Matemática A: <strong>[colar exercício]</strong>. Não apresentes logo a solução. Primeiro identifica os dados, depois pergunta-me qual deve ser o primeiro passo.</p>
+        </div>
+
+        <div class="discipline-item">
+          <div class="discipline-name">Matemática A</div>
+          <p class="prompt">Explica a fórmula <strong>[fórmula]</strong>. Diz o que significa cada símbolo, quando se usa, que erros são comuns e cria um exemplo resolvido passo a passo.</p>
+        </div>
+
+        <div class="discipline-item">
+          <div class="discipline-name">Física e Química A</div>
+          <p class="prompt">Ajuda-me a compreender este exercício de Física/Química: <strong>[colar exercício]</strong>. Antes de resolver, identifica grandezas, unidades, fórmulas possíveis e cuidados de conversão.</p>
+        </div>
+
+        <div class="discipline-item">
+          <div class="discipline-name">Física</div>
+          <p class="prompt">Explica o fenómeno <strong>[fenómeno]</strong> usando conceitos de Física do <strong>[ano]</strong>. Inclui uma explicação simples, uma explicação científica e um exemplo do quotidiano.</p>
+        </div>
+
+        <div class="discipline-item">
+          <div class="discipline-name">Química</div>
+          <p class="prompt">Explica <strong>[ligação/reação/conceito químico]</strong> com linguagem clara, representação simbólica quando fizer sentido, exemplo e erros comuns.</p>
+        </div>
+
+        <div class="discipline-item">
+          <div class="discipline-name">Biologia e Geologia</div>
+          <p class="prompt">Explica o processo <strong>[processo biológico/geológico]</strong> por etapas. Para cada etapa, indica o que acontece, por que acontece e que conceito-chave devo memorizar.</p>
+        </div>
+
+        <div class="discipline-item">
+          <div class="discipline-name">Português</div>
+          <p class="prompt">Ajuda-me a interpretar este excerto: <strong>[colar excerto]</strong>. Faz perguntas que me levem a identificar tema, ideias principais, recursos expressivos e intenção do autor.</p>
+        </div>
+
+        <div class="discipline-item">
+          <div class="discipline-name">Inglês</div>
+          <p class="prompt">Act as a friendly English teacher. Ask me questions about <strong>[topic]</strong> at level <strong>[A2/B1/B2]</strong>. Correct my mistakes gently and suggest better ways to say my ideas.</p>
+        </div>
+
+        <div class="discipline-item">
+          <div class="discipline-name">Filosofia</div>
+          <p class="prompt">Ajuda-me a analisar esta questão filosófica: <strong>[questão]</strong>. Apresenta diferentes posições, argumentos, contra-argumentos e perguntas para eu pensar melhor.</p>
+        </div>
+
+        <div class="discipline-item">
+          <div class="discipline-name">TIC / Programação</div>
+          <p class="prompt">Explica este código linha a linha: <strong>[colar código]</strong>. Diz o que cada parte faz, identifica possíveis erros e sugere uma pequena alteração para eu treinar.</p>
+        </div>
+
+        <div class="discipline-item">
+          <div class="discipline-name">Cidadania Digital</div>
+          <p class="prompt">Analisa este caso: <strong>[descrever situação digital]</strong>. Que riscos existem? Que decisões seriam responsáveis? Que princípios de cidadania digital estão envolvidos?</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="conclusao">
+      <div class="section-head">
+        <div class="eyebrow">14. O que podes conseguir</div>
+        <h2>A IA deve ajudar-te a pensar melhor</h2>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>Ao usar bons prompts, podes conseguir:</h3>
+          <ul>
+            <li>estudar de forma mais ativa;</li>
+            <li>rever conteúdos com mais organização;</li>
+            <li>compreender conceitos difíceis;</li>
+            <li>treinar exercícios semelhantes;</li>
+            <li>identificar erros e lacunas;</li>
+            <li>preparar testes e apresentações;</li>
+            <li>melhorar respostas escritas;</li>
+            <li>avaliar informação com mais sentido crítico;</li>
+            <li>ganhar autonomia no estudo.</li>
+          </ul>
+        </div>
+
+        <div class="callout">
+          <strong>Mensagem final:</strong><br>
+          A IA não deve pensar por ti. Deve ajudar-te a pensar melhor.
+        </div>
+      </div>
+    </section>
+
+    <section id="professores">
+      <div class="section-head">
+        <div class="eyebrow">15. Notas para professores</div>
+        <h2>Como usar este guia em contexto educativo</h2>
+      </div>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>Finalidade pedagógica</h3>
+          <p>
+            Este guia foi concebido para apoiar uma utilização crítica, responsável e orientada
+            para a aprendizagem da Inteligência Artificial por alunos do ensino secundário,
+            com especial atenção ao curso de Ciências e Tecnologias.
+          </p>
+          <p>
+            Não promove a substituição do trabalho do aluno por respostas geradas automaticamente.
+            Pelo contrário, orienta para práticas de questionamento, verificação, autoavaliação,
+            revisão e melhoria progressiva.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Estratégia recomendada</h3>
+          <p>
+            Selecionar previamente 4 ou 5 prompts adequados às disciplinas presentes ou aos
+            conteúdos que os alunos estejam a estudar. Evitar disponibilizar demasiadas opções
+            no primeiro contacto. O guia completo pode ficar como recurso de continuidade.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Atividades possíveis</h3>
+          <ul>
+            <li>transformar uma pergunta fraca numa pergunta mais completa;</li>
+            <li>analisar uma resposta gerada por IA com erros ou lacunas;</li>
+            <li>comparar uma explicação da IA com o manual ou uma fonte indicada;</li>
+            <li>usar a IA como explicador, sem aceitar a resposta final sem verificação;</li>
+            <li>concluir com uma reflexão breve sobre o que a IA ajudou a compreender.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Evidências de aprendizagem</h3>
+          <ul>
+            <li>prompt inicial e prompt melhorado;</li>
+            <li>resposta da IA anotada pelos alunos;</li>
+            <li>lista de erros ou aspetos a verificar;</li>
+            <li>bilhete de saída com aprendizagem, dúvida e regra de uso responsável;</li>
+            <li>reflexão sobre como a IA ajudou, ou não, a aprender.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer" aria-label="Informação sobre o projeto">
+      <div class="footer-inner">
+
+        <p class="footer-kicker">
+          Guia Prático de Prompts para Aprender Melhor com IA | AEI8 – PALDIM | TEIP4
+        </p>
+
+        <p class="footer-description">
+          Recurso educativo para alunos sobre Inteligência Artificial, literacia digital,
+          estudo ativo, pensamento crítico e uso responsável da IA na aprendizagem.
+        </p>
+
+        <p class="footer-description">
+          Desenvolvido no âmbito do plano de ação de literacia digital, inteligência artificial
+          e cidadania digital associado à AEI8 – PALDIM | TEIP4.
+        </p>
+
+        <p class="footer-authorship">
+          Conceção pedagógica, estruturação de conteúdos e desenvolvimento:<br>
+          <strong>Ana Margarida Fonseca — Professora e Formadora</strong>
+        </p>
+
+        <p class="footer-privacy">
+          Recurso estático, publicado via GitHub Pages, sem login, sem formulários,
+          sem backend próprio e sem recolha ativa de dados.
+        </p>
+
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    const links = document.querySelectorAll('a[href^="#"]');
+
+    links.forEach(link => {
+      link.addEventListener('click', event => {
+        const href = link.getAttribute('href');
+        const target = document.querySelector(href);
+
+        if (target) {
+          event.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
