@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>CapCut, Reels e TikTok | Segurança Digital | AEI8 – PALDIM</title>
+<meta name="description" content="Recurso para alunos sobre CapCut, Reels, TikTok, privacidade, dados pessoais e segurança digital, no âmbito da AEI8 – PALDIM | TEIP4." />
+<meta name="author" content="Ana Margarida Fonseca" />
+<style>
+  :root{
+    --ink:#0c0a14;
+    --paper:#fdfcf8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{height:100%;}
+  body{
+    font-family:'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    background:#08070d;
+    color:var(--ink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:100dvh;
+    overflow:hidden;
+    background-image:radial-gradient(circle at 20% 10%, #211a33 0%, transparent 45%),radial-gradient(circle at 85% 90%, #2a1320 0%, transparent 45%),#08070d;
+  }
+
+  /* ---------- phone frame ---------- */
+  .phone{
+    position:relative;
+    width:min(440px,100vw);
+    height:min(950px,100dvh);
+    aspect-ratio:9/19.5;
+    max-height:100dvh;
+    overflow:hidden;
+    background:#000;
+    border-radius:38px;
+    box-shadow:0 40px 90px -20px rgba(0,0,0,.8), 0 0 0 2px rgba(255,255,255,.04);
+  }
+  @media (max-width:480px){
+    .phone{width:100vw;height:100dvh;border-radius:0;box-shadow:none;}
+  }
+
+  /* ---------- slides ---------- */
+  .deck{position:absolute;inset:0;}
+  .slide{
+    position:absolute;inset:0;
+    display:flex;flex-direction:column;
+    padding:54px 30px 104px;
+    opacity:0;visibility:hidden;
+    transform:scale(1.04);
+    transition:opacity .45s ease, transform .55s cubic-bezier(.22,.61,.36,1), visibility .45s;
+    overflow:hidden;
+  }
+  .slide.active{opacity:1;visibility:visible;transform:scale(1);}
+  .slide::after{ /* grain */
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* themes */
+  .t-alert  {background:linear-gradient(150deg,#ff5a52 0%,#e0312f 55%,#a31418 100%);color:#fff;}
+  .t-info   {background:linear-gradient(150deg,#7b6cff 0%,#5436e8 60%,#2d1f9c 100%);color:#fff;}
+  .t-terms  {background:linear-gradient(150deg,#ffc24b 0%,#ff8a2b 55%,#e85d04 100%);color:#1c1205;}
+  .t-ai     {background:linear-gradient(150deg,#36e0c6 0%,#11a7c4 55%,#0a6e93 100%);color:#04211f;}
+  .t-danger {background:linear-gradient(150deg,#ff6fae 0%,#ff3d6e 50%,#c20e57 100%);color:#fff;}
+  .t-action {background:linear-gradient(150deg,#b6f24b 0%,#5ad05a 55%,#159f57 100%);color:#082012;}
+  .t-final  {background:linear-gradient(150deg,#ffb59c 0%,#ff7a5c 50%,#e84a3c 100%);color:#2a0d07;}
+  .t-credit {background:linear-gradient(160deg,#1a1626 0%,#0d0b14 100%);color:#fdfcf8;}
+
+  /* blurred orbs for depth */
+  .orb{position:absolute;border-radius:50%;filter:blur(46px);opacity:.55;pointer-events:none;}
+  .orb.a{width:230px;height:230px;top:-60px;right:-50px;background:rgba(255,255,255,.45);}
+  .orb.b{width:180px;height:180px;bottom:60px;left:-60px;background:rgba(255,255,255,.25);}
+
+  .badge{
+    align-self:flex-start;
+    font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+    padding:10px 18px;border-radius:999px;
+    background:rgba(255,255,255,.22);backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,.3);
+    margin-bottom:24px;
+  }
+  .t-terms .badge,.t-ai .badge,.t-action .badge,.t-final .badge{background:rgba(0,0,0,.12);border-color:rgba(0,0,0,.16);}
+
+  h1{
+    font-family:'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+    font-weight:800;line-height:.98;letter-spacing:-.02em;
+    font-size:clamp(38px,10.5vw,54px);
+    margin-bottom:8px;
+  }
+  h1 .hl{display:inline-block;}
+  .lead{font-size:20px;font-weight:600;opacity:.92;margin-top:12px;line-height:1.32;}
+
+  .cards{display:flex;flex-direction:column;gap:13px;margin-top:auto;}
+  .card{
+    display:flex;gap:15px;align-items:flex-start;
+    background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.22);
+    backdrop-filter:blur(8px);
+    border-radius:18px;padding:17px 18px;
+  }
+  .t-terms .card,.t-ai .card,.t-action .card,.t-final .card{background:rgba(255,255,255,.4);border-color:rgba(255,255,255,.55);}
+  .card .ico{font-size:30px;line-height:1.1;flex-shrink:0;}
+  .card .num{
+    flex-shrink:0;width:38px;height:38px;border-radius:50%;
+    display:grid;place-items:center;font-family:'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;font-weight:800;font-size:21px;
+    background:rgba(0,0,0,.18);
+  }
+  .t-action .card .num{background:rgba(0,0,0,.16);}
+  .card h3{font-family:'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;font-weight:700;font-size:18px;letter-spacing:-.01em;margin-bottom:4px;}
+  .card p{font-size:16.5px;line-height:1.36;opacity:.92;}
+  .tag{font-size:16px;font-weight:700;opacity:.82;margin-top:16px;}
+
+  /* big centered text slides */
+  .center{justify-content:center;text-align:center;align-items:center;}
+  .center .badge{align-self:center;}
+  .center h1{font-size:clamp(36px,9.5vw,50px);}
+  .save{
+    margin-top:30px;display:flex;gap:14px;align-items:flex-start;text-align:left;
+    background:rgba(255,255,255,.5);border-radius:16px;padding:18px;
+  }
+  .save .ico{font-size:28px;}
+  .save p{font-size:17px;line-height:1.38;font-weight:500;}
+  .footnote{margin-top:22px;font-size:16px;font-weight:700;font-style:italic;opacity:.88;}
+
+  /* staggered reveal */
+  .slide.active .reveal{animation:rise .6s cubic-bezier(.22,.61,.36,1) both;}
+  .slide.active .reveal:nth-child(1){animation-delay:.06s;}
+  .slide.active .reveal:nth-child(2){animation-delay:.14s;}
+  .slide.active .reveal:nth-child(3){animation-delay:.22s;}
+  .slide.active .reveal:nth-child(4){animation-delay:.30s;}
+  .slide.active .reveal:nth-child(5){animation-delay:.38s;}
+  .slide.active .reveal:nth-child(6){animation-delay:.46s;}
+  .slide.active .reveal:nth-child(7){animation-delay:.54s;}
+  @keyframes rise{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+
+  .t-action .badge{margin-bottom:16px;}
+  .t-action h1{font-size:clamp(34px,9vw,46px);}
+  .t-action .lead{font-size:18px;margin-top:6px;margin-bottom:4px;}
+  .t-action .card{padding:13px 16px;}
+  .t-action .card h3{font-size:17.5px;margin-bottom:2px;}
+  .t-action .card p{font-size:15.5px;line-height:1.3;}
+
+  /* ---------- progress bars ---------- */
+  .progress{position:absolute;top:14px;left:14px;right:14px;display:flex;gap:5px;z-index:30;}
+  .progress .bar{flex:1;height:3px;border-radius:3px;background:rgba(255,255,255,.32);overflow:hidden;}
+  .progress .bar i{display:block;height:100%;width:0;background:#fff;border-radius:3px;}
+  .progress .bar.done i{width:100%;}
+  .progress .bar.active i{animation:fill linear forwards;}
+  @keyframes fill{from{width:0;}to{width:100%;}}
+
+  /* ---------- tap zones ---------- */
+  .nav{position:absolute;inset:0;z-index:20;display:flex;}
+  .nav .prev{flex:0 0 32%;}
+  .nav .next{flex:1;}
+
+  /* ---------- controls ---------- */
+  .ctrl{
+    position:absolute;bottom:0;left:0;right:0;z-index:30;
+    display:flex;align-items:center;justify-content:center;gap:20px;
+    padding:12px 0 16px;
+    pointer-events:none;
+    background:linear-gradient(to top, rgba(0,0,0,.28), transparent);
+  }
+  .ctrl button{
+    pointer-events:auto;
+    width:50px;height:50px;border-radius:50%;border:none;cursor:pointer;
+    background:rgba(0,0,0,.34);backdrop-filter:blur(8px);
+    border:1px solid rgba(255,255,255,.35);
+    color:#fff;font-size:22px;display:grid;place-items:center;
+    transition:transform .15s, background .2s;
+  }
+  .ctrl button:hover{transform:scale(1.08);background:rgba(0,0,0,.5);}
+  .swipe-hint{
+    position:absolute;bottom:84px;right:24px;z-index:25;
+    font-size:15px;font-weight:700;letter-spacing:.05em;opacity:.7;
+    display:flex;align-items:center;gap:6px;
+    animation:nudge 1.6s ease-in-out infinite;pointer-events:none;
+  }
+  @keyframes nudge{0%,100%{transform:translateX(0);}50%{transform:translateX(6px);}}
+
+  .handle{font-size:11px;font-weight:700;letter-spacing:.1em;opacity:.55;text-transform:uppercase;position:absolute;top:34px;left:0;right:0;text-align:center;z-index:5;}
+
+  .credit-link{color:#ff8a72;word-break:break-all;text-decoration:none;border-bottom:1px solid rgba(255,138,114,.4);}
+  .credit-body{font-size:16px;line-height:1.5;opacity:.88;max-width:340px;}
+  .credit-mark{font-family:'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;font-weight:800;font-size:24px;margin-bottom:16px;letter-spacing:-.02em;}
+  .restart{margin-top:24px;pointer-events:auto;border:none;cursor:pointer;background:#ff7a5c;color:#1a0904;font-weight:800;font-size:16px;padding:14px 22px;border-radius:999px;font-family:'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;}
+  .portal-link{display:inline-flex;margin-top:14px;color:#fdfcf8;text-decoration:none;border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:10px 16px;font-weight:800;font-size:14px;}
+  .credit-small{font-size:13px;line-height:1.45;opacity:.72;margin-top:16px;max-width:340px;}
+</style>
+</head>
+<body>
+<div class="phone" id="phone">
+
+  <div class="progress" id="progress"></div>
+
+  <div class="deck" id="deck">
+
+    <!-- 1 — HOOK -->
+    <section class="slide t-alert center active" data-dur="6000">
+      <div class="orb a"></div><div class="orb b"></div>
+      <span class="badge reveal">⚠️ atenção</span>
+      <h1 class="reveal">Tens o <span class="hl">CapCut</span> no telemóvel?</h1>
+      <p class="lead reveal">Então há coisas que precisas <b>mesmo</b> de saber. 👇</p>
+      <p class="tag reveal" style="margin-top:30px;opacity:.85;">desliza para ver →</p>
+    </section>
+
+    <!-- 2 — É só editar vídeos? -->
+    <section class="slide t-info" data-dur="9000">
+      <div class="orb a"></div>
+      <span class="badge reveal">📌 primeiro o essencial</span>
+      <h1 class="reveal">Não é <span class="hl">só</span> uma app de vídeos 🤔</h1>
+      <div class="cards">
+        <div class="card reveal"><span class="ico">✂️</span><div><p>O <b>CapCut</b> é uma app grátis da <b>ByteDance</b> — a mesma empresa do TikTok.</p></div></div>
+        <div class="card reveal"><span class="ico">🎬</span><div><p>Toda a gente a usa para fazer vídeos para <b>Reels, TikTok e Shorts</b>.</p></div></div>
+        <div class="card reveal"><span class="ico">🔒</span><div><p>Mas atenção: a <b>privacidade</b> e o <b>uso dos teus dados</b> vão muito além de editar vídeos.</p></div></div>
+        <p class="tag reveal">+12 anos nas lojas de apps</p>
+      </div>
+    </section>
+
+    <!-- 3 — Termos -->
+    <section class="slide t-terms" data-dur="10000">
+      <div class="orb a"></div>
+      <span class="badge reveal">📄 as letrinhas contam</span>
+      <h1 class="reveal">Os termos de uso são <span class="hl">complicados</span></h1>
+      <div class="cards">
+        <div class="card reveal"><span class="ico">♾️</span><div><h3>Licença sem fim</h3><p>O CapCut pode <b>usar, alterar e partilhar</b> o teu conteúdo (incluindo a tua cara, voz e imagem), em todo o mundo e <b>sem limite de tempo</b>.</p></div></div>
+        <div class="card reveal"><span class="ico">🗑️</span><div><h3>Não dá para desfazer</h3><p>Mesmo que apagues a conta, a plataforma pode <b>continuar a usar</b> esse conteúdo.</p></div></div>
+        <div class="card reveal"><span class="ico">📁</span><div><h3>Até os rascunhos</h3><p>Isto inclui vídeos privados ou que <b>nunca chegas a publicar</b>.</p></div></div>
+      </div>
+    </section>
+
+    <!-- 4 — IA -->
+    <section class="slide t-ai" data-dur="10000">
+      <div class="orb a"></div><div class="orb b"></div>
+      <span class="badge reveal">🤖 isto é importante</span>
+      <h1 class="reveal">A tua cara pode <span class="hl">treinar uma IA</span></h1>
+      <div class="cards">
+        <div class="card reveal"><span class="ico">📹</span><div><p>Um vídeo que editas, <b>mesmo que nunca publiques</b>, pode ser usado para treinar inteligência artificial — incluindo <b>análise facial</b>.</p></div></div>
+        <div class="card reveal"><span class="ico">📁</span><div><p>Isto inclui <b>rascunhos</b> e vídeos que tu achas que são <b>privados</b>.</p></div></div>
+        <div class="card reveal"><span class="ico">⚠️</span><div><p>Existem regras parecidas noutras apps, mas <b>a maioria das pessoas não faz ideia</b> de que isto acontece.</p></div></div>
+      </div>
+    </section>
+
+    <!-- 5 — Perigos -->
+    <section class="slide t-danger" data-dur="10000">
+      <div class="orb a"></div>
+      <span class="badge reveal">👀 riscos que passam ao lado</span>
+      <h1 class="reveal">Perigos que não vês no <span class="hl">ecrã</span> ⚠️</h1>
+      <div class="cards">
+        <div class="card reveal"><span class="ico">💬</span><div><h3>Comentários abertos</h3><p>Em templates públicos expõem-te a <b>desconhecidos, trolls</b> e possíveis predadores.</p></div></div>
+        <div class="card reveal"><span class="ico">🔗</span><div><h3>Ligar o CapCut ao TikTok</h3><p>Permite que <b>desconhecidos te enviem mensagens diretas</b>.</p></div></div>
+        <div class="card reveal"><span class="ico">📱</span><div><h3>Partilhar o número</h3><p>Há gente que põe o telemóvel no vídeo a dizer <i>"manda mensagem se estiveres aborrecido"</i> 😱</p></div></div>
+      </div>
+    </section>
+
+    <!-- 6 — 4 coisas -->
+    <section class="slide t-action" data-dur="11000">
+      <div class="orb a"></div>
+      <span class="badge reveal">🔧 o que podes fazer já</span>
+      <h1 class="reveal">4 coisas que podes fazer <span class="hl">hoje</span></h1>
+      <p class="lead reveal" style="margin-top:4px;">Pequenas ações, grande diferença. 💪</p>
+      <div class="cards" style="gap:10px;">
+        <div class="card reveal"><span class="num">1</span><div><h3>Pensa para que a usas</h3><p>Saber porque usas a app ajuda-te a decidir melhor.</p></div></div>
+        <div class="card reveal"><span class="num">2</span><div><h3>Não a ligues ao TikTok</h3><p>É o que <b>mais aumenta</b> a tua exposição a desconhecidos.</p></div></div>
+        <div class="card reveal"><span class="num">3</span><div><h3>Cuida dos dados e da imagem</h3><p>A tua cara pode acabar a treinar uma IA.</p></div></div>
+        <div class="card reveal"><span class="num">4</span><div><h3>Fala com um adulto de confiança</h3><p>Decidir em conjunto ajuda-te a usar a app de forma mais segura.</p></div></div>
+      </div>
+    </section>
+
+    <!-- 7 — Conclusão -->
+    <section class="slide t-final center" data-dur="11000">
+      <div class="orb a"></div><div class="orb b"></div>
+      <span class="badge reveal">💛 a ideia é esta</span>
+      <h1 class="reveal">O objetivo não é <span class="hl">proibir</span> a app.</h1>
+      <p class="lead reveal" style="margin-top:14px;">É perceberes <b>a que estás a dar o teu consentimento</b>.</p>
+      <div class="save reveal"><span class="ico">🔖</span><p>Guarda este vídeo para a próxima vez que fores descarregar uma app <b>"só para editar vídeos"</b>.</p></div>
+      <p class="footnote reveal">💡 Informação hoje, decisões mais seguras amanhã.</p>
+    </section>
+
+    <!-- 8 — Crédito -->
+    <section class="slide t-credit center" data-dur="16000">
+      <div class="credit-mark reveal">Fim 🎬</div>
+      <p class="credit-body reveal">
+        Recurso educativo para alunos sobre segurança digital, privacidade, redes sociais e uso responsável de aplicações com IA.
+      </p>
+      <p class="credit-body reveal">
+        Desenvolvido no âmbito da <b>AEI8 – PALDIM | TEIP4</b>.<br>
+        Conceção pedagógica, estruturação de conteúdos e desenvolvimento:<br>
+        <b>Ana Margarida Fonseca — Professora e Formadora</b>.
+      </p>
+      <p class="credit-small reveal">
+        Recurso estático, publicado via GitHub Pages, sem login, sem formulários, sem backend próprio e sem recolha ativa de dados.
+      </p>
+      <a class="portal-link reveal" href="../index.html">← Voltar ao Portal dos Alunos</a>
+      <button class="restart reveal" id="restart">↺ Ver outra vez</button>
+    </section>
+
+  </div>
+
+  <!-- tap navigation -->
+  <div class="nav">
+    <div class="prev" id="prev"></div>
+    <div class="next" id="next"></div>
+  </div>
+
+  <!-- controls -->
+  <div class="ctrl">
+    <button id="btnPrev" aria-label="Anterior">‹</button>
+    <button id="btnPlay" aria-label="Play/Pausa">⏸</button>
+    <button id="btnNext" aria-label="Seguinte">›</button>
+  </div>
+  <div class="swipe-hint" id="hint">desliza ›</div>
+
+</div>
+
+<script>
+(function(){
+  const deck=document.getElementById('deck');
+  const slides=[...deck.querySelectorAll('.slide')];
+  const progress=document.getElementById('progress');
+  const btnPlay=document.getElementById('btnPlay');
+  const hint=document.getElementById('hint');
+  const nav=document.querySelector('.nav');
+  let idx=0, timer=null, playing=true;
+
+  // build progress bars
+  slides.forEach(()=>{
+    const b=document.createElement('div');b.className='bar';b.innerHTML='<i></i>';
+    progress.appendChild(b);
+  });
+  const bars=[...progress.children];
+
+  function clearTimer(){ if(timer){clearTimeout(timer);timer=null;} }
+
+  function paintBars(){
+    bars.forEach((b,i)=>{
+      b.classList.remove('active','done');
+      const fill=b.querySelector('i');
+      fill.style.animation='none';
+      if(i<idx){b.classList.add('done');}
+      else if(i===idx && playing){
+        const dur=slides[idx].dataset.dur||8000;
+        // reflow then animate
+        void fill.offsetWidth;
+        fill.style.animation='fill '+dur+'ms linear forwards';
+        b.classList.add('active');
+      } else if(i===idx){ fill.style.width='0'; }
+      else { fill.style.width='0'; }
+    });
+  }
+
+  function schedule(){
+    clearTimer();
+    if(!playing) return;
+    const dur=parseInt(slides[idx].dataset.dur||8000,10);
+    timer=setTimeout(()=>{ if(idx<slides.length-1) go(idx+1); else pause(); }, dur);
+  }
+
+  function go(n){
+    n=Math.max(0,Math.min(slides.length-1,n));
+    slides[idx].classList.remove('active');
+    idx=n;
+    slides[idx].classList.add('active');
+    const last=idx===slides.length-1;
+    nav.style.pointerEvents=last?'none':'auto';
+    if(last){ playing=false; btnPlay.textContent='▶'; hint.style.display='none'; }
+    paintBars();
+    schedule();
+  }
+
+  function pause(){ playing=false;btnPlay.textContent='▶';clearTimer();
+    const f=bars[idx].querySelector('i');const w=getComputedStyle(f).width;f.style.animation='none';f.style.width=w;}
+  function play(){ if(idx>=slides.length-1){return;} playing=true;btnPlay.textContent='⏸';paintBars();schedule();}
+
+  function restart(){
+    clearTimer();
+    slides[idx].classList.remove('active');
+    idx=0;
+    playing=true;
+    btnPlay.textContent='⏸';
+    hint.style.display='';
+    nav.style.pointerEvents='auto';
+    slides[0].classList.add('active');
+    // restart entry animations on the first slide
+    slides[0].querySelectorAll('.reveal').forEach(el=>{
+      el.style.animation='none'; void el.offsetWidth; el.style.animation='';
+    });
+    paintBars();
+    schedule();
+  }
+
+  // controls
+  document.getElementById('next').onclick=()=>go(idx+1);
+  document.getElementById('prev').onclick=()=>go(idx-1);
+  document.getElementById('btnNext').onclick=(e)=>{e.stopPropagation();go(idx+1);};
+  document.getElementById('btnPrev').onclick=(e)=>{e.stopPropagation();go(idx-1);};
+  btnPlay.onclick=(e)=>{e.stopPropagation();playing?pause():play();};
+  document.getElementById('restart').onclick=(e)=>{e.stopPropagation();restart();};
+
+  // keyboard
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key===' '){e.preventDefault();go(idx+1);}
+    if(e.key==='ArrowLeft'){go(idx-1);}
+  });
+
+  // swipe + hold-to-pause
+  let sx=0,sy=0,holdT=null,wasPlaying=false;
+  const phone=document.getElementById('phone');
+  phone.addEventListener('touchstart',e=>{
+    sx=e.touches[0].clientX;sy=e.touches[0].clientY;
+    wasPlaying=playing;
+    holdT=setTimeout(()=>{ if(playing)pause(); },220);
+  },{passive:true});
+  phone.addEventListener('touchend',e=>{
+    clearTimeout(holdT);
+    const dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy;
+    if(Math.abs(dx)>45 && Math.abs(dx)>Math.abs(dy)){
+      go(dx<0?idx+1:idx-1); return;
+    }
+    if(wasPlaying && !playing) play(); // resume after hold
+  },{passive:true});
+
+  paintBars();
+  schedule();
+})();
+</script>
+</body>
+</html>
