@@ -28,14 +28,24 @@
   /* ---------- phone frame ---------- */
   .phone{
     position:relative;
-    width:min(440px,100vw);
-    height:min(950px,100dvh);
+    width:min(430px,100vw);
+    height:min(930px,100dvh);
     aspect-ratio:9/19.5;
     max-height:100dvh;
     overflow:hidden;
     background:#000;
-    border-radius:38px;
-    box-shadow:0 40px 90px -20px rgba(0,0,0,.8), 0 0 0 2px rgba(255,255,255,.04);
+    border-radius:42px;
+    box-shadow:0 40px 90px -20px rgba(0,0,0,.8), 0 0 0 2px rgba(255,255,255,.06);
+  }
+  .phone::before{
+    content:"";
+    position:absolute;
+    top:10px;left:50%;transform:translateX(-50%);
+    width:96px;height:27px;border-radius:999px;
+    background:rgba(0,0,0,.42);
+    z-index:50;
+    box-shadow:0 1px 0 rgba(255,255,255,.08), inset 0 0 0 1px rgba(255,255,255,.06);
+    pointer-events:none;
   }
   @media (max-width:480px){
     .phone{width:100vw;height:100dvh;border-radius:0;box-shadow:none;}
@@ -46,7 +56,7 @@
   .slide{
     position:absolute;inset:0;
     display:flex;flex-direction:column;
-    padding:54px 30px 104px;
+    padding:62px 28px 112px;
     opacity:0;visibility:hidden;
     transform:scale(1.04);
     transition:opacity .45s ease, transform .55s cubic-bezier(.22,.61,.36,1), visibility .45s;
@@ -86,22 +96,25 @@
   h1{
     font-family:'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
     font-weight:800;line-height:.98;letter-spacing:-.02em;
-    font-size:clamp(38px,10.5vw,54px);
+    font-size:clamp(34px,9.2vw,48px);
     margin-bottom:8px;
   }
   h1 .hl{display:inline-block;}
-  .lead{font-size:20px;font-weight:600;opacity:.92;margin-top:12px;line-height:1.32;}
+  .lead{font-size:18px;font-weight:600;opacity:.92;margin-top:12px;line-height:1.32;}
 
-  .cards{display:flex;flex-direction:column;gap:13px;margin-top:auto;}
+  .cards{display:flex;flex-direction:column;gap:12px;margin-top:22px;}
+  .slide:not(.center) h1 + .cards, .slide:not(.center) .lead + .cards{margin-top:20px;}
+  .slide:not(.center) .tag + .cards{margin-top:18px;}
   .card{
-    display:flex;gap:15px;align-items:flex-start;
-    background:rgba(255,255,255,.16);
-    border:1px solid rgba(255,255,255,.22);
-    backdrop-filter:blur(8px);
-    border-radius:18px;padding:17px 18px;
+    display:flex;gap:13px;align-items:flex-start;
+    background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.26);
+    backdrop-filter:blur(10px);
+    border-radius:18px;padding:14px 16px;
+    box-shadow:0 10px 28px rgba(0,0,0,.12);
   }
   .t-terms .card,.t-ai .card,.t-action .card,.t-final .card{background:rgba(255,255,255,.4);border-color:rgba(255,255,255,.55);}
-  .card .ico{font-size:30px;line-height:1.1;flex-shrink:0;}
+  .card .ico{font-size:25px;line-height:1.1;flex-shrink:0;}
   .card .num{
     flex-shrink:0;width:38px;height:38px;border-radius:50%;
     display:grid;place-items:center;font-family:'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;font-weight:800;font-size:21px;
@@ -109,7 +122,8 @@
   }
   .t-action .card .num{background:rgba(0,0,0,.16);}
   .card h3{font-family:'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;font-weight:700;font-size:18px;letter-spacing:-.01em;margin-bottom:4px;}
-  .card p{font-size:16.5px;line-height:1.36;opacity:.92;}
+  .card p{font-size:15.5px;line-height:1.32;opacity:.94;}
+  .slide:not(.center) .tag{margin-top:14px;}
   .tag{font-size:16px;font-weight:700;opacity:.82;margin-top:16px;}
 
   /* big centered text slides */
@@ -182,6 +196,37 @@
 
   .handle{font-size:11px;font-weight:700;letter-spacing:.1em;opacity:.55;text-transform:uppercase;position:absolute;top:34px;left:0;right:0;text-align:center;z-index:5;}
 
+
+  /* ---------- reels-style interface ---------- */
+  .reel-top{
+    position:absolute;top:42px;left:20px;right:20px;z-index:40;
+    display:flex;align-items:center;justify-content:space-between;
+    color:#fff;font-size:13px;font-weight:850;letter-spacing:.02em;
+    text-shadow:0 2px 10px rgba(0,0,0,.28);
+    pointer-events:none;
+  }
+  .reel-pill{
+    display:inline-flex;align-items:center;gap:7px;
+    background:rgba(0,0,0,.20);border:1px solid rgba(255,255,255,.18);
+    backdrop-filter:blur(8px);border-radius:999px;padding:7px 10px;
+  }
+  .reel-live-dot{width:7px;height:7px;border-radius:50%;background:#ff4d6d;box-shadow:0 0 0 4px rgba(255,77,109,.16);}
+  .reel-actions{
+    position:absolute;right:14px;bottom:154px;z-index:42;
+    display:flex;flex-direction:column;align-items:center;gap:15px;
+    color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.38);pointer-events:none;
+  }
+  .reel-action{display:grid;place-items:center;gap:3px;font-size:22px;font-weight:900;}
+  .reel-action small{font-size:10px;font-weight:800;opacity:.86;}
+  .reel-caption{
+    position:absolute;left:22px;right:74px;bottom:84px;z-index:42;
+    color:#fff;text-align:left;pointer-events:none;
+    text-shadow:0 2px 12px rgba(0,0,0,.46);
+  }
+  .reel-caption strong{display:block;font-size:13px;margin-bottom:4px;}
+  .reel-caption span{font-size:12px;line-height:1.35;opacity:.9;}
+  .slide .badge,.slide h1,.slide .lead,.slide .cards,.slide .save,.slide .footnote,.slide .credit-mark,.slide .credit-body,.slide .credit-small,.slide .portal-link,.slide .restart{position:relative;z-index:3;}
+
   .credit-link{color:#ff8a72;word-break:break-all;text-decoration:none;border-bottom:1px solid rgba(255,138,114,.4);}
   .credit-body{font-size:16px;line-height:1.5;opacity:.88;max-width:340px;}
   .credit-mark{font-family:'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;font-weight:800;font-size:24px;margin-bottom:16px;letter-spacing:-.02em;}
@@ -194,6 +239,19 @@
 <div class="phone" id="phone">
 
   <div class="progress" id="progress"></div>
+  <div class="reel-top" aria-hidden="true">
+    <span class="reel-pill"><span class="reel-live-dot"></span> Segurança digital</span>
+    <span class="reel-pill">AEI8 · PALDIM</span>
+  </div>
+  <div class="reel-actions" aria-hidden="true">
+    <div class="reel-action">♡<small>guardar</small></div>
+    <div class="reel-action">💬<small>pensar</small></div>
+    <div class="reel-action">↗<small>partilhar</small></div>
+  </div>
+  <div class="reel-caption" aria-hidden="true">
+    <strong>@ia.alunos.paldim</strong>
+    <span>CapCut, Reels, TikTok e privacidade: o essencial antes de publicar.</span>
+  </div>
 
   <div class="deck" id="deck">
 
@@ -284,6 +342,11 @@
       <div class="credit-mark reveal">Fim 🎬</div>
       <p class="credit-body reveal">
         Recurso educativo para alunos sobre segurança digital, privacidade, redes sociais e uso responsável de aplicações com IA.
+      </p>
+      <p class="credit-body reveal">
+        Gerado e adaptado para jovens a partir de uma publicação original de
+        <a class="credit-link" href="https://www.linkedin.com/in/beatriz-martinez-nunez-psych/" target="_blank" rel="noopener">@beatriz-martinez-nunez</a>,
+        no LinkedIn.
       </p>
       <p class="credit-body reveal">
         Desenvolvido no âmbito da <b>AEI8 – PALDIM | TEIP4</b>.<br>
