@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Guia de Prompts para Ciências e Tecnologias | AEI8 – PALDIM</title>
+
+  <meta name="description" content="Guia prático de prompts para alunos de Ciências e Tecnologias usarem Inteligência Artificial de forma crítica, segura e responsável na aprendizagem." />
+  <meta name="author" content="Ana Margarida Fonseca" />
+
   <style>
     :root {
       --navy: #0B1F3A;
@@ -18,27 +23,42 @@
       --soft-teal: #E9FAF8;
       --soft-blue: #EAF2F8;
       --soft-navy: #F4F7FA;
+      --soft-yellow: #FFF8DE;
       --shadow: 0 14px 35px rgba(11, 31, 58, 0.12);
-      --radius: 20px;
+      --radius: 22px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--light);
+      background:
+        radial-gradient(circle at 8% 6%, rgba(46, 196, 182, 0.14), transparent 28%),
+        radial-gradient(circle at 92% 10%, rgba(247, 215, 116, 0.18), transparent 28%),
+        linear-gradient(135deg, #F8FAFC 0%, #EEF7F5 55%, #F2F4F7 100%);
       color: var(--ink);
       line-height: 1.6;
     }
 
+    a {
+      color: inherit;
+    }
+
     header {
-      background: linear-gradient(135deg, var(--navy), var(--blue));
+      background:
+        radial-gradient(circle at 88% 18%, rgba(46, 196, 182, 0.34), transparent 28%),
+        linear-gradient(135deg, var(--navy), var(--blue));
       color: var(--white);
-      padding: 50px 24px 42px;
+      padding: 50px 24px 44px;
       text-align: center;
+      box-shadow: var(--shadow);
     }
 
     header .tag {
@@ -51,13 +71,15 @@
       font-size: 0.95rem;
       margin-bottom: 18px;
       letter-spacing: 0.02em;
+      font-weight: 800;
     }
 
     h1 {
-      font-size: clamp(1.75rem, 4.4vw, 3.35rem);
+      font-size: clamp(1.9rem, 4.5vw, 3.45rem);
       line-height: 1.08;
       margin: 0 auto 18px;
       max-width: 1050px;
+      letter-spacing: -0.04em;
     }
 
     header p {
@@ -67,35 +89,132 @@
       color: rgba(255,255,255,0.88);
     }
 
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(255, 255, 255, 0.96);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #DDE3EA;
-      padding: 12px 20px;
-      overflow-x: auto;
-      white-space: nowrap;
-    }
-
-    nav a {
-      display: inline-block;
-      color: var(--blue);
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 24px 0 0;
+      color: var(--white);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.24);
       text-decoration: none;
-      font-weight: 700;
-      margin-right: 18px;
-      font-size: 0.95rem;
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-size: 0.9rem;
     }
 
-    nav a:hover {
-      color: var(--navy);
-      text-decoration: underline;
+    .back-home:hover {
+      background: rgba(255,255,255,0.2);
     }
 
     main {
       width: min(1180px, calc(100% - 32px));
       margin: 28px auto 56px;
+    }
+
+    .quick-note {
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(11,31,58,0.08);
+      border-left: 8px solid var(--teal);
+      border-radius: 22px;
+      padding: 20px 22px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+      color: var(--muted);
+    }
+
+    .quick-note strong {
+      color: var(--navy);
+    }
+
+    .toc {
+      background: rgba(255,255,255,0.96);
+      border: 1px solid rgba(11,31,58,0.08);
+      border-radius: 30px;
+      padding: 24px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .toc-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 18px;
+    }
+
+    .toc-kicker {
+      color: var(--blue);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      margin: 0 0 6px;
+    }
+
+    .toc h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(1.45rem, 2.6vw, 2.15rem);
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+    }
+
+    .toc-hint {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 360px;
+      text-align: right;
+      margin: 0;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 10px;
+    }
+
+    .toc-grid a {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-height: 74px;
+      text-decoration: none;
+      border-radius: 20px;
+      padding: 13px 14px;
+      background: #F8FAFC;
+      border: 1px solid rgba(11,31,58,0.08);
+      color: var(--navy);
+      transition: 0.18s ease;
+    }
+
+    .toc-grid a:hover,
+    .toc-grid a:focus {
+      transform: translateY(-2px);
+      background: var(--soft-teal);
+      border-color: rgba(46,196,182,0.35);
+      outline: none;
+      box-shadow: 0 10px 24px rgba(11,31,58,0.08);
+    }
+
+    .toc-grid a.featured {
+      background: var(--soft-yellow);
+      border-color: rgba(230,184,0,0.35);
+    }
+
+    .toc-number {
+      color: var(--blue);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .toc-label {
+      font-weight: 900;
+      line-height: 1.2;
     }
 
     section {
@@ -104,6 +223,7 @@
       padding: clamp(20px, 3.2vw, 34px);
       margin-bottom: 22px;
       box-shadow: var(--shadow);
+      scroll-margin-top: 24px;
     }
 
     h2 {
@@ -111,6 +231,7 @@
       font-size: clamp(1.35rem, 2.4vw, 2rem);
       margin: 0 0 18px;
       line-height: 1.2;
+      letter-spacing: -0.025em;
     }
 
     h3 {
@@ -130,7 +251,7 @@
       border-left: 8px solid var(--teal);
       border-radius: 16px;
       padding: 19px 21px;
-      font-size: 1.12rem;
+      font-size: 1.08rem;
       font-weight: 700;
       color: var(--navy);
       margin: 24px 0;
@@ -192,7 +313,10 @@
       margin-bottom: 8px;
     }
 
-    .card p { margin: 0; color: var(--muted); }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
 
     table {
       width: 100%;
@@ -204,7 +328,8 @@
       overflow-x: auto;
     }
 
-    th, td {
+    th,
+    td {
       padding: 14px 16px;
       border-bottom: 1px solid #E2E8F0;
       text-align: left;
@@ -218,7 +343,9 @@
       font-weight: 700;
     }
 
-    tr:nth-child(even) td { background: #FAFBFC; }
+    tr:nth-child(even) td {
+      background: #FAFBFC;
+    }
 
     .pill {
       display: inline-block;
@@ -283,7 +410,10 @@
       margin-bottom: 6px;
     }
 
-    .step p { margin: 0; color: rgba(255,255,255,0.86); }
+    .step p {
+      margin: 0;
+      color: rgba(255,255,255,0.86);
+    }
 
     .quote {
       background: linear-gradient(135deg, var(--blue), var(--navy));
@@ -296,20 +426,8 @@
       margin-top: 24px;
     }
 
-    .footer {
-      text-align: center;
-      color: var(--muted);
-      padding: 30px 16px 50px;
-      font-size: 0.95rem;
-    }
-
-    .signature {
-      color: var(--navy);
-      font-weight: 800;
-      margin-top: 10px;
-    }
-
-    code, .placeholder {
+    code,
+    .placeholder {
       background: #EEF4F8;
       color: var(--navy);
       border-radius: 6px;
@@ -317,20 +435,20 @@
       font-weight: 700;
     }
 
-
-    .back-home {
+    .back-top {
       display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin: 24px 0 0;
-      color: var(--white);
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.24);
+      margin-top: 18px;
       text-decoration: none;
-      font-weight: 800;
+      color: var(--navy);
+      background: var(--soft-blue);
       border-radius: 999px;
-      padding: 9px 14px;
-      font-size: 0.9rem;
+      padding: 8px 13px;
+      font-weight: 850;
+      font-size: 0.86rem;
+    }
+
+    .back-top:hover {
+      background: var(--soft-teal);
     }
 
     .footer {
@@ -390,242 +508,764 @@
       line-height: 1.45;
     }
 
+    @media (max-width: 900px) {
+      .toc-header {
+        display: block;
+      }
+
+      .toc-hint {
+        text-align: left;
+        margin-top: 8px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      main {
+        width: min(100% - 22px, 1180px);
+      }
+
+      header {
+        padding: 36px 20px 34px;
+      }
+
+      .toc {
+        padding: 18px;
+        border-radius: 24px;
+      }
+
+      .toc-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .toc-grid a {
+        min-height: auto;
+      }
+
+      .footer-privacy {
+        border-radius: 18px;
+      }
+    }
+
     @media print {
-      nav, .back-home { display: none; }
-      body { background: #fff; }
-      header, section { box-shadow: none; }
-      section { break-inside: avoid; border: 1px solid #E2E8F0; }
+      .toc,
+      .back-home,
+      .back-top {
+        display: none;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      header,
+      section {
+        box-shadow: none;
+      }
+
+      section {
+        break-inside: avoid;
+        border: 1px solid #E2E8F0;
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
     <div class="tag">AEI8 – PALDIM | TEIP4</div>
     <h1>Guia Prático de Prompts para Ciências e Tecnologias</h1>
-    <p>Um guia pensado para alunos de Ciências e Tecnologias, com prompts e propostas que podem ser facilmente adaptados a outros cursos, disciplinas e contextos de aprendizagem.</p>
+    <p>
+      Um guia pensado para alunos de Ciências e Tecnologias, com prompts e propostas
+      que podem ser facilmente adaptados a outros cursos, disciplinas e contextos de aprendizagem.
+    </p>
     <a class="back-home" href="../index.html">← Voltar ao Portal dos Alunos</a>
   </header>
 
-  <nav aria-label="Navegação principal">
-    <a href="../index.html">Portal alunos</a>
-    <a href="#sobre">Sobre</a>
-    <a href="#regras">Regras</a>
-    <a href="#bom-prompt">Bom prompt</a>
-    <a href="#recordar">Recordar</a>
-    <a href="#compreender">Compreender</a>
-    <a href="#explicador">Explicador</a>
-    <a href="#exercicios">Exercícios</a>
-    <a href="#socratico">Socrático</a>
-    <a href="#organizar">Organizar</a>
-    <a href="#verificar">Verificar</a>
-    <a href="#testes">Testes</a>
-    <a href="#trabalhos">Trabalhos</a>
-    <a href="#disciplinas">Disciplinas</a>
-    <a href="#professores">Professores</a>
-  </nav>
-
   <main>
+    <div class="quick-note">
+      <strong>Nota:</strong> este guia foi pensado sobretudo para alunos de Ciências e Tecnologias.
+      Ainda assim, os prompts e propostas podem ser facilmente adaptados a outros cursos,
+      disciplinas e contextos de aprendizagem.
+    </div>
+
+    <section class="toc" id="indice" aria-label="Índice do guia">
+      <div class="toc-header">
+        <div>
+          <p class="toc-kicker">Índice visual</p>
+          <h2>Escolhe o que precisas de trabalhar</h2>
+        </div>
+        <p class="toc-hint">
+          Usa estes botões para saltar diretamente para a parte do guia de que precisas.
+        </p>
+      </div>
+
+      <div class="toc-grid">
+        <a href="#sobre">
+          <span class="toc-number">01</span>
+          <span class="toc-label">Sobre este guia</span>
+        </a>
+
+        <a href="#regras">
+          <span class="toc-number">02</span>
+          <span class="toc-label">Regras essenciais</span>
+        </a>
+
+        <a href="#bom-prompt" class="featured">
+          <span class="toc-number">03</span>
+          <span class="toc-label">Como construir um bom prompt</span>
+        </a>
+
+        <a href="#recordar">
+          <span class="toc-number">04</span>
+          <span class="toc-label">Recordar e rever matéria</span>
+        </a>
+
+        <a href="#compreender">
+          <span class="toc-number">05</span>
+          <span class="toc-label">Compreender melhor</span>
+        </a>
+
+        <a href="#explicador">
+          <span class="toc-number">06</span>
+          <span class="toc-label">IA como explicador</span>
+        </a>
+
+        <a href="#exercicios">
+          <span class="toc-number">07</span>
+          <span class="toc-label">Resolver exercícios sem copiar</span>
+        </a>
+
+        <a href="#socratico">
+          <span class="toc-number">08</span>
+          <span class="toc-label">Pensar com perguntas</span>
+        </a>
+
+        <a href="#organizar">
+          <span class="toc-number">09</span>
+          <span class="toc-label">Organizar ideias</span>
+        </a>
+
+        <a href="#verificar">
+          <span class="toc-number">10</span>
+          <span class="toc-label">Verificar informação</span>
+        </a>
+
+        <a href="#testes">
+          <span class="toc-number">11</span>
+          <span class="toc-label">Preparar testes e apresentações</span>
+        </a>
+
+        <a href="#trabalhos">
+          <span class="toc-number">12</span>
+          <span class="toc-label">Melhorar trabalhos</span>
+        </a>
+
+        <a href="#disciplinas">
+          <span class="toc-number">13</span>
+          <span class="toc-label">Prompts por disciplina</span>
+        </a>
+
+        <a href="#conseguir">
+          <span class="toc-number">14</span>
+          <span class="toc-label">O que podes conseguir</span>
+        </a>
+
+        <a href="#professores">
+          <span class="toc-number">15</span>
+          <span class="toc-label">Notas para professores</span>
+        </a>
+      </div>
+    </section>
+
     <section id="sobre">
       <h2>1. Sobre este guia</h2>
-      <p class="lead">Este guia foi pensado sobretudo para alunos de Ciências e Tecnologias, ajudando a usar a Inteligência Artificial como apoio ao estudo, à compreensão de conteúdos, à organização do trabalho, à preparação para testes e ao desenvolvimento do pensamento crítico.</p>
-      <p>Embora parta de exemplos próximos das áreas científicas e tecnológicas, os prompts e propostas podem ser facilmente adaptados a outros cursos, disciplinas e contextos de aprendizagem.</p>
-      <p>A IA pode ajudar-te a explicar conceitos, criar exercícios, rever respostas, organizar ideias, preparar apresentações, treinar perguntas e verificar informação.</p>
-      <div class="big-idea">A IA não deve substituir o teu pensamento. Deve ajudar-te a compreender, praticar, verificar e melhorar, mantendo a tua autoria e a tua responsabilidade.</div>
+      <p class="lead">
+        Este guia foi pensado sobretudo para alunos de Ciências e Tecnologias, ajudando a usar
+        a Inteligência Artificial como apoio ao estudo, à compreensão de conteúdos, à organização
+        do trabalho, à preparação para testes e ao desenvolvimento do pensamento crítico.
+      </p>
+      <p>
+        Embora parta de exemplos próximos das áreas científicas e tecnológicas, os prompts e propostas
+        podem ser facilmente adaptados a outros cursos, disciplinas e contextos de aprendizagem.
+      </p>
+      <p>
+        A IA pode ajudar-te a explicar conceitos, criar exercícios, rever respostas, organizar ideias,
+        preparar apresentações, treinar perguntas e verificar informação.
+      </p>
+      <div class="big-idea">
+        A IA não deve substituir o teu pensamento. Deve ajudar-te a compreender, praticar,
+        verificar e melhorar, mantendo a tua autoria e a tua responsabilidade.
+      </div>
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="regras">
       <h2>2. Antes de começares: regras essenciais</h2>
       <table>
         <thead>
-          <tr><th>Regra</th><th>O que significa</th></tr>
+          <tr>
+            <th>Regra</th>
+            <th>O que significa</th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td><strong>Não copies sem compreender.</strong></td><td>Deves conseguir explicar com as tuas palavras aquilo que entregas ou apresentas.</td></tr>
-          <tr><td><strong>Pede explicações, não apenas respostas.</strong></td><td>A IA deve ajudar-te a aprender o processo, não apenas a chegar ao produto final.</td></tr>
-          <tr><td><strong>Verifica informação importante.</strong></td><td>Datas, dados, autores, estudos, fontes científicas e factos devem ser confirmados.</td></tr>
-          <tr><td><strong>Mantém a tua autoria.</strong></td><td>A versão final deve refletir o teu pensamento, as tuas escolhas e a tua voz.</td></tr>
-          <tr><td><strong>Não partilhes dados pessoais.</strong></td><td>Não coloques moradas, contactos, documentos, fotografias privadas ou informação sensível.</td></tr>
-          <tr><td><strong>Questiona sempre.</strong></td><td>Uma resposta bem escrita não é necessariamente uma resposta correta.</td></tr>
-          <tr><td><strong>Sê transparente.</strong></td><td>Se o professor pedir, explica como usaste a IA no teu processo de trabalho.</td></tr>
+          <tr>
+            <td><strong>Não copies sem compreender.</strong></td>
+            <td>Deves conseguir explicar com as tuas palavras aquilo que entregas ou apresentas.</td>
+          </tr>
+          <tr>
+            <td><strong>Pede explicações, não apenas respostas.</strong></td>
+            <td>A IA deve ajudar-te a aprender o processo, não apenas a chegar ao produto final.</td>
+          </tr>
+          <tr>
+            <td><strong>Verifica informação importante.</strong></td>
+            <td>Datas, dados, autores, estudos, fontes científicas e factos devem ser confirmados.</td>
+          </tr>
+          <tr>
+            <td><strong>Mantém a tua autoria.</strong></td>
+            <td>A versão final deve refletir o teu pensamento, as tuas escolhas e a tua voz.</td>
+          </tr>
+          <tr>
+            <td><strong>Não partilhes dados pessoais.</strong></td>
+            <td>Não coloques moradas, contactos, documentos, fotografias privadas ou informação sensível.</td>
+          </tr>
+          <tr>
+            <td><strong>Questiona sempre.</strong></td>
+            <td>Uma resposta bem escrita não é necessariamente uma resposta correta.</td>
+          </tr>
+          <tr>
+            <td><strong>Sê transparente.</strong></td>
+            <td>Se o professor pedir, explica como usaste a IA no teu processo de trabalho.</td>
+          </tr>
         </tbody>
       </table>
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="bom-prompt">
       <h2>3. Como construir um bom prompt</h2>
-      <p class="lead">Um bom prompt deve dizer claramente o que queres, em que contexto, com que nível de dificuldade e com que formato.</p>
-      <div class="formula">Papel + tarefa + contexto + nível + formato + verificação</div>
+      <p class="lead">
+        Um bom prompt deve dizer claramente o que queres, em que contexto, com que nível de dificuldade
+        e com que formato.
+      </p>
+
+      <div class="formula">
+        Papel + tarefa + contexto + nível + formato + verificação
+      </div>
 
       <h3>Exemplo</h3>
       <div class="prompt-box">
-        Age como um explicador de Biologia e Geologia. Ajuda-me a compreender a fotossíntese. Sou aluno do <span class="placeholder">[ano]</span> e tenho dificuldade em distinguir fase luminosa e fase química. Explica com linguagem clara, usa uma analogia e termina com 3 perguntas para eu verificar se percebi.
+        Age como um explicador de Biologia e Geologia. Ajuda-me a compreender a fotossíntese.
+        Sou aluno do <span class="placeholder">[ano]</span> e tenho dificuldade em distinguir
+        fase luminosa e fase química. Explica com linguagem clara, usa uma analogia e termina
+        com 3 perguntas para eu verificar se percebi.
       </div>
 
       <h3>Modelo geral que podes adaptar</h3>
       <div class="prompt-box">
-        Age como um explicador paciente e rigoroso de <span class="placeholder">[disciplina]</span>, adequado a um aluno do <span class="placeholder">[ano]</span>. Quero aprender <span class="placeholder">[tema/conceito/exercício]</span>. A minha dificuldade principal é <span class="placeholder">[dificuldade]</span>. Explica passo a passo, com linguagem clara, exemplos e perguntas de verificação. Não faças o trabalho por mim: ajuda-me a compreender, a praticar e a melhorar a minha resposta.
+        Age como um explicador paciente e rigoroso de <span class="placeholder">[disciplina]</span>,
+        adequado a um aluno do <span class="placeholder">[ano]</span>. Quero aprender
+        <span class="placeholder">[tema/conceito/exercício]</span>. A minha dificuldade principal é
+        <span class="placeholder">[dificuldade]</span>. Explica passo a passo, com linguagem clara,
+        exemplos e perguntas de verificação. Não faças o trabalho por mim: ajuda-me a compreender,
+        a praticar e a melhorar a minha resposta.
       </div>
+
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="recordar">
       <h2>4. Prompts para recordar e rever matéria</h2>
       <table>
-        <thead><tr><th>Objetivo</th><th>Quando usar</th><th>Prompt</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Objetivo</th>
+            <th>Quando usar</th>
+            <th>Prompt</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td><span class="pill">Recordar o essencial</span></td><td>Quando queres rever rapidamente uma matéria.</td><td>Ajuda-me a recordar o essencial sobre <strong>[tema]</strong>, da disciplina de <strong>[disciplina]</strong>, ao nível do <strong>[ano]</strong>. Organiza a resposta em: ideias principais, conceitos-chave, erros comuns e mini-resumo final.</td></tr>
-          <tr><td><span class="pill">Revisão final</span></td><td>Antes de um teste ou ficha.</td><td>Faz uma revisão final de <strong>[tema]</strong> para um teste de <strong>[disciplina]</strong>. Inclui conceitos essenciais, fórmulas ou regras, erros comuns, exemplos e 5 perguntas finais.</td></tr>
-          <tr><td><span class="pill">Flashcards</span></td><td>Para memorizar conceitos, fórmulas ou vocabulário.</td><td>Cria 15 flashcards sobre <strong>[tema]</strong>. Cada flashcard deve ter uma pergunta na frente e uma resposta curta no verso. Inclui conceitos, exemplos e erros comuns.</td></tr>
-          <tr><td><span class="pill">Estudo ativo</span></td><td>Quando tens apontamentos longos ou pouco organizados.</td><td>Transforma estes apontamentos em material de estudo ativo: <strong>[colar apontamentos]</strong>. Cria um resumo, perguntas, flashcards, exercícios e uma checklist final.</td></tr>
-          <tr><td><span class="pill">Níveis</span></td><td>Quando não sabes por onde começar.</td><td>Organiza o estudo de <strong>[tema]</strong> em três níveis: básico, intermédio e avançado. Para cada nível, indica o que devo saber, que exercícios devo fazer e como verificar se estou pronto para avançar.</td></tr>
+          <tr>
+            <td><span class="pill">Recordar o essencial</span></td>
+            <td>Quando queres rever rapidamente uma matéria.</td>
+            <td>Ajuda-me a recordar o essencial sobre <strong>[tema]</strong>, da disciplina de <strong>[disciplina]</strong>, ao nível do <strong>[ano]</strong>. Organiza a resposta em: ideias principais, conceitos-chave, erros comuns e mini-resumo final.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Revisão final</span></td>
+            <td>Antes de um teste ou ficha.</td>
+            <td>Faz uma revisão final de <strong>[tema]</strong> para um teste de <strong>[disciplina]</strong>. Inclui conceitos essenciais, fórmulas ou regras, erros comuns, exemplos e 5 perguntas finais.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Flashcards</span></td>
+            <td>Para memorizar conceitos, fórmulas ou vocabulário.</td>
+            <td>Cria 15 flashcards sobre <strong>[tema]</strong>. Cada flashcard deve ter uma pergunta na frente e uma resposta curta no verso. Inclui conceitos, exemplos e erros comuns.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Estudo ativo</span></td>
+            <td>Quando tens apontamentos longos ou pouco organizados.</td>
+            <td>Transforma estes apontamentos em material de estudo ativo: <strong>[colar apontamentos]</strong>. Cria um resumo, perguntas, flashcards, exercícios e uma checklist final.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Níveis</span></td>
+            <td>Quando não sabes por onde começar.</td>
+            <td>Organiza o estudo de <strong>[tema]</strong> em três níveis: básico, intermédio e avançado. Para cada nível, indica o que devo saber, que exercícios devo fazer e como verificar se estou pronto para avançar.</td>
+          </tr>
         </tbody>
       </table>
-      <div class="big-idea">Resultado esperado: rever melhor, identificar os conteúdos essenciais e transformar estudo passivo em estudo ativo.</div>
+      <div class="big-idea">
+        Resultado esperado: rever melhor, identificar os conteúdos essenciais e transformar estudo passivo em estudo ativo.
+      </div>
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="compreender">
       <h2>5. Prompts para compreender melhor</h2>
       <table>
-        <thead><tr><th>Objetivo</th><th>Quando usar</th><th>Prompt</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Objetivo</th>
+            <th>Quando usar</th>
+            <th>Prompt</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td><span class="pill">Explicação simples</span></td><td>Quando um conceito parece difícil.</td><td>Explica-me <strong>[conceito]</strong> como se eu fosse um aluno do <strong>[ano]</strong> que está a aprender isto pela primeira vez. Usa linguagem simples, um exemplo do quotidiano e termina com 3 perguntas para eu verificar se percebi.</td></tr>
-          <tr><td><span class="pill">Aprofundar</span></td><td>Quando já percebes o básico e queres ir mais longe.</td><td>Agora explica <strong>[conceito]</strong> de forma mais aprofundada, adequada a <strong>[disciplina]</strong> no <strong>[ano]</strong>. Inclui vocabulário científico correto, relações com outros conceitos e uma aplicação prática.</td></tr>
-          <tr><td><span class="pill">Analogia</span></td><td>Quando precisas de uma comparação para visualizar melhor.</td><td>Cria 3 analogias para me ajudar a compreender <strong>[conceito]</strong>. Depois explica os limites de cada analogia, ou seja, em que ponto ela deixa de ser correta.</td></tr>
-          <tr><td><span class="pill">Esquema</span></td><td>Quando queres fazer um mapa mental ou resumo visual.</td><td>Explica <strong>[tema]</strong> como se fosse um esquema visual. Descreve caixas, setas, relações de causa-efeito e palavras-chave que eu possa copiar para um mapa mental ou desenho.</td></tr>
-          <tr><td><span class="pill">Etapas</span></td><td>Quando estás a estudar um processo.</td><td>Explica o processo <strong>[processo]</strong> por etapas. Para cada etapa, indica o que acontece, por que acontece e que conceito-chave devo memorizar.</td></tr>
+          <tr>
+            <td><span class="pill">Explicação simples</span></td>
+            <td>Quando um conceito parece difícil.</td>
+            <td>Explica-me <strong>[conceito]</strong> como se eu fosse um aluno do <strong>[ano]</strong> que está a aprender isto pela primeira vez. Usa linguagem simples, um exemplo do quotidiano e termina com 3 perguntas para eu verificar se percebi.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Aprofundar</span></td>
+            <td>Quando já percebes o básico e queres ir mais longe.</td>
+            <td>Agora explica <strong>[conceito]</strong> de forma mais aprofundada, adequada a <strong>[disciplina]</strong> no <strong>[ano]</strong>. Inclui vocabulário científico correto, relações com outros conceitos e uma aplicação prática.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Analogia</span></td>
+            <td>Quando precisas de uma comparação para visualizar melhor.</td>
+            <td>Cria 3 analogias para me ajudar a compreender <strong>[conceito]</strong>. Depois explica os limites de cada analogia, ou seja, em que ponto ela deixa de ser correta.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Esquema</span></td>
+            <td>Quando queres fazer um mapa mental ou resumo visual.</td>
+            <td>Explica <strong>[tema]</strong> como se fosse um esquema visual. Descreve caixas, setas, relações de causa-efeito e palavras-chave que eu possa copiar para um mapa mental ou desenho.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Etapas</span></td>
+            <td>Quando estás a estudar um processo.</td>
+            <td>Explica o processo <strong>[processo]</strong> por etapas. Para cada etapa, indica o que acontece, por que acontece e que conceito-chave devo memorizar.</td>
+          </tr>
         </tbody>
       </table>
-      <div class="big-idea">Resultado esperado: compreender melhor conceitos difíceis, explicar ideias com as tuas palavras e perceber relações entre conteúdos.</div>
+      <div class="big-idea">
+        Resultado esperado: compreender melhor conceitos difíceis, explicar ideias com as tuas palavras e perceber relações entre conteúdos.
+      </div>
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="explicador">
       <h2>6. Prompts para usar a IA como explicador</h2>
+
       <div class="grid">
-        <div class="card"><strong>Não percebi nada.</strong><p>Estou com muita dificuldade em <strong>[tema]</strong>. Explica desde o início, em linguagem muito simples, como se estivesses a construir a ideia passo a passo. No fim, faz-me 3 perguntas fáceis.</p></div>
-        <div class="card"><strong>Percebo parcialmente.</strong><p>Já percebo um pouco de <strong>[tema]</strong>, mas confundo <strong>[parte difícil]</strong>. Explica essa parte com exemplos e mostra a diferença entre uma resposta certa e uma resposta errada.</p></div>
-        <div class="card"><strong>Preciso de exemplos.</strong><p>Dá-me 5 exemplos diferentes de <strong>[conceito]</strong>, começando por exemplos simples e terminando com exemplos mais próximos de um teste.</p></div>
-        <div class="card"><strong>Preciso de aplicar.</strong><p>Explica como posso aplicar <strong>[conceito/fórmula/regra]</strong> em exercícios. Dá-me um método em passos e um exemplo resolvido.</p></div>
-        <div class="card"><strong>Quero testar se percebi.</strong><p>Faz-me perguntas sobre <strong>[tema]</strong>. Começa por perguntas simples e aumenta a dificuldade. Depois corrige as minhas respostas.</p></div>
+        <div class="card">
+          <strong>Não percebi nada.</strong>
+          <p>Estou com muita dificuldade em <strong>[tema]</strong>. Explica desde o início, em linguagem muito simples, como se estivesses a construir a ideia passo a passo. No fim, faz-me 3 perguntas fáceis.</p>
+        </div>
+
+        <div class="card">
+          <strong>Percebo parcialmente.</strong>
+          <p>Já percebo um pouco de <strong>[tema]</strong>, mas confundo <strong>[parte difícil]</strong>. Explica essa parte com exemplos e mostra a diferença entre uma resposta certa e uma resposta errada.</p>
+        </div>
+
+        <div class="card">
+          <strong>Preciso de exemplos.</strong>
+          <p>Dá-me 5 exemplos diferentes de <strong>[conceito]</strong>, começando por exemplos simples e terminando com exemplos mais próximos de um teste.</p>
+        </div>
+
+        <div class="card">
+          <strong>Preciso de aplicar.</strong>
+          <p>Explica como posso aplicar <strong>[conceito/fórmula/regra]</strong> em exercícios. Dá-me um método em passos e um exemplo resolvido.</p>
+        </div>
+
+        <div class="card">
+          <strong>Quero testar se percebi.</strong>
+          <p>Faz-me perguntas sobre <strong>[tema]</strong>. Começa por perguntas simples e aumenta a dificuldade. Depois corrige as minhas respostas.</p>
+        </div>
       </div>
-      <div class="big-idea">Resultado esperado: pedir apoio ajustado à tua dificuldade, sem receber apenas uma resposta pronta.</div>
+
+      <div class="big-idea">
+        Resultado esperado: pedir apoio ajustado à tua dificuldade, sem receber apenas uma resposta pronta.
+      </div>
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="exercicios">
       <h2>7. Prompts para resolver exercícios sem copiar</h2>
+
       <table>
-        <thead><tr><th>Objetivo</th><th>Quando usar</th><th>Prompt</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Objetivo</th>
+            <th>Quando usar</th>
+            <th>Prompt</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td><span class="pill">Passo a passo</span></td><td>Quando queres orientação sem receber logo a solução.</td><td>Quero resolver este exercício: <strong>[colar exercício]</strong>. Não me dês já a resposta final. Orienta-me passo a passo, fazendo perguntas e dando pistas. Só avanças quando eu responder.</td></tr>
-          <tr><td><span class="pill">Dados e fórmulas</span></td><td>Em Matemática, Física ou Química.</td><td>Ajuda-me a compreender este exercício: <strong>[colar exercício]</strong>. Antes de resolver, identifica os dados, as unidades, as fórmulas possíveis e os cuidados a ter.</td></tr>
-          <tr><td><span class="pill">Erro</span></td><td>Quando já tentaste resolver.</td><td>Resolvi este exercício assim: <strong>[colar resolução]</strong>. Identifica onde errei, explica porquê e dá-me uma pista para corrigir antes de mostrares a solução completa.</td></tr>
-          <tr><td><span class="pill">Exercícios semelhantes</span></td><td>Para treinar mais.</td><td>Cria 5 exercícios semelhantes a este: <strong>[colar exercício]</strong>, mantendo o mesmo nível de dificuldade e o mesmo tipo de raciocínio. Não mostres as soluções no início. Coloca as soluções no final.</td></tr>
-          <tr><td><span class="pill">Dificuldade crescente</span></td><td>Para evoluir progressivamente.</td><td>Cria uma sequência de 6 exercícios sobre <strong>[tema]</strong>, começando por nível fácil e terminando em nível desafiante. Depois de cada exercício, indica que competência está a ser treinada.</td></tr>
+          <tr>
+            <td><span class="pill">Passo a passo</span></td>
+            <td>Quando queres orientação sem receber logo a solução.</td>
+            <td>Quero resolver este exercício: <strong>[colar exercício]</strong>. Não me dês já a resposta final. Orienta-me passo a passo, fazendo perguntas e dando pistas. Só avanças quando eu responder.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Dados e fórmulas</span></td>
+            <td>Em Matemática, Física ou Química.</td>
+            <td>Ajuda-me a compreender este exercício: <strong>[colar exercício]</strong>. Antes de resolver, identifica os dados, as unidades, as fórmulas possíveis e os cuidados a ter.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Erro</span></td>
+            <td>Quando já tentaste resolver.</td>
+            <td>Resolvi este exercício assim: <strong>[colar resolução]</strong>. Identifica onde errei, explica porquê e dá-me uma pista para corrigir antes de mostrares a solução completa.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Exercícios semelhantes</span></td>
+            <td>Para treinar mais.</td>
+            <td>Cria 5 exercícios semelhantes a este: <strong>[colar exercício]</strong>, mantendo o mesmo nível de dificuldade e o mesmo tipo de raciocínio. Não mostres as soluções no início. Coloca as soluções no final.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Dificuldade crescente</span></td>
+            <td>Para evoluir progressivamente.</td>
+            <td>Cria uma sequência de 6 exercícios sobre <strong>[tema]</strong>, começando por nível fácil e terminando em nível desafiante. Depois de cada exercício, indica que competência está a ser treinada.</td>
+          </tr>
         </tbody>
       </table>
-      <div class="warning"><strong>Atenção:</strong> em exercícios de Matemática, Física e Química, confirma sempre cálculos, unidades e passos de resolução.</div>
+
+      <div class="warning">
+        <strong>Atenção:</strong> em exercícios de Matemática, Física e Química, confirma sempre cálculos, unidades e passos de resolução.
+      </div>
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="socratico">
       <h2>8. Prompts para usar a IA como interlocutor socrático</h2>
-      <p class="lead">Neste tipo de uso, a IA não deve explicar tudo de uma vez. Deve fazer perguntas para te ajudar a pensar.</p>
+      <p class="lead">
+        Neste tipo de uso, a IA não deve explicar tudo de uma vez. Deve fazer perguntas para te ajudar a pensar.
+      </p>
+
       <table>
-        <thead><tr><th>Objetivo</th><th>Prompt</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Objetivo</th>
+            <th>Prompt</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td><span class="pill">Pensar primeiro</span></td><td>Não me dês a resposta. Faz-me perguntas que me ajudem a descobrir a solução de <strong>[problema/tema]</strong>.</td></tr>
-          <tr><td><span class="pill">Raciocinar</span></td><td>Ajuda-me a raciocinar sobre <strong>[tema]</strong>. Faz uma pergunta de cada vez e espera pela minha resposta antes de continuares.</td></tr>
-          <tr><td><span class="pill">Argumentar</span></td><td>Quero construir uma opinião fundamentada sobre <strong>[tema]</strong>. Questiona as minhas ideias, pede-me exemplos e ajuda-me a melhorar os argumentos.</td></tr>
-          <tr><td><span class="pill">Conclusão</span></td><td>Lê a minha conclusão: <strong>[colar conclusão]</strong>. Faz-me perguntas que me ajudem a torná-la mais clara, rigorosa e convincente.</td></tr>
-          <tr><td><span class="pill">Aprofundar</span></td><td>Sempre que eu der uma resposta simples sobre <strong>[tema]</strong>, pede-me para justificar, dar exemplo e considerar uma exceção ou limite.</td></tr>
+          <tr>
+            <td><span class="pill">Pensar primeiro</span></td>
+            <td>Não me dês a resposta. Faz-me perguntas que me ajudem a descobrir a solução de <strong>[problema/tema]</strong>.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Raciocinar</span></td>
+            <td>Ajuda-me a raciocinar sobre <strong>[tema]</strong>. Faz uma pergunta de cada vez e espera pela minha resposta antes de continuares.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Argumentar</span></td>
+            <td>Quero construir uma opinião fundamentada sobre <strong>[tema]</strong>. Questiona as minhas ideias, pede-me exemplos e ajuda-me a melhorar os argumentos.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Conclusão</span></td>
+            <td>Lê a minha conclusão: <strong>[colar conclusão]</strong>. Faz-me perguntas que me ajudem a torná-la mais clara, rigorosa e convincente.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Aprofundar</span></td>
+            <td>Sempre que eu der uma resposta simples sobre <strong>[tema]</strong>, pede-me para justificar, dar exemplo e considerar uma exceção ou limite.</td>
+          </tr>
         </tbody>
       </table>
-      <div class="big-idea">Resultado esperado: pensar melhor, justificar respostas, defender ideias e aprofundar o raciocínio.</div>
+
+      <div class="big-idea">
+        Resultado esperado: pensar melhor, justificar respostas, defender ideias e aprofundar o raciocínio.
+      </div>
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="organizar">
       <h2>9. Prompts para organizar ideias e relacionar conteúdos</h2>
+
       <table>
-        <thead><tr><th>Objetivo</th><th>Quando usar</th><th>Prompt</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Objetivo</th>
+            <th>Quando usar</th>
+            <th>Prompt</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td><span class="pill">Mapa mental</span></td><td>Para organizar conteúdos antes de estudar.</td><td>Cria um mapa mental textual sobre <strong>[tema]</strong>. Coloca o conceito principal no centro e organiza os ramos por subtemas, exemplos, causas, consequências, fórmulas ou aplicações.</td></tr>
-          <tr><td><span class="pill">Comparar</span></td><td>Quando confundes conceitos parecidos.</td><td>Compara <strong>[conceito A]</strong> e <strong>[conceito B]</strong>. Faz uma tabela com semelhanças, diferenças, exemplos e erros comuns na distinção entre os dois.</td></tr>
-          <tr><td><span class="pill">Relacionar disciplinas</span></td><td>Para perceber ligações entre áreas.</td><td>Mostra-me como <strong>[tema de uma disciplina]</strong> se relaciona com <strong>[tema de outra disciplina]</strong>. Dá exemplos concretos e explica por que razão esta relação é importante.</td></tr>
-          <tr><td><span class="pill">Teoria e prática</span></td><td>Para perceber a utilidade dos conteúdos.</td><td>Mostra como <strong>[tema]</strong> se aplica a uma situação real em <strong>[área]</strong>. Explica a ligação entre a teoria e a prática, passo a passo.</td></tr>
-          <tr><td><span class="pill">Glossário</span></td><td>Para dominar vocabulário técnico.</td><td>Cria um glossário de 12 conceitos essenciais sobre <strong>[tema]</strong>, com definição simples, exemplo e uma frase que mostre como usar o conceito corretamente.</td></tr>
+          <tr>
+            <td><span class="pill">Mapa mental</span></td>
+            <td>Para organizar conteúdos antes de estudar.</td>
+            <td>Cria um mapa mental textual sobre <strong>[tema]</strong>. Coloca o conceito principal no centro e organiza os ramos por subtemas, exemplos, causas, consequências, fórmulas ou aplicações.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Comparar</span></td>
+            <td>Quando confundes conceitos parecidos.</td>
+            <td>Compara <strong>[conceito A]</strong> e <strong>[conceito B]</strong>. Faz uma tabela com semelhanças, diferenças, exemplos e erros comuns na distinção entre os dois.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Relacionar disciplinas</span></td>
+            <td>Para perceber ligações entre áreas.</td>
+            <td>Mostra-me como <strong>[tema de uma disciplina]</strong> se relaciona com <strong>[tema de outra disciplina]</strong>. Dá exemplos concretos e explica por que razão esta relação é importante.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Teoria e prática</span></td>
+            <td>Para perceber a utilidade dos conteúdos.</td>
+            <td>Mostra como <strong>[tema]</strong> se aplica a uma situação real em <strong>[área]</strong>. Explica a ligação entre a teoria e a prática, passo a passo.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Glossário</span></td>
+            <td>Para dominar vocabulário técnico.</td>
+            <td>Cria um glossário de 12 conceitos essenciais sobre <strong>[tema]</strong>, com definição simples, exemplo e uma frase que mostre como usar o conceito corretamente.</td>
+          </tr>
         </tbody>
       </table>
-      <div class="big-idea">Resultado esperado: organizar melhor a matéria, relacionar conceitos e estudar com mais sentido.</div>
+
+      <div class="big-idea">
+        Resultado esperado: organizar melhor a matéria, relacionar conceitos e estudar com mais sentido.
+      </div>
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="verificar">
       <h2>10. Prompts para verificar informação e desenvolver literacia digital</h2>
+
       <table>
-        <thead><tr><th>Objetivo</th><th>Quando usar</th><th>Prompt</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Objetivo</th>
+            <th>Quando usar</th>
+            <th>Prompt</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td><span class="pill">Afirmação</span></td><td>Quando vês uma notícia, publicação ou frase duvidosa.</td><td>Analisa criticamente esta afirmação: <strong>[colar afirmação/notícia/post]</strong>. Indica o que parece plausível, o que deve ser verificado, que fontes seriam fiáveis e que sinais de desinformação podem existir.</td></tr>
-          <tr><td><span class="pill">Fonte</span></td><td>Antes de usar uma fonte num trabalho.</td><td>Ajuda-me a avaliar se esta fonte é fiável: <strong>[colar link ou descrição da fonte]</strong>. Considera autoria, data, entidade responsável, evidências apresentadas, linguagem usada e possíveis interesses.</td></tr>
-          <tr><td><span class="pill">Pesquisa</span></td><td>Antes de escrever um trabalho.</td><td>Quero pesquisar sobre <strong>[tema]</strong> para um trabalho de <strong>[disciplina]</strong>. Ajuda-me a formular boas perguntas de pesquisa, palavras-chave e critérios para escolher fontes fiáveis.</td></tr>
-          <tr><td><span class="pill">Sensacionalismo</span></td><td>Quando um conteúdo parece exagerado.</td><td>Analisa este texto: <strong>[colar texto]</strong>. Identifica sinais de linguagem sensacionalista, falta de evidência, generalizações ou possíveis manipulações.</td></tr>
-          <tr><td><span class="pill">Versões contraditórias</span></td><td>Quando encontras informações contraditórias.</td><td>Encontrei duas versões sobre <strong>[tema]</strong>: <strong>[versão A]</strong> e <strong>[versão B]</strong>. Ajuda-me a perceber que informação preciso de verificar e que fontes seriam mais adequadas.</td></tr>
+          <tr>
+            <td><span class="pill">Afirmação</span></td>
+            <td>Quando vês uma notícia, publicação ou frase duvidosa.</td>
+            <td>Analisa criticamente esta afirmação: <strong>[colar afirmação/notícia/post]</strong>. Indica o que parece plausível, o que deve ser verificado, que fontes seriam fiáveis e que sinais de desinformação podem existir.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Fonte</span></td>
+            <td>Antes de usar uma fonte num trabalho.</td>
+            <td>Ajuda-me a avaliar se esta fonte é fiável: <strong>[colar link ou descrição da fonte]</strong>. Considera autoria, data, entidade responsável, evidências apresentadas, linguagem usada e possíveis interesses.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Pesquisa</span></td>
+            <td>Antes de escrever um trabalho.</td>
+            <td>Quero pesquisar sobre <strong>[tema]</strong> para um trabalho de <strong>[disciplina]</strong>. Ajuda-me a formular boas perguntas de pesquisa, palavras-chave e critérios para escolher fontes fiáveis.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Sensacionalismo</span></td>
+            <td>Quando um conteúdo parece exagerado.</td>
+            <td>Analisa este texto: <strong>[colar texto]</strong>. Identifica sinais de linguagem sensacionalista, falta de evidência, generalizações ou possíveis manipulações.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Versões contraditórias</span></td>
+            <td>Quando encontras informações contraditórias.</td>
+            <td>Encontrei duas versões sobre <strong>[tema]</strong>: <strong>[versão A]</strong> e <strong>[versão B]</strong>. Ajuda-me a perceber que informação preciso de verificar e que fontes seriam mais adequadas.</td>
+          </tr>
         </tbody>
       </table>
-      <div class="big-idea">Resultado esperado: avaliar melhor informação, fontes e conteúdos digitais, evitando acreditar automaticamente em tudo o que parece convincente.</div>
+
+      <div class="big-idea">
+        Resultado esperado: avaliar melhor informação, fontes e conteúdos digitais, evitando acreditar automaticamente em tudo o que parece convincente.
+      </div>
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="testes">
       <h2>11. Prompts para preparar testes e apresentações</h2>
+
       <table>
-        <thead><tr><th>Objetivo</th><th>Quando usar</th><th>Prompt</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Objetivo</th>
+            <th>Quando usar</th>
+            <th>Prompt</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td><span class="pill">Diagnóstico</span></td><td>Antes de começar a estudar.</td><td>Faz-me um diagnóstico sobre <strong>[tema]</strong> com 10 perguntas. Depois das minhas respostas, diz-me o que domino, o que está frágil e o que devo rever primeiro.</td></tr>
-          <tr><td><span class="pill">Plano de estudo</span></td><td>Quando tens pouco tempo ou muita matéria.</td><td>Tenho um teste/apresentação de <strong>[disciplina]</strong> sobre <strong>[temas]</strong> no dia <strong>[data]</strong>. Tenho <strong>[tempo disponível]</strong> para estudar. Cria um plano realista, com blocos curtos, revisão, exercícios e autoavaliação.</td></tr>
-          <tr><td><span class="pill">Mini-teste</span></td><td>Para treinar como se fosse avaliação.</td><td>Age como professor de <strong>[disciplina]</strong> e cria um mini-teste sobre <strong>[tema]</strong>, adequado ao <strong>[ano]</strong>. Inclui perguntas de escolha múltipla, resposta curta e desenvolvimento. Só mostra as soluções no final.</td></tr>
-          <tr><td><span class="pill">Oralidade</span></td><td>Antes de apresentar um trabalho.</td><td>Tenho de explicar oralmente <strong>[tema]</strong> durante <strong>[tempo]</strong>. Ajuda-me a preparar uma explicação clara, com uma abertura simples, 3 ideias principais, um exemplo e uma conclusão.</td></tr>
-          <tr><td><span class="pill">Defesa de trabalho</span></td><td>Para antecipar perguntas do professor.</td><td>Vou apresentar um trabalho sobre <strong>[tema]</strong>. Faz-me perguntas que um professor poderia colocar, começando por perguntas simples e avançando para perguntas mais críticas.</td></tr>
+          <tr>
+            <td><span class="pill">Diagnóstico</span></td>
+            <td>Antes de começar a estudar.</td>
+            <td>Faz-me um diagnóstico sobre <strong>[tema]</strong> com 10 perguntas. Depois das minhas respostas, diz-me o que domino, o que está frágil e o que devo rever primeiro.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Plano de estudo</span></td>
+            <td>Quando tens pouco tempo ou muita matéria.</td>
+            <td>Tenho um teste/apresentação de <strong>[disciplina]</strong> sobre <strong>[temas]</strong> no dia <strong>[data]</strong>. Tenho <strong>[tempo disponível]</strong> para estudar. Cria um plano realista, com blocos curtos, revisão, exercícios e autoavaliação.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Mini-teste</span></td>
+            <td>Para treinar como se fosse avaliação.</td>
+            <td>Age como professor de <strong>[disciplina]</strong> e cria um mini-teste sobre <strong>[tema]</strong>, adequado ao <strong>[ano]</strong>. Inclui perguntas de escolha múltipla, resposta curta e desenvolvimento. Só mostra as soluções no final.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Oralidade</span></td>
+            <td>Antes de apresentar um trabalho.</td>
+            <td>Tenho de explicar oralmente <strong>[tema]</strong> durante <strong>[tempo]</strong>. Ajuda-me a preparar uma explicação clara, com uma abertura simples, 3 ideias principais, um exemplo e uma conclusão.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Defesa de trabalho</span></td>
+            <td>Para antecipar perguntas do professor.</td>
+            <td>Vou apresentar um trabalho sobre <strong>[tema]</strong>. Faz-me perguntas que um professor poderia colocar, começando por perguntas simples e avançando para perguntas mais críticas.</td>
+          </tr>
         </tbody>
       </table>
-      <div class="big-idea">Resultado esperado: estudar com mais organização, treinar perguntas prováveis e apresentar ideias com mais confiança.</div>
+
+      <div class="big-idea">
+        Resultado esperado: estudar com mais organização, treinar perguntas prováveis e apresentar ideias com mais confiança.
+      </div>
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="trabalhos">
       <h2>12. Prompts para melhorar trabalhos sem perder autoria</h2>
+
       <table>
-        <thead><tr><th>Objetivo</th><th>Quando usar</th><th>Prompt</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Objetivo</th>
+            <th>Quando usar</th>
+            <th>Prompt</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td><span class="pill">Planear</span></td><td>Antes de começar a escrever.</td><td>Ajuda-me a planear um trabalho sobre <strong>[tema]</strong>. Quero uma estrutura clara, perguntas orientadoras e sugestões de fontes fiáveis. Não escrevas o trabalho por mim.</td></tr>
-          <tr><td><span class="pill">Introdução</span></td><td>Quando queres saber se começaste bem.</td><td>Lê esta introdução: <strong>[colar texto]</strong>. Diz se apresenta bem o tema, o objetivo e a organização do trabalho. Sugere melhorias.</td></tr>
-          <tr><td><span class="pill">Clareza</span></td><td>Quando um parágrafo está confuso.</td><td>Ajuda-me a tornar este parágrafo mais claro: <strong>[colar parágrafo]</strong>. Mantém as minhas ideias e explica o que melhoraste.</td></tr>
-          <tr><td><span class="pill">Coerência</span></td><td>Antes de entregar o trabalho.</td><td>Analisa se este trabalho está bem organizado: <strong>[colar estrutura]</strong>. Diz se há repetições, falhas, ideias fora do lugar ou ligações fracas.</td></tr>
-          <tr><td><span class="pill">Checklist</span></td><td>Antes da entrega.</td><td>Cria uma checklist para eu rever o meu trabalho sobre <strong>[tema]</strong> antes de entregar. Inclui critérios de conteúdo, organização, linguagem, fontes, originalidade e apresentação.</td></tr>
+          <tr>
+            <td><span class="pill">Planear</span></td>
+            <td>Antes de começar a escrever.</td>
+            <td>Ajuda-me a planear um trabalho sobre <strong>[tema]</strong>. Quero uma estrutura clara, perguntas orientadoras e sugestões de fontes fiáveis. Não escrevas o trabalho por mim.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Introdução</span></td>
+            <td>Quando queres saber se começaste bem.</td>
+            <td>Lê esta introdução: <strong>[colar texto]</strong>. Diz se apresenta bem o tema, o objetivo e a organização do trabalho. Sugere melhorias.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Clareza</span></td>
+            <td>Quando um parágrafo está confuso.</td>
+            <td>Ajuda-me a tornar este parágrafo mais claro: <strong>[colar parágrafo]</strong>. Mantém as minhas ideias e explica o que melhoraste.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Coerência</span></td>
+            <td>Antes de entregar o trabalho.</td>
+            <td>Analisa se este trabalho está bem organizado: <strong>[colar estrutura]</strong>. Diz se há repetições, falhas, ideias fora do lugar ou ligações fracas.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Checklist</span></td>
+            <td>Antes da entrega.</td>
+            <td>Cria uma checklist para eu rever o meu trabalho sobre <strong>[tema]</strong> antes de entregar. Inclui critérios de conteúdo, organização, linguagem, fontes, originalidade e apresentação.</td>
+          </tr>
         </tbody>
       </table>
-      <div class="warning"><strong>Regra de ouro:</strong> a IA pode ajudar a planear, rever e melhorar. A versão final deve ser tua.</div>
+
+      <div class="warning">
+        <strong>Regra de ouro:</strong> a IA pode ajudar a planear, rever e melhorar. A versão final deve ser tua.
+      </div>
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="disciplinas">
       <h2>13. Prompts por disciplina</h2>
+
       <table>
-        <thead><tr><th>Disciplina/área</th><th>Objetivo</th><th>Prompt</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Disciplina/área</th>
+            <th>Objetivo</th>
+            <th>Prompt</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td>Matemática A</td><td>Resolver sem copiar.</td><td>Ajuda-me a resolver este problema de Matemática A: <strong>[colar exercício]</strong>. Não apresentes logo a solução. Primeiro identifica os dados, depois pergunta-me qual deve ser o primeiro passo.</td></tr>
-          <tr><td>Matemática A</td><td>Compreender fórmulas.</td><td>Explica a fórmula <strong>[fórmula]</strong>. Diz o que significa cada símbolo, quando se usa, que erros são comuns e cria um exemplo resolvido passo a passo.</td></tr>
-          <tr><td>Física e Química A</td><td>Trabalhar grandezas e unidades.</td><td>Ajuda-me a compreender este exercício de Física/Química: <strong>[colar exercício]</strong>. Antes de resolver, identifica grandezas, unidades, fórmulas possíveis e cuidados de conversão.</td></tr>
-          <tr><td>Física</td><td>Interpretar fenómenos.</td><td>Explica o fenómeno <strong>[fenómeno]</strong> usando conceitos de Física do <strong>[ano]</strong>. Inclui uma explicação simples, uma explicação científica e um exemplo do quotidiano.</td></tr>
-          <tr><td>Química</td><td>Compreender reações ou ligações.</td><td>Explica <strong>[ligação/reação/conceito químico]</strong> com linguagem clara, representação simbólica quando fizer sentido, exemplo e erros comuns.</td></tr>
-          <tr><td>Biologia e Geologia</td><td>Organizar processos.</td><td>Explica o processo <strong>[processo biológico/geológico]</strong> por etapas. Para cada etapa, indica o que acontece, por que acontece e que conceito-chave devo memorizar.</td></tr>
-          <tr><td>Biologia</td><td>Comparar sistemas ou processos.</td><td>Compara <strong>[processo A]</strong> e <strong>[processo B]</strong> em Biologia. Faz uma tabela com função, etapas, localização, importância e erros comuns.</td></tr>
-          <tr><td>Geologia</td><td>Relacionar causas e consequências.</td><td>Ajuda-me a compreender <strong>[fenómeno geológico]</strong>. Organiza por causas, processos, consequências, exemplos reais e formas de prevenção ou monitorização.</td></tr>
-          <tr><td>Português</td><td>Melhorar interpretação.</td><td>Ajuda-me a interpretar este excerto: <strong>[colar excerto]</strong>. Faz perguntas que me levem a identificar tema, ideias principais, recursos expressivos e intenção do autor.</td></tr>
-          <tr><td>Português</td><td>Planear texto argumentativo.</td><td>Ajuda-me a planear um texto argumentativo sobre <strong>[tema]</strong>. Quero uma tese clara, três argumentos, exemplos e uma conclusão forte. Não escrevas o texto completo por mim.</td></tr>
-          <tr><td>Inglês</td><td>Praticar oralidade.</td><td>Act as a friendly English teacher. Ask me questions about <strong>[topic]</strong> at level <strong>[A2/B1/B2]</strong>. Correct my mistakes gently and suggest better ways to say my ideas.</td></tr>
-          <tr><td>Inglês</td><td>Melhorar escrita.</td><td>Improve this English paragraph: <strong>[paste paragraph]</strong>. Keep my ideas, correct grammar and vocabulary, and explain the most important corrections in simple Portuguese.</td></tr>
-          <tr><td>Filosofia</td><td>Pensar criticamente.</td><td>Ajuda-me a analisar esta questão filosófica: <strong>[questão]</strong>. Apresenta diferentes posições, argumentos, contra-argumentos e perguntas para eu pensar melhor.</td></tr>
-          <tr><td>TIC/Programação</td><td>Compreender código.</td><td>Explica este código linha a linha: <strong>[colar código]</strong>. Diz o que cada parte faz, identifica possíveis erros e sugere uma pequena alteração para eu treinar.</td></tr>
-          <tr><td>Cidadania Digital</td><td>Avaliar riscos e ética.</td><td>Analisa este caso: <strong>[descrever situação digital]</strong>. Que riscos existem? Que decisões seriam responsáveis? Que princípios de cidadania digital estão envolvidos?</td></tr>
+          <tr>
+            <td>Matemática A</td>
+            <td>Resolver sem copiar.</td>
+            <td>Ajuda-me a resolver este problema de Matemática A: <strong>[colar exercício]</strong>. Não apresentes logo a solução. Primeiro identifica os dados, depois pergunta-me qual deve ser o primeiro passo.</td>
+          </tr>
+          <tr>
+            <td>Matemática A</td>
+            <td>Compreender fórmulas.</td>
+            <td>Explica a fórmula <strong>[fórmula]</strong>. Diz o que significa cada símbolo, quando se usa, que erros são comuns e cria um exemplo resolvido passo a passo.</td>
+          </tr>
+          <tr>
+            <td>Física e Química A</td>
+            <td>Trabalhar grandezas e unidades.</td>
+            <td>Ajuda-me a compreender este exercício de Física/Química: <strong>[colar exercício]</strong>. Antes de resolver, identifica grandezas, unidades, fórmulas possíveis e cuidados de conversão.</td>
+          </tr>
+          <tr>
+            <td>Física</td>
+            <td>Interpretar fenómenos.</td>
+            <td>Explica o fenómeno <strong>[fenómeno]</strong> usando conceitos de Física do <strong>[ano]</strong>. Inclui uma explicação simples, uma explicação científica e um exemplo do quotidiano.</td>
+          </tr>
+          <tr>
+            <td>Química</td>
+            <td>Compreender reações ou ligações.</td>
+            <td>Explica <strong>[ligação/reação/conceito químico]</strong> com linguagem clara, representação simbólica quando fizer sentido, exemplo e erros comuns.</td>
+          </tr>
+          <tr>
+            <td>Biologia e Geologia</td>
+            <td>Organizar processos.</td>
+            <td>Explica o processo <strong>[processo biológico/geológico]</strong> por etapas. Para cada etapa, indica o que acontece, por que acontece e que conceito-chave devo memorizar.</td>
+          </tr>
+          <tr>
+            <td>Biologia</td>
+            <td>Comparar sistemas ou processos.</td>
+            <td>Compara <strong>[processo A]</strong> e <strong>[processo B]</strong> em Biologia. Faz uma tabela com função, etapas, localização, importância e erros comuns.</td>
+          </tr>
+          <tr>
+            <td>Geologia</td>
+            <td>Relacionar causas e consequências.</td>
+            <td>Ajuda-me a compreender <strong>[fenómeno geológico]</strong>. Organiza por causas, processos, consequências, exemplos reais e formas de prevenção ou monitorização.</td>
+          </tr>
+          <tr>
+            <td>Português</td>
+            <td>Melhorar interpretação.</td>
+            <td>Ajuda-me a interpretar este excerto: <strong>[colar excerto]</strong>. Faz perguntas que me levem a identificar tema, ideias principais, recursos expressivos e intenção do autor.</td>
+          </tr>
+          <tr>
+            <td>Português</td>
+            <td>Planear texto argumentativo.</td>
+            <td>Ajuda-me a planear um texto argumentativo sobre <strong>[tema]</strong>. Quero uma tese clara, três argumentos, exemplos e uma conclusão forte. Não escrevas o texto completo por mim.</td>
+          </tr>
+          <tr>
+            <td>Inglês</td>
+            <td>Praticar oralidade.</td>
+            <td>Act as a friendly English teacher. Ask me questions about <strong>[topic]</strong> at level <strong>[A2/B1/B2]</strong>. Correct my mistakes gently and suggest better ways to say my ideas.</td>
+          </tr>
+          <tr>
+            <td>Inglês</td>
+            <td>Melhorar escrita.</td>
+            <td>Improve this English paragraph: <strong>[paste paragraph]</strong>. Keep my ideas, correct grammar and vocabulary, and explain the most important corrections in simple Portuguese.</td>
+          </tr>
+          <tr>
+            <td>Filosofia</td>
+            <td>Pensar criticamente.</td>
+            <td>Ajuda-me a analisar esta questão filosófica: <strong>[questão]</strong>. Apresenta diferentes posições, argumentos, contra-argumentos e perguntas para eu pensar melhor.</td>
+          </tr>
+          <tr>
+            <td>TIC/Programação</td>
+            <td>Compreender código.</td>
+            <td>Explica este código linha a linha: <strong>[colar código]</strong>. Diz o que cada parte faz, identifica possíveis erros e sugere uma pequena alteração para eu treinar.</td>
+          </tr>
+          <tr>
+            <td>Cidadania Digital</td>
+            <td>Avaliar riscos e ética.</td>
+            <td>Analisa este caso: <strong>[descrever situação digital]</strong>. Que riscos existem? Que decisões seriam responsáveis? Que princípios de cidadania digital estão envolvidos?</td>
+          </tr>
         </tbody>
       </table>
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="conseguir">
       <h2>14. O que podes conseguir ao usar a IA desta forma</h2>
+
       <div class="checklist">
         <div class="check">Estudar de forma mais ativa.</div>
         <div class="check">Rever conteúdos com mais organização.</div>
@@ -639,38 +1279,97 @@
         <div class="check">Relacionar conteúdos entre disciplinas.</div>
         <div class="check">Ganhar autonomia no estudo.</div>
       </div>
-      <div class="quote">A IA não deve pensar por ti. Deve ajudar-te a pensar melhor.</div>
+
+      <div class="quote">
+        A IA não deve pensar por ti. Deve ajudar-te a pensar melhor.
+      </div>
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="professores">
       <h2>15. Notas para professores</h2>
+
       <h3>Finalidade pedagógica do guia</h3>
-      <p>Este guia foi concebido para apoiar uma utilização crítica, responsável e orientada para a aprendizagem da Inteligência Artificial por alunos de Ciências e Tecnologias. Não promove a substituição do trabalho do aluno por respostas geradas automaticamente. Orienta os alunos para práticas de questionamento, verificação, autoavaliação, revisão e melhoria progressiva.</p>
+      <p>
+        Este guia foi concebido para apoiar uma utilização crítica, responsável e orientada
+        para a aprendizagem da Inteligência Artificial por alunos de Ciências e Tecnologias.
+        Não promove a substituição do trabalho do aluno por respostas geradas automaticamente.
+        Orienta os alunos para práticas de questionamento, verificação, autoavaliação, revisão
+        e melhoria progressiva.
+      </p>
 
       <h3>Enquadramento possível na sessão</h3>
-      <p>O guia pode ser usado após uma breve introdução sobre IA generativa, literacia digital e literacia mediática. Recomenda-se que os alunos experimentem dois ou três prompts em pequenos grupos, comparando depois os resultados obtidos e discutindo a qualidade das respostas.</p>
+      <p>
+        O guia pode ser usado após uma breve introdução sobre IA generativa, literacia digital
+        e literacia mediática. Recomenda-se que os alunos experimentem dois ou três prompts
+        em pequenos grupos, comparando depois os resultados obtidos e discutindo a qualidade
+        das respostas.
+      </p>
 
       <h3>Estratégia recomendada</h3>
-      <p>Selecionar previamente 4 ou 5 prompts adequados às disciplinas presentes ou aos conteúdos que os alunos estejam a estudar. Evitar disponibilizar demasiadas opções no primeiro contacto. O guia completo pode ficar como recurso de continuidade.</p>
+      <p>
+        Selecionar previamente 4 ou 5 prompts adequados às disciplinas presentes ou aos conteúdos
+        que os alunos estejam a estudar. Evitar disponibilizar demasiadas opções no primeiro contacto.
+        O guia completo pode ficar como recurso de continuidade.
+      </p>
 
       <h3>Atividades possíveis</h3>
       <div class="steps">
-        <div class="step"><strong>Pergunta fraca → pergunta completa</strong><p>Pedir aos alunos que transformem uma pergunta simples num prompt mais útil.</p></div>
-        <div class="step"><strong>Resposta com falhas</strong><p>Dar uma resposta gerada por IA com erros ou lacunas e pedir análise crítica.</p></div>
-        <div class="step"><strong>IA como explicador</strong><p>Usar a IA para explicar sem aceitar a resposta final sem verificação.</p></div>
-        <div class="step"><strong>Comparar fontes</strong><p>Comparar uma explicação da IA com o manual, caderno ou fonte indicada.</p></div>
-        <div class="step"><strong>Refletir</strong><p>Concluir com o que a IA ajudou a compreender e o que exigiu pensamento humano.</p></div>
+        <div class="step">
+          <strong>Pergunta fraca → pergunta completa</strong>
+          <p>Pedir aos alunos que transformem uma pergunta simples num prompt mais útil.</p>
+        </div>
+
+        <div class="step">
+          <strong>Resposta com falhas</strong>
+          <p>Dar uma resposta gerada por IA com erros ou lacunas e pedir análise crítica.</p>
+        </div>
+
+        <div class="step">
+          <strong>IA como explicador</strong>
+          <p>Usar a IA para explicar sem aceitar a resposta final sem verificação.</p>
+        </div>
+
+        <div class="step">
+          <strong>Comparar fontes</strong>
+          <p>Comparar uma explicação da IA com o manual, caderno ou fonte indicada.</p>
+        </div>
+
+        <div class="step">
+          <strong>Refletir</strong>
+          <p>Concluir com o que a IA ajudou a compreender e o que exigiu pensamento humano.</p>
+        </div>
       </div>
 
       <h3>Cuidados a reforçar</h3>
       <table>
-        <thead><tr><th>Cuidados essenciais</th><th>Orientação para os alunos</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Cuidados essenciais</th>
+            <th>Orientação para os alunos</th>
+          </tr>
+        </thead>
         <tbody>
-          <tr><td>Erros</td><td>Respostas geradas por IA podem conter erros.</td></tr>
-          <tr><td>Fontes</td><td>Informação factual deve ser verificada em fontes fiáveis.</td></tr>
-          <tr><td>Autonomia</td><td>A IA não substitui a leitura, o estudo, a resolução autónoma de exercícios nem a explicação do professor.</td></tr>
-          <tr><td>Regras da disciplina</td><td>A utilização de IA deve respeitar as regras definidas por cada professor.</td></tr>
-          <tr><td>Privacidade</td><td>Dados pessoais ou informação sensível não devem ser introduzidos em ferramentas digitais.</td></tr>
+          <tr>
+            <td>Erros</td>
+            <td>Respostas geradas por IA podem conter erros.</td>
+          </tr>
+          <tr>
+            <td>Fontes</td>
+            <td>Informação factual deve ser verificada em fontes fiáveis.</td>
+          </tr>
+          <tr>
+            <td>Autonomia</td>
+            <td>A IA não substitui a leitura, o estudo, a resolução autónoma de exercícios nem a explicação do professor.</td>
+          </tr>
+          <tr>
+            <td>Regras da disciplina</td>
+            <td>A utilização de IA deve respeitar as regras definidas por cada professor.</td>
+          </tr>
+          <tr>
+            <td>Privacidade</td>
+            <td>Dados pessoais ou informação sensível não devem ser introduzidos em ferramentas digitais.</td>
+          </tr>
         </tbody>
       </table>
 
@@ -693,7 +1392,12 @@
         Pergunta: <strong>“Como posso melhorar a minha resposta?”</strong>
       </div>
 
-      <div class="quote">A IA pode ser uma ferramenta poderosa para aprender, mas só se for usada com intenção, espírito crítico e responsabilidade.</div>
+      <div class="quote">
+        A IA pode ser uma ferramenta poderosa para aprender, mas só se for usada com intenção,
+        espírito crítico e responsabilidade.
+      </div>
+
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
   </main>
 
@@ -704,11 +1408,14 @@
       </p>
 
       <p class="footer-description">
-        Recurso educativo para alunos de Ciências e Tecnologias sobre uso crítico, seguro e responsável da Inteligência Artificial no estudo, na resolução de problemas, na verificação de informação e na aprendizagem autónoma.
+        Recurso educativo para alunos de Ciências e Tecnologias sobre uso crítico, seguro
+        e responsável da Inteligência Artificial no estudo, na resolução de problemas,
+        na verificação de informação e na aprendizagem autónoma.
       </p>
 
       <p class="footer-description">
-        Os prompts e propostas podem ser facilmente adaptados a outros cursos, disciplinas e contextos de aprendizagem.
+        Os prompts e propostas podem ser facilmente adaptados a outros cursos, disciplinas
+        e contextos de aprendizagem.
       </p>
 
       <p class="footer-authorship">
@@ -717,9 +1424,26 @@
       </p>
 
       <p class="footer-privacy">
-        Recurso estático, publicado via GitHub Pages, sem login, sem formulários, sem backend próprio e sem recolha ativa de dados.
+        Recurso estático, publicado via GitHub Pages, sem login, sem formulários,
+        sem backend próprio e sem recolha ativa de dados.
       </p>
     </div>
   </footer>
+
+  <script>
+    const links = document.querySelectorAll('a[href^="#"]');
+
+    links.forEach(link => {
+      link.addEventListener('click', event => {
+        const href = link.getAttribute('href');
+        const target = document.querySelector(href);
+
+        if (target) {
+          event.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
