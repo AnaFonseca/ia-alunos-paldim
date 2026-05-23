@@ -47,6 +47,10 @@
       min-height: 100vh;
     }
 
+    a {
+      color: inherit;
+    }
+
     .wrap {
       width: min(1120px, calc(100% - 36px));
       margin: 0 auto;
@@ -78,6 +82,10 @@
       margin-bottom: 22px;
     }
 
+    .top-link:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
     .kicker {
       display: inline-flex;
       background: rgba(255,255,255,0.12);
@@ -93,7 +101,7 @@
     }
 
     h1 {
-      font-size: clamp(2.25rem, 5vw, 4.6rem);
+      font-size: clamp(2.25rem, 5vw, 4.55rem);
       line-height: 1.02;
       letter-spacing: -0.055em;
       max-width: 960px;
@@ -101,8 +109,8 @@
     }
 
     .subtitle {
-      font-size: clamp(1.05rem, 2vw, 1.3rem);
-      max-width: 820px;
+      font-size: clamp(1.05rem, 2vw, 1.28rem);
+      max-width: 850px;
       color: rgba(255,255,255,0.88);
       margin-bottom: 24px;
     }
@@ -126,45 +134,109 @@
       font-size: 0.92rem;
     }
 
-    nav {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  padding: 9px;
-  margin-bottom: 30px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.93);
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(11,31,58,0.08);
-  box-shadow: 0 10px 30px rgba(11,31,58,0.08);
-}
+    .quick-note {
+      margin: 0 0 28px;
+      padding: 20px 22px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(11,31,58,0.08);
+      border-left: 7px solid var(--teal);
+      border-radius: 24px;
+      box-shadow: 0 10px 28px rgba(11,31,58,0.08);
+      color: var(--muted);
+    }
 
-nav::-webkit-scrollbar {
-  display: none;
-}
+    .quick-note strong {
+      color: var(--navy);
+    }
 
-nav a {
-  white-space: nowrap;
-  text-decoration: none;
-  color: var(--navy);
-  font-weight: 850;
-  padding: 10px 14px;
-  border-radius: 999px;
-  font-size: 0.9rem;
-}
+    .toc {
+      margin: 0 0 36px;
+      padding: 24px;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(11,31,58,0.08);
+      box-shadow: 0 12px 34px rgba(11,31,58,0.09);
+    }
 
-nav a:hover {
-  background: var(--soft-teal);
-}
-    
+    .toc-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .toc-kicker {
+      color: var(--blue);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      margin-bottom: 5px;
+    }
+
+    .toc h2 {
+      margin: 0;
+      font-size: clamp(1.45rem, 2.5vw, 2.15rem);
+    }
+
+    .toc-hint {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 360px;
+      text-align: right;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 10px;
+    }
+
+    .toc-grid a {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-height: 72px;
+      text-decoration: none;
+      border-radius: 20px;
+      padding: 13px 14px;
+      background: #F8FAFC;
+      border: 1px solid rgba(11,31,58,0.08);
+      color: var(--navy);
+      transition: 0.18s ease;
+    }
+
+    .toc-grid a:hover,
+    .toc-grid a:focus {
+      transform: translateY(-2px);
+      background: var(--soft-teal);
+      border-color: rgba(46,196,182,0.35);
+      outline: none;
+      box-shadow: 0 10px 24px rgba(11,31,58,0.08);
+    }
+
+    .toc-grid a.featured {
+      background: var(--soft-yellow);
+      border-color: rgba(247,215,116,0.75);
+    }
+
+    .toc-number {
+      color: var(--blue);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .toc-label {
+      font-weight: 900;
+      line-height: 1.2;
+    }
 
     section {
       margin: 34px 0;
-      scroll-margin-top: 92px;
+      scroll-margin-top: 24px;
     }
 
     .section-head {
@@ -227,6 +299,10 @@ nav a:hover {
       color: var(--muted);
     }
 
+    .card p + p {
+      margin-top: 12px;
+    }
+
     .callout {
       background: linear-gradient(135deg, #FFFFFF, #F5FBFA);
       border-left: 7px solid var(--teal);
@@ -242,6 +318,7 @@ nav a:hover {
     .warning {
       background: linear-gradient(135deg, #FFFFFF, var(--soft-yellow));
       border-left-color: var(--yellow);
+      margin-top: 18px;
     }
 
     .prompt-grid {
@@ -262,7 +339,7 @@ nav a:hover {
       margin-bottom: 8px;
     }
 
-    .prompt-card .when {
+    .when {
       color: var(--blue);
       font-weight: 850;
       font-size: 0.9rem;
@@ -297,7 +374,7 @@ nav a:hover {
       border-radius: 18px;
       padding: 16px 18px;
       display: inline-block;
-      margin: 10px 0;
+      margin: 10px 0 16px;
     }
 
     .result {
@@ -328,6 +405,22 @@ nav a:hover {
     .discipline-name {
       color: var(--navy);
       font-weight: 950;
+    }
+
+    .back-top {
+      display: inline-flex;
+      margin-top: 18px;
+      text-decoration: none;
+      color: var(--navy);
+      background: var(--soft-blue);
+      border-radius: 999px;
+      padding: 8px 13px;
+      font-weight: 850;
+      font-size: 0.86rem;
+    }
+
+    .back-top:hover {
+      background: var(--soft-teal);
     }
 
     .footer {
@@ -398,6 +491,15 @@ nav a:hover {
       .discipline-item {
         grid-template-columns: 1fr;
       }
+
+      .toc-header {
+        display: block;
+      }
+
+      .toc-hint {
+        text-align: left;
+        margin-top: 8px;
+      }
     }
 
     @media (max-width: 540px) {
@@ -405,12 +507,26 @@ nav a:hover {
         width: min(100% - 22px, 1120px);
       }
 
-      h1 {
-        font-size: 2.15rem;
+      header {
+        border-radius: 26px;
+        padding: 30px 20px;
       }
 
-      nav {
-        border-radius: 22px;
+      h1 {
+        font-size: 2.05rem;
+      }
+
+      .toc {
+        padding: 18px;
+        border-radius: 24px;
+      }
+
+      .toc-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .toc-grid a {
+        min-height: auto;
       }
 
       .footer-privacy {
@@ -443,27 +559,98 @@ nav a:hover {
       </div>
     </header>
 
-   <div class="guide-nav-wrapper">
-  <nav class="guide-nav" aria-label="Navegação do guia">
-    <p class="guide-nav-title">Mapa do guia</p>
+    <div class="quick-note">
+      <strong>Nota:</strong> este guia foi pensado para alunos de Ciências e Tecnologias, mas os prompts e as propostas podem ser facilmente adaptados a outros cursos, disciplinas e níveis de ensino.
+    </div>
 
-    <a href="#sobre">Sobre</a>
-    <a href="#regras">Regras</a>
-    <a href="#bom-prompt" class="important">Bom prompt</a>
-    <a href="#rever">Rever</a>
-    <a href="#compreender">Compreender</a>
-    <a href="#explicador">Explicador</a>
-    <a href="#exercicios">Exercícios</a>
-    <a href="#socratico">Pensar</a>
-    <a href="#organizar">Organizar</a>
-    <a href="#literacia">Verificar</a>
-    <a href="#testes">Testes</a>
-    <a href="#trabalhos">Trabalhos</a>
-    <a href="#disciplinas">Disciplinas</a>
-    <a href="#conclusao">Conclusão</a>
-    <a href="#professores">Professores</a>
-  </nav>
-</div>
+    <section class="toc" id="indice" aria-label="Índice do guia">
+      <div class="toc-header">
+        <div>
+          <p class="toc-kicker">Índice visual</p>
+          <h2>Escolhe o que precisas de treinar</h2>
+        </div>
+        <p class="toc-hint">
+          Usa estes botões para saltar diretamente para a parte do guia de que precisas.
+        </p>
+      </div>
+
+      <div class="toc-grid">
+        <a href="#sobre">
+          <span class="toc-number">01</span>
+          <span class="toc-label">Sobre este guia</span>
+        </a>
+
+        <a href="#regras">
+          <span class="toc-number">02</span>
+          <span class="toc-label">Regras essenciais</span>
+        </a>
+
+        <a href="#bom-prompt" class="featured">
+          <span class="toc-number">03</span>
+          <span class="toc-label">Como construir um bom prompt</span>
+        </a>
+
+        <a href="#rever">
+          <span class="toc-number">04</span>
+          <span class="toc-label">Recordar e rever matéria</span>
+        </a>
+
+        <a href="#compreender">
+          <span class="toc-number">05</span>
+          <span class="toc-label">Compreender melhor</span>
+        </a>
+
+        <a href="#explicador">
+          <span class="toc-number">06</span>
+          <span class="toc-label">IA como explicador</span>
+        </a>
+
+        <a href="#exercicios">
+          <span class="toc-number">07</span>
+          <span class="toc-label">Resolver exercícios sem copiar</span>
+        </a>
+
+        <a href="#socratico">
+          <span class="toc-number">08</span>
+          <span class="toc-label">Pensar com perguntas</span>
+        </a>
+
+        <a href="#organizar">
+          <span class="toc-number">09</span>
+          <span class="toc-label">Organizar ideias</span>
+        </a>
+
+        <a href="#literacia">
+          <span class="toc-number">10</span>
+          <span class="toc-label">Verificar informação</span>
+        </a>
+
+        <a href="#testes">
+          <span class="toc-number">11</span>
+          <span class="toc-label">Preparar testes e apresentações</span>
+        </a>
+
+        <a href="#trabalhos">
+          <span class="toc-number">12</span>
+          <span class="toc-label">Melhorar trabalhos</span>
+        </a>
+
+        <a href="#disciplinas">
+          <span class="toc-number">13</span>
+          <span class="toc-label">Prompts por disciplina</span>
+        </a>
+
+        <a href="#conclusao">
+          <span class="toc-number">14</span>
+          <span class="toc-label">Mensagem final</span>
+        </a>
+
+        <a href="#professores">
+          <span class="toc-number">15</span>
+          <span class="toc-label">Notas para professores</span>
+        </a>
+      </div>
+    </section>
 
     <section id="sobre">
       <div class="section-head">
@@ -495,6 +682,8 @@ nav a:hover {
           praticar, verificar e melhorar.
         </div>
       </div>
+
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="regras">
@@ -539,6 +728,8 @@ nav a:hover {
         <strong>Sê transparente:</strong> se o professor pedir, explica como usaste a IA
         no teu processo de trabalho.
       </div>
+
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="bom-prompt">
@@ -578,6 +769,8 @@ nav a:hover {
           </p>
         </article>
       </div>
+
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="rever">
@@ -619,6 +812,7 @@ nav a:hover {
       </div>
 
       <p class="result">Resultado esperado: rever melhor, identificar conteúdos essenciais e estudar de forma mais ativa.</p>
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="compreender">
@@ -660,6 +854,7 @@ nav a:hover {
       </div>
 
       <p class="result">Resultado esperado: compreender conceitos difíceis, explicar ideias com as tuas palavras e relacionar conteúdos.</p>
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="explicador">
@@ -696,6 +891,7 @@ nav a:hover {
       </div>
 
       <p class="result">Resultado esperado: receber apoio personalizado sem depender de uma resposta pronta.</p>
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="exercicios">
@@ -737,6 +933,7 @@ nav a:hover {
       </div>
 
       <p class="result">Resultado esperado: treinar mais, perceber erros e desenvolver raciocínio autónomo.</p>
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="socratico">
@@ -777,6 +974,7 @@ nav a:hover {
       </div>
 
       <p class="result">Resultado esperado: pensar melhor, justificar respostas, defender ideias e aprofundar raciocínio.</p>
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="organizar">
@@ -811,6 +1009,8 @@ nav a:hover {
           <p class="prompt">Cria um glossário de 12 conceitos essenciais sobre <strong>[tema]</strong>, com definição simples, exemplo e uma frase que mostre como usar o conceito corretamente.</p>
         </article>
       </div>
+
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="literacia">
@@ -845,6 +1045,8 @@ nav a:hover {
           <p class="prompt">Encontrei duas versões sobre <strong>[tema]</strong>: <strong>[versão A]</strong> e <strong>[versão B]</strong>. Ajuda-me a perceber que informação preciso de verificar e que fontes seriam mais adequadas.</p>
         </article>
       </div>
+
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="testes">
@@ -879,6 +1081,8 @@ nav a:hover {
           <p class="prompt">Vou apresentar um trabalho sobre <strong>[tema]</strong>. Faz-me perguntas que um professor poderia colocar, começando por perguntas simples e avançando para perguntas mais críticas.</p>
         </article>
       </div>
+
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="trabalhos">
@@ -913,6 +1117,8 @@ nav a:hover {
           <p class="prompt">Cria uma checklist para eu rever o meu trabalho sobre <strong>[tema]</strong> antes de entregar. Inclui critérios de conteúdo, organização, linguagem, fontes, originalidade e apresentação.</p>
         </article>
       </div>
+
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="disciplinas">
@@ -981,6 +1187,8 @@ nav a:hover {
           <p class="prompt">Analisa este caso: <strong>[descrever situação digital]</strong>. Que riscos existem? Que decisões seriam responsáveis? Que princípios de cidadania digital estão envolvidos?</p>
         </div>
       </div>
+
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="conclusao">
@@ -1010,6 +1218,8 @@ nav a:hover {
           A IA não deve pensar por ti. Deve ajudar-te a pensar melhor.
         </div>
       </div>
+
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <section id="professores">
@@ -1064,6 +1274,8 @@ nav a:hover {
           </ul>
         </div>
       </div>
+
+      <a class="back-top" href="#indice">↑ Voltar ao índice</a>
     </section>
 
     <footer class="footer" aria-label="Informação sobre o projeto">
