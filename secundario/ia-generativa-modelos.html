@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IA Generativa, Modelos de Linguagem e Aprendizagem | AEI8 – PALDIM</title>
+  <meta name="description" content="Guia para alunos do ensino secundário sobre IA generativa, modelos de linguagem, ferramentas de IA e uso responsável na aprendizagem, no âmbito da AEI8 – PALDIM | TEIP4." />
+  <meta name="author" content="Ana Margarida Fonseca" />
+  <style>
+    :root {
+      --navy: #0B1F3A;
+      --blue: #1F4E79;
+      --teal: #2EC4B6;
+      --light: #F2F4F7;
+      --white: #FFFFFF;
+      --ink: #1C2430;
+      --muted: #5B6675;
+      --warning: #FFF4D6;
+      --warning-border: #E6B800;
+      --soft-teal: #E9FAF8;
+      --soft-blue: #EAF2F8;
+      --shadow: 0 14px 35px rgba(11, 31, 58, 0.12);
+      --radius: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--light);
+      color: var(--ink);
+      line-height: 1.55;
+      font-size: 16px;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--navy), var(--blue));
+      color: var(--white);
+      padding: 52px 24px 44px;
+      text-align: center;
+    }
+
+    header .tag {
+      display: inline-block;
+      background: rgba(46, 196, 182, 0.16);
+      color: var(--white);
+      border: 1px solid rgba(46, 196, 182, 0.55);
+      border-radius: 999px;
+      padding: 8px 16px;
+      font-size: 0.88rem;
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      font-size: clamp(1.9rem, 4.4vw, 3.4rem);
+      line-height: 1.08;
+      margin: 0 auto 18px;
+      max-width: 1000px;
+    }
+
+    header p {
+      max-width: 850px;
+      margin: 0 auto;
+      font-size: clamp(0.98rem, 1.65vw, 1.16rem);
+      color: rgba(255,255,255,0.88);
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #DDE3EA;
+      padding: 12px 20px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    nav a {
+      display: inline-block;
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 700;
+      margin-right: 18px;
+      font-size: 0.88rem;
+    }
+
+    nav a:hover {
+      color: var(--navy);
+      text-decoration: underline;
+    }
+
+    main {
+      width: min(1180px, calc(100% - 32px));
+      margin: 30px auto 62px;
+    }
+
+    section {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: clamp(20px, 3.2vw, 34px);
+      margin-bottom: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: clamp(1.45rem, 2.55vw, 2.05rem);
+      margin: 0 0 18px;
+      line-height: 1.2;
+    }
+
+    h3 {
+      color: var(--blue);
+      margin-top: 28px;
+      font-size: 1rem;
+    }
+
+    .lead {
+      font-size: 1.02rem;
+      color: var(--muted);
+      max-width: 900px;
+    }
+
+    .big-idea {
+      background: var(--soft-teal);
+      border-left: 8px solid var(--teal);
+      border-radius: 16px;
+      padding: 18px 20px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 20px 0;
+    }
+
+    .warning {
+      background: var(--warning);
+      border: 1px solid var(--warning-border);
+      border-left: 8px solid var(--warning-border);
+      border-radius: 16px;
+      padding: 18px 20px;
+      margin: 20px 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .card {
+      background: var(--soft-blue);
+      border: 1px solid #D9E7F2;
+      border-radius: 18px;
+      padding: 18px;
+      min-height: 126px;
+    }
+
+    .card strong {
+      display: block;
+      color: var(--navy);
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 8px;
+      overflow: hidden;
+      border-radius: 14px;
+      display: block;
+      overflow-x: auto;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #E2E8F0;
+      text-align: left;
+      vertical-align: top;
+      min-width: 190px;
+    }
+
+    th {
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    tr:nth-child(even) td {
+      background: #FAFBFC;
+    }
+
+    .pill {
+      display: inline-block;
+      background: var(--teal);
+      color: var(--navy);
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 0.78rem;
+      margin-bottom: 6px;
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .step {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 18px;
+      padding: 18px;
+      position: relative;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      display: inline-grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      background: var(--teal);
+      color: var(--navy);
+      border-radius: 50%;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .step strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .step p {
+      margin: 0;
+      color: rgba(255,255,255,0.86);
+    }
+
+    .quote {
+      background: linear-gradient(135deg, var(--blue), var(--navy));
+      color: var(--white);
+      padding: 24px;
+      border-radius: 22px;
+      font-size: clamp(1.08rem, 1.65vw, 1.32rem);
+      font-weight: 800;
+      line-height: 1.35;
+      margin-top: 24px;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 30px 16px 50px;
+      font-size: 0.88rem;
+    }
+
+    .signature {
+      color: var(--navy);
+      font-weight: 800;
+      margin-top: 10px;
+    }
+
+
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      color: var(--white);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.24);
+      border-radius: 999px;
+      padding: 9px 14px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .back-link:hover {
+      background: rgba(46,196,182,0.24);
+    }
+
+    .footer {
+      margin: 46px auto 0;
+      background: var(--navy);
+      color: var(--white);
+      border-top: 7px solid var(--teal);
+      padding: 38px 24px;
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .footer p {
+      margin: 0;
+    }
+
+    .footer-kicker {
+      color: var(--teal);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.86rem;
+      margin-bottom: 14px;
+    }
+
+    .footer-description {
+      color: rgba(255,255,255,0.88);
+      font-size: 0.98rem;
+      line-height: 1.58;
+      margin-bottom: 18px;
+    }
+
+    .footer-authorship {
+      color: rgba(255,255,255,0.84);
+      font-size: 0.94rem;
+      line-height: 1.55;
+      margin-bottom: 18px;
+    }
+
+    .footer-authorship strong {
+      color: var(--white);
+      font-weight: 900;
+    }
+
+    .footer-privacy {
+      display: inline-block;
+      background: var(--light);
+      color: var(--navy);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-weight: 800;
+      font-size: 0.86rem;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 700px) {
+      .footer-privacy {
+        border-radius: 18px;
+      }
+    }
+
+    @media print {
+      nav {
+        display: none;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      header, section {
+        box-shadow: none;
+      }
+
+      section {
+        break-inside: avoid;
+        border: 1px solid #E2E8F0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="back-link" href="../index.html">← Voltar ao Portal dos Alunos</a>
+    <div class="tag">AEI8 – PALDIM | TEIP4</div>
+    <h1>IA Generativa, Modelos de Linguagem e Aprendizagem</h1>
+    <p>Um guia claro para compreender como funciona a IA, escolher ferramentas adequadas e usá-las para aprender melhor, com sentido crítico e responsabilidade.</p>
+    <p style="margin-top:16px;font-size:0.9rem;color:rgba(255,255,255,0.76);">Conceção pedagógica, estruturação de conteúdos e desenvolvimento: Ana Margarida Fonseca — Professora e Formadora.</p>
+  </header>
+
+  <nav aria-label="Navegação principal">
+    <a href="../index.html">Portal dos alunos</a>
+    <a href="#como-funciona">Como funciona</a>
+    <a href="#capacidades-limites">O que faz bem</a>
+    <a href="#modelos">Modelos e ferramentas</a>
+    <a href="#tarefas">Escolher por tarefa</a>
+    <a href="#disciplinas">Por disciplina</a>
+    <a href="#tres-passos">Regra dos 3 passos</a>
+  </nav>
+
+  <main>
+    <section id="como-funciona">
+      <h2>1. Como funciona a IA generativa?</h2>
+      <p class="lead">A IA generativa é um tipo de inteligência artificial capaz de produzir conteúdos novos a partir de instruções humanas. Pode gerar texto, imagens, resumos, explicações, código, perguntas, planos de estudo, tabelas ou ideias.</p>
+
+      <div class="big-idea">A IA generativa não “pensa” como uma pessoa. Ela analisa padrões e calcula respostas prováveis.</div>
+
+      <p>Quando escreves uma pergunta, a IA interpreta o pedido, procura padrões semelhantes aos que aprendeu e produz uma resposta que parece adequada. Isto pode ser muito útil para estudar, mas não garante que a resposta esteja sempre correta.</p>
+
+      <div class="warning">
+        <strong>Ideia essencial:</strong> uma resposta bem escrita não é necessariamente uma resposta verdadeira. É preciso compreender, verificar e melhorar.
+      </div>
+    </section>
+
+    <section id="capacidades-limites">
+      <h2>2. O que a IA faz bem e onde pode falhar</h2>
+
+      <h3>A IA é útil para...</h3>
+      <div class="grid">
+        <div class="card"><strong>Explicar</strong><p>“Explica-me a fotossíntese de forma simples.”</p></div>
+        <div class="card"><strong>Resumir</strong><p>“Resume estes apontamentos em 10 tópicos.”</p></div>
+        <div class="card"><strong>Organizar</strong><p>“Cria um plano de estudo para Matemática.”</p></div>
+        <div class="card"><strong>Comparar</strong><p>“Compara mitose e meiose.”</p></div>
+        <div class="card"><strong>Criar exercícios</strong><p>“Cria 5 exercícios semelhantes a este.”</p></div>
+        <div class="card"><strong>Dar feedback</strong><p>“Diz-me como posso melhorar esta resposta.”</p></div>
+      </div>
+
+      <h3>A IA pode falhar em...</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Situação</th>
+            <th>Porquê?</th>
+            <th>O que deves fazer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Factos muito específicos</td>
+            <td>Pode inventar dados, datas, autores ou fontes.</td>
+            <td>Confirma em fontes fiáveis.</td>
+          </tr>
+          <tr>
+            <td>Informação recente</td>
+            <td>Pode não estar atualizada.</td>
+            <td>Verifica em sites oficiais ou fontes atuais.</td>
+          </tr>
+          <tr>
+            <td>Cálculos complexos</td>
+            <td>Pode errar passos ou resultados.</td>
+            <td>Confirma o raciocínio e refaz os cálculos.</td>
+          </tr>
+          <tr>
+            <td>Fontes científicas</td>
+            <td>Pode citar mal ou inventar referências.</td>
+            <td>Procura a fonte original.</td>
+          </tr>
+          <tr>
+            <td>Trabalhos escolares completos</td>
+            <td>Pode retirar autoria ao aluno e impedir a aprendizagem.</td>
+            <td>Usa para planear, rever e melhorar, não para substituir o teu trabalho.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="modelos">
+      <h2>3. Modelos e ferramentas: qual usar para quê?</h2>
+      <p class="lead">Um modelo de linguagem é um sistema de IA treinado para compreender e gerar linguagem. Ferramentas como ChatGPT, Claude, Gemini, Copilot, Perplexity ou NotebookLM usam IA, mas nem todas funcionam da mesma forma.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Ferramenta/modelo</th>
+            <th>Melhor para</th>
+            <th>Disciplinas em que pode ajudar</th>
+            <th>Cuidados</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pill">ChatGPT</span></td>
+            <td>Explicações, estudo guiado, escrita, organização, programação, criação de exercícios e feedback.</td>
+            <td>Português, Inglês, Filosofia, Biologia e Geologia, Física e Química, Matemática, TIC, Cidadania.</td>
+            <td>Confirmar factos, cálculos e fontes. Não usar para fazer trabalhos completos sem autoria própria.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Claude</span></td>
+            <td>Leitura de textos longos, escrita estruturada, pensamento crítico, perguntas socráticas e revisão de argumentos.</td>
+            <td>Português, Filosofia, Inglês, História, Cidadania, relatórios e trabalhos de investigação.</td>
+            <td>Escreve muito bem, mas isso não garante que tudo esteja correto. Verificar informação factual.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Gemini</span></td>
+            <td>Pesquisa, explicações multimodais, integração com ferramentas Google, análise de imagens e apoio ao estudo.</td>
+            <td>Ciências, Geografia, Biologia, Física e Química, Inglês, Português, TIC.</td>
+            <td>Distinguir explicação de prova. Confirmar informação importante.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Microsoft Copilot</span></td>
+            <td>Organização, resumos, escrita, apresentações, folhas de cálculo e produtividade.</td>
+            <td>Todas as disciplinas, especialmente trabalhos, apresentações e análise de documentos.</td>
+            <td>Útil em ambientes Microsoft 365. Deve apoiar o trabalho, não substituí-lo.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Perplexity</span></td>
+            <td>Pesquisa com fontes, temas atuais e comparação inicial de informação.</td>
+            <td>Ciências, Geografia, Cidadania, História, atualidade científica e trabalhos de pesquisa.</td>
+            <td>Mesmo com fontes, é preciso abrir e confirmar se a fonte comprova a resposta.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">NotebookLM</span></td>
+            <td>Estudar a partir de documentos fornecidos pelo utilizador: textos, apontamentos, PDFs, fichas e artigos.</td>
+            <td>Todas as disciplinas, especialmente quando há materiais do professor ou documentos longos.</td>
+            <td>A qualidade depende dos documentos carregados. Não substitui a leitura atenta.</td>
+          </tr>
+          <tr>
+            <td><span class="pill">Ferramentas de programação com IA</span></td>
+            <td>Explicar código, encontrar erros, sugerir melhorias e criar pequenos exemplos.</td>
+            <td>TIC, Programação, Matemática aplicada e projetos STEM.</td>
+            <td>Não copiar código sem compreender. Pedir explicação linha a linha.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="tarefas">
+      <h2>4. Que ferramenta usar por tipo de tarefa?</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>O que queres fazer</th>
+            <th>Melhor escolha provável</th>
+            <th>Exemplo de pedido</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Perceber um conceito difícil</td>
+            <td>ChatGPT, Claude ou Gemini</td>
+            <td>“Explica-me entropia como se eu estivesse no 10.º ano.”</td>
+          </tr>
+          <tr>
+            <td>Estudar pelos apontamentos do professor</td>
+            <td>NotebookLM ou ChatGPT com texto fornecido</td>
+            <td>“Cria perguntas de revisão a partir destes apontamentos.”</td>
+          </tr>
+          <tr>
+            <td>Fazer pesquisa com fontes</td>
+            <td>Perplexity, Gemini ou pesquisa tradicional com verificação</td>
+            <td>“Que fontes fiáveis posso consultar sobre energias renováveis?”</td>
+          </tr>
+          <tr>
+            <td>Melhorar uma resposta escrita</td>
+            <td>ChatGPT ou Claude</td>
+            <td>“Mantém as minhas ideias, mas ajuda-me a melhorar a clareza.”</td>
+          </tr>
+          <tr>
+            <td>Criar exercícios semelhantes</td>
+            <td>ChatGPT, Gemini ou Claude</td>
+            <td>“Cria 5 exercícios semelhantes a este, com soluções no final.”</td>
+          </tr>
+          <tr>
+            <td>Treinar oralidade em Inglês</td>
+            <td>ChatGPT ou Gemini</td>
+            <td>“Ask me questions about environmental problems at B1 level.”</td>
+          </tr>
+          <tr>
+            <td>Analisar uma imagem, gráfico ou esquema</td>
+            <td>Gemini, ChatGPT multimodal ou Copilot</td>
+            <td>“Ajuda-me a interpretar este gráfico.”</td>
+          </tr>
+          <tr>
+            <td>Preparar uma apresentação</td>
+            <td>ChatGPT, Claude ou Copilot</td>
+            <td>“Transforma esta estrutura numa apresentação de 5 minutos.”</td>
+          </tr>
+          <tr>
+            <td>Trabalhar com Word, PowerPoint ou Excel</td>
+            <td>Copilot</td>
+            <td>“Ajuda-me a organizar estes dados numa tabela.”</td>
+          </tr>
+          <tr>
+            <td>Programar ou compreender código</td>
+            <td>ChatGPT, Claude ou ferramentas de coding com IA</td>
+            <td>“Explica este código linha a linha e cria um exercício parecido.”</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="disciplinas">
+      <h2>5. Usos adequados por disciplina</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Disciplina</th>
+            <th>Como a IA pode ajudar</th>
+            <th>Tipo de ferramenta mais útil</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Matemática A</td>
+            <td>Explicar passos, criar exercícios semelhantes, identificar erros e treinar raciocínio.</td>
+            <td>ChatGPT, Gemini ou Claude. Verificar sempre cálculos.</td>
+          </tr>
+          <tr>
+            <td>Física e Química A</td>
+            <td>Explicar fenómenos, organizar fórmulas, trabalhar unidades e criar problemas semelhantes.</td>
+            <td>ChatGPT, Gemini ou Copilot. Confirmar cálculos e unidades.</td>
+          </tr>
+          <tr>
+            <td>Biologia e Geologia</td>
+            <td>Explicar processos, comparar conceitos, criar esquemas e fazer perguntas de revisão.</td>
+            <td>ChatGPT, Gemini ou NotebookLM.</td>
+          </tr>
+          <tr>
+            <td>Português</td>
+            <td>Interpretar textos, planear respostas, melhorar escrita e rever argumentação.</td>
+            <td>Claude, ChatGPT ou NotebookLM.</td>
+          </tr>
+          <tr>
+            <td>Inglês</td>
+            <td>Treinar oralidade, corrigir frases, praticar vocabulário e simular diálogos.</td>
+            <td>ChatGPT, Gemini ou Claude.</td>
+          </tr>
+          <tr>
+            <td>Filosofia</td>
+            <td>Construir argumentos, analisar problemas, fazer perguntas socráticas e comparar posições.</td>
+            <td>Claude ou ChatGPT.</td>
+          </tr>
+          <tr>
+            <td>TIC/Programação</td>
+            <td>Explicar código, corrigir erros, criar desafios e melhorar projetos.</td>
+            <td>ChatGPT, Claude ou Copilot.</td>
+          </tr>
+          <tr>
+            <td>Cidadania Digital</td>
+            <td>Avaliar riscos, analisar desinformação, discutir ética e privacidade.</td>
+            <td>ChatGPT, Claude, Perplexity ou Gemini.</td>
+          </tr>
+          <tr>
+            <td>Trabalhos de pesquisa</td>
+            <td>Encontrar questões de investigação, organizar tópicos e avaliar fontes.</td>
+            <td>Perplexity para pesquisa inicial; NotebookLM para documentos; ChatGPT ou Claude para estruturar ideias.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="tipos">
+      <h2>6. Nem todas as ferramentas de IA funcionam da mesma forma</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Tipo</th>
+            <th>O que faz</th>
+            <th>Exemplos</th>
+            <th>Cuidado principal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Modelo de linguagem</td>
+            <td>Gera respostas a partir de padrões aprendidos.</td>
+            <td>ChatGPT, Claude, Gemini</td>
+            <td>Pode responder bem, mas sem fonte verificável.</td>
+          </tr>
+          <tr>
+            <td>Motor de pesquisa com IA</td>
+            <td>Procura informação online e resume com links.</td>
+            <td>Perplexity</td>
+            <td>As fontes devem ser abertas e verificadas.</td>
+          </tr>
+          <tr>
+            <td>IA ligada a documentos</td>
+            <td>Responde com base nos documentos que forneces.</td>
+            <td>NotebookLM</td>
+            <td>Se os documentos forem fracos ou incompletos, a resposta também pode ser.</td>
+          </tr>
+          <tr>
+            <td>IA integrada em produtividade</td>
+            <td>Ajuda a trabalhar com documentos, apresentações, folhas de cálculo ou e-mails.</td>
+            <td>Copilot</td>
+            <td>Deve apoiar, não substituir, o trabalho do aluno.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="tres-passos">
+      <h2>7. A regra dos 3 passos</h2>
+      <p class="lead">Antes de usares uma resposta da IA, faz sempre estas três perguntas.</p>
+
+      <div class="steps">
+        <div class="step">
+          <strong>Compreendi?</strong>
+          <p>Consigo explicar isto pelas minhas palavras?</p>
+        </div>
+        <div class="step">
+          <strong>Verifiquei?</strong>
+          <p>Confirmei dados, factos, fórmulas ou fontes importantes?</p>
+        </div>
+        <div class="step">
+          <strong>Melhorei?</strong>
+          <p>Usei a IA para aprender melhor ou apenas para obter uma resposta rápida?</p>
+        </div>
+      </div>
+
+      <div class="quote">O melhor aluno não será aquele que copia melhor uma resposta da IA. Será aquele que sabe perguntar melhor, verificar melhor e pensar melhor com a ajuda da IA.</div>
+    </section>
+  </main>
+
+  <footer class="footer" aria-label="Informação sobre o projeto">
+    <div class="footer-inner">
+      <p class="footer-kicker">IA Generativa, Modelos de Linguagem e Aprendizagem | AEI8 – PALDIM | TEIP4</p>
+
+      <p class="footer-description">
+        Recurso educativo para alunos do ensino secundário sobre Inteligência Artificial generativa,
+        modelos de linguagem, ferramentas de IA, literacia digital e uso responsável da IA na aprendizagem.
+      </p>
+
+      <p class="footer-description">
+        Desenvolvido no âmbito do plano de ação de literacia digital, inteligência artificial
+        e cidadania digital associado à AEI8 – PALDIM | TEIP4.
+      </p>
+
+      <p class="footer-authorship">
+        Conceção pedagógica, estruturação de conteúdos e desenvolvimento:<br>
+        <strong>Ana Margarida Fonseca — Professora e Formadora</strong>
+      </p>
+
+      <p class="footer-privacy">
+        Recurso estático, publicado via GitHub Pages, sem login, sem formulários,
+        sem backend próprio e sem recolha ativa de dados.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
