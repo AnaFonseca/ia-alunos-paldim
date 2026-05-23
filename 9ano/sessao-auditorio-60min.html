@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IA, Literacia Digital e Aprendizagem | 9.º ano | AEI8 – PALDIM</title>
+  <meta name="description" content="Recurso educativo estático para sessão de 60 minutos com alunos do 9.º ano sobre IA generativa, literacia digital, estudo assistido por IA, pensamento crítico, segurança online, bem-estar e cidadania digital, no âmbito da AEI8 – PALDIM | TEIP4." />
+  <meta name="author" content="Ana Margarida Fonseca — Professora e Formadora" />
+  <style>
+    :root {
+      --navy-950: #061529;
+      --navy-900: #0B1F3A;
+      --navy-800: #12345A;
+      --blue-700: #1F4E79;
+      --teal-400: #2EC4B6;
+      --teal-300: #6BE1D6;
+      --amber-300: #F7D774;
+      --coral-300: #FFB3A7;
+      --white: #FFFFFF;
+      --grey-50: #F8FAFC;
+      --grey-100: #F2F4F7;
+      --grey-200: #E5EAF1;
+      --grey-700: #334155;
+      --shadow: 0 28px 80px rgba(0, 0, 0, .28);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1280px;
+      --font: Inter, Aptos, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--white);
+      background:
+        radial-gradient(circle at top left, rgba(46,196,182,.22), transparent 34rem),
+        radial-gradient(circle at 80% 20%, rgba(247,215,116,.12), transparent 28rem),
+        linear-gradient(135deg, var(--navy-950), var(--navy-900) 46%, #071A33);
+      font-size: 22px;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+    button, input { font: inherit; }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: 16px;
+      background: var(--white);
+      color: var(--navy-900);
+      padding: 12px 18px;
+      border-radius: 12px;
+      z-index: 999;
+    }
+    .skip-link:focus { left: 16px; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(6, 21, 41, .82);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+
+    .topbar {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 28px;
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 240px;
+    }
+    .brand-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--teal-400), var(--blue-700));
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      box-shadow: 0 10px 30px rgba(46,196,182,.25);
+    }
+    .brand strong { display:block; font-size: 18px; letter-spacing: .02em; }
+    .brand span { display:block; color: rgba(255,255,255,.72); font-size: 14px; }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    nav a, .control-btn {
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.08);
+      color: var(--white);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 16px;
+      transition: .2s ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    nav a:hover, .control-btn:hover, nav a:focus-visible, .control-btn:focus-visible {
+      background: rgba(46,196,182,.22);
+      border-color: rgba(46,196,182,.65);
+      outline: none;
+    }
+    nav a.active {
+      background: var(--amber-300);
+      color: var(--navy-950);
+      border-color: var(--amber-300);
+      box-shadow: 0 8px 24px rgba(247,215,116,.22);
+      font-weight: 900;
+    }
+
+    .progress {
+      height: 5px;
+      width: 100%;
+      background: rgba(255,255,255,.08);
+    }
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--teal-400), var(--amber-300));
+      transition: width .15s linear;
+    }
+
+    main { max-width: var(--max); margin: 0 auto; padding: 36px 28px 80px; }
+    section {
+      min-height: 88vh;
+      display: grid;
+      align-content: center;
+      padding: 72px 0;
+      scroll-margin-top: 90px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--teal-300);
+      background: rgba(46,196,182,.10);
+      border: 1px solid rgba(46,196,182,.35);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+
+    h1, h2, h3 { margin: 0; line-height: 1.06; letter-spacing: -.035em; }
+    h1 { font-size: clamp(56px, 7vw, 96px); margin-top: 24px; }
+    h2 { font-size: clamp(48px, 5.2vw, 78px); margin-bottom: 24px; }
+    h3 { font-size: clamp(30px, 3vw, 44px); margin-bottom: 14px; }
+    p.lead { font-size: clamp(26px, 2.7vw, 38px); color: rgba(255,255,255,.86); max-width: 980px; }
+    p { margin: 0 0 18px; }
+
+    .hero-card, .glass-card, .activity-card, .quiz-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.075));
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -60px -60px auto auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(46,196,182,.18);
+      filter: blur(4px);
+    }
+
+    .minute-plan {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+    .minute {
+      display: grid;
+      grid-template-columns: 94px 1fr;
+      gap: 16px;
+      align-items: center;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      padding: 16px;
+    }
+    .minute strong { color: var(--amber-300); font-size: 19px; }
+    .minute span { font-size: 20px; color: rgba(255,255,255,.88); }
+
+    .grid { display: grid; gap: 24px; }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .glass-card, .activity-card, .quiz-card { padding: 30px; }
+    .glass-card.light {
+      background: var(--white);
+      color: var(--navy-900);
+      border-color: rgba(255,255,255,.35);
+    }
+    .glass-card.light p, .glass-card.light li { color: var(--grey-700); }
+    .tag {
+      display: inline-flex;
+      background: rgba(46,196,182,.16);
+      border: 1px solid rgba(46,196,182,.34);
+      color: var(--teal-300);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+    }
+    .light .tag { color: var(--blue-700); background: var(--grey-100); border-color: var(--grey-200); }
+    .subject-focus .tag {
+      color: var(--blue-700);
+      background: var(--grey-100);
+      border-color: var(--grey-200);
+      box-shadow: 0 2px 0 rgba(11,31,58,.10);
+    }
+
+    .big-list { display: grid; gap: 18px; padding: 0; list-style: none; margin: 24px 0 0; }
+    .big-list li {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 20px;
+      background: rgba(255,255,255,.08);
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,.12);
+      font-size: 24px;
+    }
+    .num, .icon {
+      width: 46px; height: 46px; border-radius: 15px;
+      display: grid; place-items: center;
+      background: rgba(46,196,182,.22);
+      color: var(--teal-300);
+      font-weight: 900;
+    }
+    .light .big-list li { background: var(--grey-50); border-color: var(--grey-200); color: var(--navy-900); }
+
+    .split-title { display: flex; gap: 20px; justify-content: space-between; align-items: end; margin-bottom: 24px; }
+    .time-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 140px;
+      padding: 12px 18px;
+      background: var(--amber-300);
+      color: var(--navy-900);
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 20px;
+    }
+
+    .activity-card {
+      border-color: rgba(247,215,116,.35);
+      background: linear-gradient(180deg, rgba(247,215,116,.13), rgba(255,255,255,.07));
+    }
+    .activity-card h3 { color: var(--amber-300); }
+    .activity-steps { margin: 18px 0 0; padding-left: 28px; }
+    .activity-steps li { margin: 12px 0; font-size: 25px; }
+    .challenge-case {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.14);
+      font-size: 23px;
+    }
+    .challenge-case strong { color: var(--white); }
+    .reveal-btn {
+      margin-top: 18px;
+      width: 100%;
+      border: 1px solid rgba(255,255,255,.28);
+      background: var(--amber-300);
+      color: var(--navy-900);
+      border-radius: 999px;
+      padding: 14px 18px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: .2s ease;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      font-size: 18px;
+    }
+    .reveal-btn:hover, .reveal-btn:focus-visible {
+      transform: translateY(-2px);
+      outline: 3px solid rgba(247,215,116,.35);
+    }
+    .situation-btn {
+      text-align: left;
+      margin-top: 12px;
+    }
+    .conclusion-btn {
+      margin-top: 26px;
+      padding: 18px 22px;
+      font-size: 21px;
+      background: linear-gradient(135deg, var(--teal-400), var(--amber-300));
+      color: var(--navy-900);
+    }
+    .activity-instruction {
+      margin: 10px 0 22px;
+      color: rgba(255,255,255,.62);
+      font-size: 16px;
+      line-height: 1.45;
+    }
+    .situation-text {
+      display: block;
+      margin-top: 8px;
+      font-size: 24px;
+      color: var(--navy-900);
+      text-transform: none;
+      letter-spacing: 0;
+      font-weight: 900;
+    }
+    .challenge-answer {
+      display: none;
+      margin-top: 16px;
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(46,196,182,.18);
+      border: 1px solid rgba(46,196,182,.42);
+      font-size: 23px;
+      color: rgba(255,255,255,.92);
+    }
+    .challenge-answer.show { display: block; }
+    .challenge-grid .activity-card {
+      display: flex;
+      flex-direction: column;
+    }
+    .challenge-grid .reveal-btn {
+      margin-top: auto;
+    }
+    .challenge-grid .challenge-answer {
+      min-height: 210px;
+      align-content: start;
+    }
+    .rule-note {
+      font-size: 24px;
+      line-height: 1.45;
+      border-color: rgba(247,215,116,.38);
+      background: rgba(247,215,116,.12);
+    }
+    .rule-note strong { color: var(--amber-300); font-size: 28px; }
+
+    .quiz-options { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; margin-top: 22px; }
+    .quiz-options button {
+      min-height: 92px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+      color: var(--white);
+      border-radius: 18px;
+      padding: 18px;
+      text-align: left;
+      cursor: pointer;
+      transition: .2s ease;
+      font-size: 23px;
+    }
+    .quiz-options button:hover { background: rgba(46,196,182,.20); transform: translateY(-2px); }
+    .quiz-options button.correct { background: rgba(46,196,182,.24); border-color: var(--teal-400); }
+    .quiz-options button.wrong { background: rgba(255,179,167,.19); border-color: var(--coral-300); }
+    .feedback {
+      display: none;
+      margin-top: 20px;
+      padding: 22px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.11);
+      border: 1px solid rgba(255,255,255,.16);
+      font-size: 24px;
+    }
+    .feedback.show { display: block; }
+
+    details {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 20px;
+      padding: 22px 26px;
+      margin: 14px 0;
+    }
+    summary { cursor: pointer; font-size: 28px; font-weight: 900; color: var(--teal-300); }
+    details p { margin-top: 16px; font-size: 24px; color: rgba(255,255,255,.86); }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .do, .dont {
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      background: var(--white);
+      color: var(--navy-900);
+    }
+    .do { border-top: 10px solid var(--teal-400); }
+    .dont { border-top: 10px solid var(--coral-300); }
+    .checklist ul { padding-left: 26px; margin: 18px 0 0; }
+    .checklist li { color: var(--grey-700); margin: 14px 0; font-size: 24px; }
+
+    .prompt-box {
+      background: #071B34;
+      border: 1px solid rgba(46,196,182,.32);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      font-size: 25px;
+      color: rgba(255,255,255,.9);
+      position: relative;
+    }
+    .prompt-box code {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      word-break: normal;
+      font-family: var(--font);
+      color: var(--white);
+    }
+
+    .subject-band {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 24px;
+      align-items: stretch;
+      margin-top: 20px;
+    }
+    .subject-focus {
+      background: var(--white);
+      color: var(--navy-900);
+      border-radius: var(--radius-xl);
+      padding: 30px;
+      border-left: 12px solid var(--teal-400);
+      box-shadow: var(--shadow);
+    }
+    .subject-focus ul { margin: 18px 0 0; padding-left: 28px; }
+    .subject-focus li { margin: 10px 0; color: var(--grey-700); font-size: 23px; }
+    .prompt-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 18px;
+      margin-top: 22px;
+    }
+    .prompt-card {
+      background: rgba(255,255,255,.085);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+    .prompt-card h3 { font-size: 30px; color: var(--amber-300); }
+    .prompt-card .prompt-box { margin-top: 12px; font-size: 21px; padding: 20px; }
+    .mini-label {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(46,196,182,.16);
+      border: 1px solid rgba(46,196,182,.35);
+      color: var(--teal-300);
+      font-size: 16px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+    .habit-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 18px;
+      margin-top: 24px;
+    }
+    .habit {
+      background: var(--white);
+      color: var(--navy-900);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      min-height: 210px;
+    }
+    .habit strong { display:block; font-size: 27px; margin-bottom: 10px; }
+    .habit p { color: var(--grey-700); font-size: 21px; }
+    .warning-card {
+      background: linear-gradient(180deg, rgba(255,179,167,.18), rgba(255,255,255,.08));
+      border: 1px solid rgba(255,179,167,.34);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      margin-top: 24px;
+    }
+    .warning-card h3 { color: var(--coral-300); }
+
+
+    .footer-note {
+      margin-top: 40px;
+      padding: 28px;
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.14);
+      color: rgba(255,255,255,.82);
+      font-size: 20px;
+      text-align: center;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .footer-note p { margin: 0 0 16px; }
+    .footer-note p:last-child { margin-bottom: 0; }
+
+    .signature {
+      margin: 30px auto 0;
+      color: rgba(255,255,255,.72);
+      font-size: 18px;
+      text-align: center;
+      max-width: 1100px;
+    }
+
+
+    .paldim-footer {
+      margin: 46px auto 0;
+      padding: 42px 28px;
+      border-radius: var(--radius-xl);
+      background: var(--navy-950);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,.14);
+      border-top: 7px solid var(--teal-400);
+      box-shadow: var(--shadow);
+      text-align: center;
+      max-width: 1100px;
+    }
+    .paldim-footer-inner {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .paldim-footer p { margin: 0; }
+    .paldim-footer-kicker {
+      color: var(--teal-300);
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: .055em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .paldim-footer-description {
+      color: rgba(255,255,255,.88);
+      font-size: 20px;
+      line-height: 1.55;
+      margin-bottom: 18px;
+    }
+    .paldim-footer-authorship {
+      color: rgba(255,255,255,.84);
+      font-size: 18px;
+      line-height: 1.55;
+      margin-bottom: 18px;
+    }
+    .paldim-footer-authorship strong {
+      color: var(--white);
+      font-weight: 900;
+    }
+    .paldim-footer-privacy {
+      display: inline-block;
+      background: var(--grey-100);
+      color: var(--navy-900);
+      padding: 10px 16px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 1.45;
+    }
+    .back-link-note {
+      margin: 24px auto 0;
+      text-align: center;
+      color: rgba(255,255,255,.72);
+      font-size: 17px;
+    }
+    .back-link-note a {
+      color: var(--teal-300);
+      font-weight: 900;
+      text-decoration: none;
+    }
+    .back-link-note a:hover,
+    .back-link-note a:focus-visible {
+      text-decoration: underline;
+    }
+
+    .presentation-mode body, body.presentation-mode { font-size: 26px; }
+    body.presentation-mode .topbar {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+    }
+    body.presentation-mode .brand {
+      min-width: 210px;
+      flex: 0 0 auto;
+    }
+    body.presentation-mode nav {
+      display: flex;
+      flex: 1 1 760px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px;
+      max-width: none;
+      min-width: 0;
+    }
+    body.presentation-mode nav a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(12px, 1.05vw, 15px);
+      padding: 8px 9px;
+      line-height: 1.05;
+      min-height: 34px;
+    }
+    body.presentation-mode .control-btn {
+      font-size: clamp(12px, 1.05vw, 15px);
+      padding: 8px 10px;
+      min-height: 34px;
+      flex: 0 0 auto;
+    }
+    body.presentation-mode section { min-height: 96vh; padding: 90px 0; }
+    body.presentation-mode .glass-card, body.presentation-mode .activity-card, body.presentation-mode .quiz-card { padding: 38px; }
+    body.presentation-mode .grid.three, body.presentation-mode .prompt-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    body.presentation-mode .habit-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+
+    @media (max-width: 980px) {
+      body { font-size: 20px; }
+      .hero { grid-template-columns: 1fr; }
+      .grid.two, .grid.three, .checklist, .quiz-options, .subject-band, .prompt-grid, .habit-grid { grid-template-columns: 1fr; }
+      .topbar { flex-direction: column; align-items: stretch; }
+      nav { justify-content: flex-start; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
+      section { min-height: auto; padding: 54px 0; }
+      .split-title { align-items: start; flex-direction: column; }
+    }
+
+    @media print {
+      header, .control-btn { display: none !important; }
+      body { background: white; color: black; }
+      section { min-height: auto; page-break-after: always; }
+      .glass-card, .activity-card, .quiz-card, .hero-card { box-shadow: none; border: 1px solid #ccc; color: black; background: white; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#inicio">Saltar para o conteúdo principal</a>
+  <header aria-label="Navegação principal">
+    <div class="topbar">
+      <div class="brand" aria-label="AEI8 PALDIM">
+        <div class="brand-mark">IA</div>
+        <div>
+          <strong>AEI8 – PALDIM | TEIP4</strong>
+          <span>Literacia Digital · 9.º ano</span>
+        </div>
+      </div>
+      <nav aria-label="Secções da página">
+        <a href="../index.html">Página inicial</a>
+        <a href="#inicio">Início</a>
+        <a href="#plano">60 min</a>
+        <a href="#ia">O que é IA?</a>
+        <a href="#generativa">IA generativa</a>
+        <a href="#bons-usos">Bons usos</a>
+        <a href="#riscos">Riscos</a>
+        <a href="#desafios">Desafios</a>
+        <a href="#quiz">Miniquiz</a>
+        <a href="#prompts">Prompts</a>
+        <a href="#portugues">Português</a>
+        <a href="#matematica">Matemática</a>
+        <a href="#outras">Outras disciplinas</a>
+        <a href="#bem-estar">Bem-estar</a>
+        <a href="#fecho">Compromisso</a>
+      </nav>
+      <button class="control-btn" id="presentationToggle" type="button" aria-pressed="false">Modo projeção</button>
+    </div>
+    <div class="progress" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero" aria-labelledby="titulo">
+      <div>
+        <span class="eyebrow">Sessão para alunos do 9.º ano</span>
+        <h1 id="titulo">IA, literacia digital e escolhas inteligentes</h1>
+        <p class="lead">A Inteligência Artificial já faz parte da escola, das redes sociais, dos jogos, das pesquisas e do futuro profissional. A pergunta principal é: sabes usá-la com critério?</p>
+        <div class="footer-note">
+          <strong>Ideia-chave:</strong> a IA pode ajudar a aprender, criar, investigar e organizar ideias. Mas não substitui o pensamento, a responsabilidade, a autoria nem a capacidade de verificar informação.
+        </div>
+        <p class="signature">Recurso educativo desenvolvido no âmbito da AEI8 – PALDIM | TEIP4 · Conceção pedagógica, estruturação de conteúdos e desenvolvimento: Ana Margarida Fonseca — Professora e Formadora</p>
+      </div>
+      <aside class="hero-card" aria-label="Objetivos da sessão">
+        <span class="tag">NO FINAL VAIS CONSEGUIR</span>
+        <ul class="big-list">
+          <li><span class="num">1</span><span>Explicar, em linguagem simples, o que é IA generativa.</span></li>
+          <li><span class="num">2</span><span>Distinguir apoio à aprendizagem de cópia ou fraude.</span></li>
+          <li><span class="num">3</span><span>Verificar melhor a informação que encontras online.</span></li>
+          <li><span class="num">4</span><span>Usar prompts mais claros, seguros e responsáveis.</span></li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="plano" aria-labelledby="plano-titulo">
+      <div class="split-title">
+        <div>
+          <span class="eyebrow">Roteiro de apresentação</span>
+          <h2 id="plano-titulo">Uma sessão de 60 minutos, com ritmo e participação</h2>
+        </div>
+        <span class="time-pill">60 min</span>
+      </div>
+      <div class="grid two">
+        <div class="hero-card">
+          <div class="minute-plan">
+            <div class="minute"><strong>0–5</strong><span>Entrada: “Onde é que a IA já aparece na tua vida?”</span></div>
+            <div class="minute"><strong>5–15</strong><span>IA em linguagem simples: como aprende, prevê e responde.</span></div>
+            <div class="minute"><strong>15–25</strong><span>IA generativa: texto, imagem, som, vídeo, código e atividade “IA ou não IA?”.</span></div>
+            <div class="minute"><strong>25–35</strong><span>Riscos digitais: verdade, dúvida, manipulação, privacidade e verificação.</span></div>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="minute-plan">
+            <div class="minute"><strong>35–43</strong><span>Bons usos na escola: estudar melhor, treinar e pedir feedback sem copiar.</span></div>
+            <div class="minute"><strong>43–51</strong><span>Desafios reais: notícia suspeita, prompt fraco e semáforo da IA.</span></div>
+            <div class="minute"><strong>51–57</strong><span>Miniquiz: decisões rápidas, responsáveis e justificadas.</span></div>
+            <div class="minute"><strong>57–60</strong><span>Compromisso final: uma regra pessoal para usar IA com critério.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ia" aria-labelledby="ia-titulo">
+      <span class="eyebrow">1. Compreender antes de usar</span>
+      <h2 id="ia-titulo">O que é Inteligência Artificial?</h2>
+      <p class="lead">IA é tecnologia capaz de reconhecer padrões, fazer previsões, classificar informação ou gerar respostas a partir de dados e instruções humanas.</p>
+      <div class="grid three">
+        <article class="glass-card light">
+          <span class="tag">Não é magia</span>
+          <h3>É cálculo + dados + treino</h3>
+          <p>A IA aprende padrões a partir de muitos exemplos. Depois usa esses padrões para responder, sugerir ou criar.</p>
+        </article>
+        <article class="glass-card light">
+          <span class="tag">Não é pessoa</span>
+          <h3>Não pensa como nós</h3>
+          <p>Pode parecer inteligente, mas não tem consciência, intenção, experiência de vida nem responsabilidade moral.</p>
+        </article>
+        <article class="glass-card light">
+          <span class="tag">Não é neutra</span>
+          <h3>Depende dos dados</h3>
+          <p>Se os dados forem incompletos, enviesados ou errados, as respostas também podem ser problemáticas.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="generativa" aria-labelledby="generativa-titulo">
+      <span class="eyebrow">2. IA generativa</span>
+      <h2 id="generativa-titulo">O que faz a IA generativa?</h2>
+      <p class="lead">A IA generativa cria novo conteúdo: textos, imagens, explicações, resumos, perguntas, guiões, músicas, vídeos, código ou simulações.</p>
+      <div class="grid two">
+        <article class="glass-card">
+          <h3>Exemplos que os alunos reconhecem</h3>
+          <ul class="big-list">
+            <li><span class="icon">T</span><span>Gerar um resumo ou uma explicação de uma matéria.</span></li>
+            <li><span class="icon">I</span><span>Criar uma imagem a partir de uma descrição.</span></li>
+            <li><span class="icon">V</span><span>Produzir voz, vídeo ou avatares digitais.</span></li>
+          </ul>
+        </article>
+        <article class="activity-card">
+          <h3>Atividade relâmpago: “IA ou não IA?”</h3>
+          <p class="activity-instruction">Como participar: levantar a mão se a resposta for “é IA”, “talvez”, “não é IA”.</p>
+
+          <button class="reveal-btn situation-btn" type="button" data-reveal="ia-situacao-1" data-closed="Situação 1" data-open="Ocultar situação 1">Situação 1<span class="situation-text">Recomendação do TikTok</span></button>
+          <div class="challenge-answer" id="ia-situacao-1"><strong>Resposta:</strong> é IA. O TikTok usa sistemas de recomendação que analisam padrões, como vídeos vistos, tempo de visualização, interações e temas semelhantes, para sugerir conteúdos que provavelmente vais continuar a ver.</div>
+
+          <button class="reveal-btn situation-btn" type="button" data-reveal="ia-situacao-2" data-closed="Situação 2" data-open="Ocultar situação 2">Situação 2<span class="situation-text">Corretor ortográfico</span></button>
+          <div class="challenge-answer" id="ia-situacao-2"><strong>Resposta:</strong> talvez/depende. Um corretor simples pode usar regras linguísticas; os corretores mais avançados usam IA para prever palavras, sugerir reformulações e adaptar sugestões ao contexto da frase.</div>
+
+          <button class="reveal-btn situation-btn" type="button" data-reveal="ia-situacao-3" data-closed="Situação 3" data-open="Ocultar situação 3">Situação 3<span class="situation-text">Filtro de imagem</span></button>
+          <div class="challenge-answer" id="ia-situacao-3"><strong>Resposta:</strong> muitas vezes é IA. Muitos filtros reconhecem rostos, contornos, luz, fundo ou expressões para alterar a imagem automaticamente. Também aqui é importante pensar em privacidade e manipulação visual.</div>
+
+          <button class="reveal-btn situation-btn" type="button" data-reveal="ia-situacao-4" data-closed="Situação 4" data-open="Ocultar situação 4">Situação 4<span class="situation-text">GPS</span></button>
+          <div class="challenge-answer" id="ia-situacao-4"><strong>Resposta:</strong> pode envolver IA. O GPS localiza; mas as aplicações de navegação podem usar dados em tempo real, padrões de trânsito e previsões para sugerir percursos, tempos de chegada e alternativas.</div>
+
+          <button class="reveal-btn situation-btn" type="button" data-reveal="ia-situacao-5" data-closed="Situação 5" data-open="Ocultar situação 5">Situação 5<span class="situation-text">ChatGPT</span></button>
+          <div class="challenge-answer" id="ia-situacao-5"><strong>Resposta:</strong> é IA generativa. Produz texto novo a partir de padrões aprendidos em muitos dados. Pode ajudar a estudar, mas também pode errar, inventar ou dar respostas incompletas.</div>
+
+          <button class="reveal-btn conclusion-btn" type="button" data-reveal="ia-conclusao" data-closed="Conclusão" data-open="Ocultar conclusão">Conclusão</button>
+          <div class="challenge-answer" id="ia-conclusao"><strong>A IA já está presente, mesmo quando não damos por isso.</strong></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="bons-usos" aria-labelledby="bons-usos-titulo">
+      <span class="eyebrow">3. Usar bem na escola</span>
+      <h2 id="bons-usos-titulo">A IA pode ajudar-te a aprender melhor</h2>
+      <div class="checklist">
+        <div class="do">
+          <h3>É adequado</h3>
+          <ul>
+            <li>Pedir uma explicação mais simples de um conceito difícil.</li>
+            <li>Treinar perguntas antes de um teste.</li>
+            <li>Pedir exemplos para compreender melhor.</li>
+            <li>Organizar ideias para um trabalho.</li>
+            <li>Rever um texto teu, sem apagar a tua voz.</li>
+          </ul>
+        </div>
+        <div class="dont">
+          <h3>Não é adequado</h3>
+          <ul>
+            <li>Entregar como teu um texto feito pela IA.</li>
+            <li>Inventar fontes ou copiar informação sem verificar.</li>
+            <li>Colocar dados pessoais teus ou de colegas.</li>
+            <li>Usar IA para humilhar, manipular ou criar boatos.</li>
+            <li>Fazer imagens falsas de pessoas reais.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="riscos" aria-labelledby="riscos-titulo">
+      <span class="eyebrow">4. Pensamento crítico</span>
+      <h2 id="riscos-titulo">O que pode correr mal?</h2>
+      <div class="grid three">
+        <article class="glass-card">
+          <span class="tag">Erro</span>
+          <h3>A IA pode inventar</h3>
+          <p>Uma resposta bem escrita pode estar errada. A confiança da linguagem não prova a verdade da informação.</p>
+        </article>
+        <article class="glass-card">
+          <span class="tag">Manipulação</span>
+          <h3>Imagens e vídeos falsos</h3>
+          <p>Conteúdos gerados podem parecer reais. Antes de partilhar, é preciso parar, verificar e contextualizar.</p>
+        </article>
+        <article class="glass-card">
+          <span class="tag">Privacidade</span>
+          <h3>Dados pessoais importam</h3>
+          <p>Nome, escola, morada, fotografias, problemas familiares ou dados de colegas não devem ser colocados em ferramentas abertas.</p>
+        </article>
+      </div>
+      <div class="footer-note rule-note"><strong>Regra dos 3 V:</strong> <strong>Verificar a fonte · Ver se há outras fontes · Ver quem ganha com aquela mensagem.</strong></div>
+    </section>
+
+    <section id="desafios" aria-labelledby="desafios-titulo">
+      <span class="eyebrow">5. Atividades para auditório</span>
+      <h2 id="desafios-titulo">Três desafios reais para fazer com a turma</h2>
+      <p class="lead">Cada desafio pode ser feito por votação de braço no ar, por conversa rápida com o colega do lado ou por discussão orientada pelo professor.</p>
+      <div class="grid three challenge-grid">
+        <article class="activity-card">
+          <h3>Desafio 1 — Notícia suspeita</h3>
+          <div class="challenge-case"><strong>Exemplo:</strong> “Nova IA descobre que estudar à noite dá sempre melhores notas. Partilha já com a tua turma.”</div>
+          <ol class="activity-steps">
+            <li>Isto parece verdadeiro, duvidoso ou manipulador?</li>
+            <li>Que sinais fazem desconfiar?</li>
+            <li>Que fonte procurarias antes de partilhar?</li>
+          </ol>
+          <button class="reveal-btn" type="button" data-reveal="resposta-1">Mostrar resposta</button>
+          <div class="challenge-answer" id="resposta-1">Resposta esperada: <strong>duvidoso/manipulador</strong>. A frase usa “sempre”, não apresenta fonte, transforma uma afirmação complexa numa regra absoluta e pede partilha rápida. Uma decisão responsável seria procurar fontes credíveis, comparar informação e não partilhar sem verificar.</div>
+        </article>
+        <article class="activity-card">
+          <h3>Desafio 2 — Prompt fraco vs. prompt forte</h3>
+          <div class="challenge-case"><strong>Exemplo fraco:</strong> “Faz-me o trabalho de Português sobre <em>Os Lusíadas</em>.”</div>
+          <ol class="activity-steps">
+            <li>O que está errado neste pedido?</li>
+            <li>Como o transformarias num pedido para aprender?</li>
+            <li>Que limites colocarias à IA?</li>
+          </ol>
+          <button class="reveal-btn" type="button" data-reveal="resposta-2">Mostrar resposta</button>
+          <div class="challenge-answer" id="resposta-2">Resposta possível: “Estou no 9.º ano. Ajuda-me a compreender o episódio [nome]. Faz-me perguntas, explica palavras difíceis e ajuda-me a organizar ideias, mas não escrevas o trabalho por mim.” Assim, a IA apoia a compreensão e a planificação, sem substituir a autoria do aluno.</div>
+        </article>
+        <article class="activity-card">
+          <h3>Desafio 3 — Semáforo da IA</h3>
+          <div class="challenge-case"><strong>Exemplo:</strong> “Vou colar no chat uma fotografia de um colega e pedir à IA para fazer uma piada.”</div>
+          <ol class="activity-steps">
+            <li>Verde, amarelo ou vermelho?</li>
+            <li>Quem pode ficar prejudicado?</li>
+            <li>Que alternativa responsável existe?</li>
+          </ol>
+          <button class="reveal-btn" type="button" data-reveal="resposta-3">Mostrar resposta</button>
+          <div class="challenge-answer" id="resposta-3">Resposta esperada: <strong>vermelho</strong>. Envolve imagem de outra pessoa, possível humilhação, privacidade e dano reputacional. A alternativa é não usar dados/imagens de colegas sem consentimento e pedir ajuda a um adulto se houver risco, conflito ou exposição.</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="quiz" aria-labelledby="quiz-titulo">
+      <span class="eyebrow">6. Miniquiz interativo</span>
+      <h2 id="quiz-titulo">Escolhe a melhor decisão</h2>
+      <div class="quiz-card" data-quiz>
+        <h3>Situação: tens de fazer um trabalho sobre alterações climáticas. O que é mais responsável?</h3>
+        <div class="quiz-options">
+          <button data-correct="false">Pedir à IA o trabalho completo e entregar sem alterar.</button>
+          <button data-correct="true">Usar a IA para compreender o tema, procurar fontes fiáveis e escrever o texto final com palavras tuas.</button>
+          <button data-correct="false">Copiar a primeira resposta porque parece bem escrita.</button>
+          <button data-correct="false">Pedir à IA para inventar referências bibliográficas.</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+      </div>
+      <div class="quiz-card" data-quiz style="margin-top:24px">
+        <h3>Situação: recebes uma imagem estranha sobre um colega. O que fazes?</h3>
+        <div class="quiz-options">
+          <button data-correct="false">Partilho depressa antes que desapareça.</button>
+          <button data-correct="false">Faço piada, porque pode nem ser real.</button>
+          <button data-correct="true">Não partilho, questiono a origem e peço ajuda a um adulto responsável se houver risco.</button>
+          <button data-correct="false">Uso outra IA para melhorar a imagem.</button>
+        </div>
+        <div class="feedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="prompts" aria-labelledby="prompts-titulo">
+      <span class="eyebrow">7. Caixa de prompts</span>
+      <h2 id="prompts-titulo">Perguntar bem para aprender melhor</h2>
+      <p class="lead">Estes prompts não são para a IA fazer o trabalho por ti. São para te ajudar a recordar, treinar, rever erros, estudar com método e ganhar autonomia.</p>
+      <div class="grid two">
+        <article class="glass-card light">
+          <span class="tag">Regra de ouro</span>
+          <h3>Tu pensas primeiro</h3>
+          <p>Antes de pedir ajuda à IA, escreve o que já sabes, onde tens dúvidas e o que tentaste fazer.</p>
+        </article>
+        <article class="glass-card light">
+          <span class="tag">Pedido seguro</span>
+          <h3>A IA dá pistas, não substitui</h3>
+          <p>Pede explicações graduais, exemplos, perguntas e feedback. Evita pedir respostas finais para copiar.</p>
+        </article>
+      </div>
+      <details open>
+        <summary>Prompt-base para qualquer disciplina</summary>
+        <p>“Estou no 9.º ano e estou a estudar [tema]. Antes de explicares, faz-me 3 perguntas para perceberes o que eu já sei. Depois explica por etapas, com linguagem simples. Não me dês logo a resposta final: dá pistas, exemplos e uma pergunta de treino de cada vez.”</p>
+      </details>
+    </section>
+
+    <section id="portugues" aria-labelledby="portugues-titulo">
+      <span class="eyebrow">8. Português — 9.º ano</span>
+      <h2 id="portugues-titulo">Prompts para ler, escrever, interpretar e rever</h2>
+      <p class="lead">Em Português, a IA pode apoiar a compreensão de textos, a organização de ideias, a escrita, a gramática e a preparação para itens semelhantes aos das provas finais.</p>
+      <div class="subject-band">
+        <aside class="subject-focus">
+          <span class="tag">O que importa treinar</span>
+          <ul>
+            <li>Leitura e interpretação de texto.</li>
+            <li>Educação literária: personagens, narrador, espaço, tempo, recursos expressivos.</li>
+            <li>Escrita organizada: planificação, textualização e revisão.</li>
+            <li>Gramática ao serviço da compreensão e da expressão.</li>
+            <li>Resposta completa, clara e justificada com elementos do texto.</li>
+          </ul>
+        </aside>
+        <div class="prompt-grid">
+          <article class="prompt-card">
+            <span class="mini-label">Recordar</span>
+            <h3>Explica-me o que não percebi</h3>
+            <div class="prompt-box"><code>Estou no 9.º ano. Explica-me [conceito de Português: narrador, sujeito, oração subordinada, recurso expressivo, tema, tese, argumento...] com linguagem simples. Dá um exemplo curto e depois faz-me uma pergunta para eu verificar se percebi.</code></div>
+          </article>
+          <article class="prompt-card">
+            <span class="mini-label">Ler melhor</span>
+            <h3>Compreender um texto</h3>
+            <div class="prompt-box"><code>Vou colar um excerto. Ajuda-me a compreendê-lo sem fazeres a resposta por mim. Primeiro identifica o tema, as ideias principais e 3 palavras importantes. Depois faz-me perguntas que me ajudem a interpretar o texto.</code></div>
+          </article>
+          <article class="prompt-card">
+            <span class="mini-label">Treinar exame</span>
+            <h3>Responder com justificação</h3>
+            <div class="prompt-box"><code>Cria uma pergunta de interpretação adequada ao 9.º ano sobre [tipo de texto/obra/excerto]. Eu respondo. Depois dá-me feedback com 3 critérios: compreensão, uso de evidência do texto e clareza da resposta. Não escrevas a resposta por mim.</code></div>
+          </article>
+          <article class="prompt-card">
+            <span class="mini-label">Escrita</span>
+            <h3>Planificar antes de escrever</h3>
+            <div class="prompt-box"><code>Tenho de escrever um texto [de opinião/narrativo/expositivo]. O tema é [tema]. Ajuda-me a criar um plano com introdução, desenvolvimento e conclusão. Faz-me perguntas para eu escolher as minhas ideias antes de sugerires uma estrutura.</code></div>
+          </article>
+          <article class="prompt-card">
+            <span class="mini-label">Revisão</span>
+            <h3>Melhorar sem apagar a minha voz</h3>
+            <div class="prompt-box"><code>Revê este parágrafo como professor de Português do 9.º ano.
+
+Não reescrevas tudo.
+
+Indica apenas:
+1. um erro de organização;
+2. duas frases que posso melhorar;
+3. três problemas de pontuação / ortografia / gramática;
+4. uma sugestão para tornar o texto mais claro.</code></div>
+          </article>
+          <article class="prompt-card">
+            <span class="mini-label">Estudo</span>
+            <h3>Preparar uma revisão rápida</h3>
+            <div class="prompt-box"><code>Tenho [tempo disponível] para rever Português. Ajuda-me a organizar uma sessão de estudo sobre [conteúdo]. Quero: 10 minutos para recordar, 15 para treinar, 10 para corrigir erros e 5 para resumir o que ainda tenho de rever.</code></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="matematica" aria-labelledby="matematica-titulo">
+      <span class="eyebrow">9. Matemática — 9.º ano</span>
+      <h2 id="matematica-titulo">Prompts para perceber, praticar e corrigir raciocínios</h2>
+      <p class="lead">Em Matemática, a IA deve ajudar-te a pensar passo a passo, a explicar raciocínios, a treinar exercícios e a detetar erros — não apenas a obter o resultado.</p>
+      <div class="subject-band">
+        <aside class="subject-focus">
+          <span class="tag">O que importa treinar</span>
+          <ul>
+            <li>Números reais, cálculo, estimativas, intervalos, notação científica e representação de resultados.</li>
+            <li>Álgebra: sequências e regularidades, expressões, equações de 1.º e 2.º grau, inequações e funções.</li>
+            <li>Funções: interpretar gráficos, tabelas e expressões, incluindo proporcionalidade direta/inversa e função quadrática simples.</li>
+            <li>Geometria e medida: figuras planas e tridimensionais, circunferência/círculo/esfera, áreas, volumes, ângulos, Teorema de Pitágoras e trigonometria no triângulo retângulo.</li>
+            <li>Organização e tratamento de dados e probabilidade: ler gráficos, tabelas e histogramas, interpretar medidas estatísticas e aplicar a regra de Laplace.</li>
+            <li>Comunicação matemática: explicar procedimentos, justificar raciocínios e avaliar se o resultado faz sentido.</li>
+          </ul>
+        </aside>
+        <div class="prompt-grid">
+          <article class="prompt-card">
+            <span class="mini-label">Recordar</span>
+            <h3>Explicação em camadas</h3>
+            <div class="prompt-box"><code>Estou no 9.º ano e não percebo [tema de Matemática]. Explica primeiro a ideia principal em 3 frases. Depois mostra um exemplo simples. Só depois apresenta um exercício parecido para eu resolver.</code></div>
+          </article>
+          <article class="prompt-card">
+            <span class="mini-label">Treinar</span>
+            <h3>Exercícios graduais</h3>
+            <div class="prompt-box"><code>Cria 5 exercícios sobre [tema], do mais fácil ao mais difícil, adequados ao 9.º ano. Dá-me um de cada vez. Eu respondo e só depois me dás feedback. Se eu errar, dá uma pista antes da resolução.</code></div>
+          </article>
+          <article class="prompt-card">
+            <span class="mini-label">Erro</span>
+            <h3>Descobrir onde falhei</h3>
+            <div class="prompt-box"><code>Resolvi este exercício assim: [colar resolução]. Não me dês logo a solução. Diz em que passo posso ter errado, faz-me uma pergunta para eu corrigir o raciocínio e só depois confirma a resolução correta.</code></div>
+          </article>
+          <article class="prompt-card">
+            <span class="mini-label">Exame</span>
+            <h3>Item com explicação</h3>
+            <div class="prompt-box"><code>Cria um item de Matemática de 9.º ano sobre [tema], semelhante ao estilo de prova final, com contexto curto. Depois espera pela minha resposta. Avalia se expliquei bem o raciocínio e se usei linguagem matemática correta.</code></div>
+          </article>
+          <article class="prompt-card">
+            <span class="mini-label">Memória</span>
+            <h3>Formulário compreendido</h3>
+            <div class="prompt-box"><code>Ajuda-me a construir um mini-formulário sobre [tema]. Para cada fórmula, explica quando se usa, que unidades aparecem e que erro comum devo evitar. No fim, faz-me 3 perguntas rápidas.</code></div>
+          </article>
+          <article class="prompt-card">
+            <span class="mini-label">Método</span>
+            <h3>Plano de treino</h3>
+            <div class="prompt-box"><code>Tenho dificuldade em [tema]. Cria um plano de treino de 30 minutos: 5 minutos para rever a ideia, 15 para resolver exercícios, 5 para corrigir erros e 5 para escrever uma regra de bolso com as minhas palavras.</code></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="outras" aria-labelledby="outras-titulo">
+      <span class="eyebrow">10. Outras disciplinas do 9.º ano</span>
+      <h2 id="outras-titulo">Prompts genéricos para concluir bem o 3.º ciclo</h2>
+      <p class="lead">A mesma lógica serve para Ciências Naturais, Físico-Química, História, Geografia, Inglês, Francês/Espanhol, Educação Visual, TIC, Cidadania e outras disciplinas.</p>
+      <div class="prompt-grid">
+        <article class="prompt-card">
+          <span class="mini-label">Compreender</span>
+          <h3>Mapa mental simples</h3>
+          <div class="prompt-box"><code>Ajuda-me a criar um mapa mental textual sobre [tema]. Divide em 5 ramos principais, com palavras-chave e relações entre ideias. Não escrevas um resumo longo: quero perceber a estrutura do tema.</code></div>
+        </article>
+        <article class="prompt-card">
+          <span class="mini-label">Estudar</span>
+          <h3>Explicação por analogias</h3>
+          <div class="prompt-box"><code>Explica [tema] a um aluno do 9.º ano usando uma analogia simples. Depois diz onde a analogia ajuda e onde pode enganar, para eu não ficar com uma ideia errada.</code></div>
+        </article>
+        <article class="prompt-card">
+          <span class="mini-label">Verificar</span>
+          <h3>Fontes e dúvida</h3>
+          <div class="prompt-box"><code>Tenho esta informação: [colar frase/link/resumo]. Ajuda-me a verificar se é fiável. Que sinais devo procurar? Que perguntas devo fazer? Que tipo de fonte devo consultar antes de confiar?</code></div>
+        </article>
+        <article class="prompt-card">
+          <span class="mini-label">Treinar</span>
+          <h3>Quiz com feedback</h3>
+          <div class="prompt-box"><code>Faz-me um quiz de 8 perguntas sobre [tema], adequado ao 9.º ano. Mistura escolha múltipla, verdadeiro/falso e resposta curta. Depois de cada resposta minha, explica porque está certa ou errada.</code></div>
+        </article>
+        <article class="prompt-card">
+          <span class="mini-label">Comunicar</span>
+          <h3>Apresentação oral</h3>
+          <div class="prompt-box"><code>Tenho de apresentar [tema] oralmente em [tempo]. Ajuda-me a organizar uma apresentação clara: abertura, 3 ideias principais, exemplo e conclusão. Depois faz-me perguntas difíceis para eu treinar.</code></div>
+        </article>
+        <article class="prompt-card">
+          <span class="mini-label">Preferências</span>
+          <h3>Descobrir como estudo melhor</h3>
+          <div class="prompt-box"><code>Faz-me 8 perguntas sobre como estudo, o que me distrai, que atividades me ajudam e que disciplinas acho mais difíceis. Depois sugere 3 estratégias de estudo possíveis e explica porque podem funcionar comigo.</code></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="bem-estar" aria-labelledby="bem-estar-titulo">
+      <span class="eyebrow">11. Bem-estar, corpo, mente e pensamento crítico</span>
+      <h2 id="bem-estar-titulo">Usar IA sem deixar de ser pessoa</h2>
+      <p class="lead">Aprender bem também depende de sono, movimento, pausas, relações saudáveis, criatividade e capacidade de pensar por ti.</p>
+      <div class="habit-grid">
+        <article class="habit"><strong>Sono</strong><p>Dormir bem melhora memória, atenção, humor e capacidade de resolver problemas.</p></article>
+        <article class="habit"><strong>Movimento</strong><p>Atividade física ajuda o cérebro a aprender, reduz tensão e melhora energia.</p></article>
+        <article class="habit"><strong>Pausas</strong><p>Estudar sem pausas aumenta distração. Pausas curtas ajudam a voltar com foco.</p></article>
+        <article class="habit"><strong>Relações</strong><p>Pedir ajuda a colegas, professores e família também é uma competência.</p></article>
+      </div>
+      <div class="warning-card">
+        <h3>Não delegues a tua cabeça</h3>
+        <p>A IA pode responder depressa, mas não vive por ti, não conhece totalmente o teu contexto, não assume as consequências das tuas decisões e pode errar. A tua criatividade cresce quando tentas, falhas, corriges e voltas a tentar.</p>
+        <div class="prompt-box"><code>Prompt para autorregulação: “Ajuda-me a estudar [tema] sem me dares tudo feito. Quero que me faças perguntas, me dês pistas, me ajudes a rever erros e me lembres quando eu estiver a tentar copiar em vez de aprender.”</code></div>
+      </div>
+      <details>
+        <summary>Desafio de 2 minutos para auditório</summary>
+        <p>Escreve numa frase: “Uma coisa que a IA pode fazer por mim é… / Uma coisa que eu não devo deixar a IA fazer por mim é…”. Depois partilha com o colega do lado.</p>
+      </details>
+      <details>
+        <summary>Desafio de pensamento crítico</summary>
+        <p>Antes de aceitares uma resposta da IA, pergunta: “Como sabes?”, “Que provas existem?”, “Há outra explicação?”, “Quem fica prejudicado se isto estiver errado?” e “Eu consigo defender esta resposta com palavras minhas?”.</p>
+      </details>
+    </section>
+
+    <section id="fecho" aria-labelledby="fecho-titulo">
+      <span class="eyebrow">12. Fecho da sessão</span>
+      <h2 id="fecho-titulo">A melhor tecnologia continua a precisar de boas perguntas</h2>
+      <p class="lead">A IA pode acelerar respostas. A educação ajuda-te a fazer perguntas melhores, pensar com mais clareza, cuidar de ti e decidir com responsabilidade.</p>
+      <div class="grid two">
+        <article class="glass-card light">
+          <span class="tag">Compromisso final</span>
+          <h3>Completa a frase</h3>
+          <p>“A partir de hoje, quando usar IA, comprometo-me a…”</p>
+        </article>
+        <article class="glass-card light">
+          <span class="tag">Mensagem para levar</span>
+          <h3>Usar IA não é desligar o cérebro</h3>
+          <p>É aprender a pensar melhor, verificar melhor, criar com mais responsabilidade e continuar a desenvolver aquilo que te torna humano.</p>
+        </article>
+      </div>
+      <footer class="paldim-footer" aria-label="Informação sobre o projeto">
+        <div class="paldim-footer-inner">
+          <p class="paldim-footer-kicker">IA, Literacia Digital e Aprendizagem | AEI8 – PALDIM | TEIP4</p>
+
+          <p class="paldim-footer-description">
+            Recurso educativo para alunos do 9.º ano sobre Inteligência Artificial, literacia digital,
+            segurança online, pensamento crítico, bem-estar digital e uso responsável da IA na aprendizagem.
+          </p>
+
+          <p class="paldim-footer-description">
+            Desenvolvido no âmbito do plano de ação de literacia digital, inteligência artificial
+            e cidadania digital associado à AEI8 – PALDIM | TEIP4.
+          </p>
+
+          <p class="paldim-footer-authorship">
+            Conceção pedagógica, estruturação de conteúdos e desenvolvimento:<br>
+            <strong>Ana Margarida Fonseca — Professora e Formadora</strong>
+          </p>
+
+          <p class="paldim-footer-description">
+            <strong>Referenciais considerados:</strong> Aprendizagens Essenciais do Ensino Básico,
+            Perfil dos Alunos à Saída da Escolaridade Obrigatória e matriz das Provas Finais do Ensino Básico.
+          </p>
+
+          <p class="paldim-footer-privacy">
+            Recurso estático, publicado via GitHub Pages, sem login, sem formulários,
+            sem backend próprio e sem recolha ativa de dados.
+          </p>
+        </div>
+      </footer>
+
+      <p class="back-link-note">
+        <a href="../index.html">Voltar à página inicial dos recursos para alunos</a>
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const progressBar = document.getElementById('progressBar');
+    const toggle = document.getElementById('presentationToggle');
+
+    const navLinks = Array.from(document.querySelectorAll('nav a[href^="#"]'));
+
+    function updateProgress() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = height > 0 ? (scrollTop / height) * 100 : 0;
+      progressBar.style.width = progress + '%';
+    }
+
+    function updateActiveNav() {
+      const offset = window.innerHeight * 0.34;
+      let currentId = 'inicio';
+      document.querySelectorAll('main section[id], main[id]').forEach((section) => {
+        const top = section.getBoundingClientRect().top + window.scrollY;
+        if (window.scrollY + offset >= top) currentId = section.id;
+      });
+      navLinks.forEach((link) => {
+        const active = link.getAttribute('href') === '#' + currentId;
+        link.classList.toggle('active', active);
+        if (active) link.setAttribute('aria-current', 'true');
+        else link.removeAttribute('aria-current');
+      });
+    }
+
+    window.addEventListener('scroll', () => { updateProgress(); updateActiveNav(); }, { passive: true });
+    window.addEventListener('resize', updateActiveNav);
+    updateProgress();
+    updateActiveNav();
+
+    toggle.addEventListener('click', () => {
+      const active = document.body.classList.toggle('presentation-mode');
+      toggle.setAttribute('aria-pressed', String(active));
+      toggle.textContent = active ? 'Modo normal' : 'Modo projeção';
+    });
+
+
+    document.querySelectorAll('[data-reveal]').forEach((button) => {
+      if (!button.dataset.closed) button.dataset.closed = button.textContent.trim();
+      if (!button.dataset.open) button.dataset.open = 'Ocultar resposta';
+      button.addEventListener('click', () => {
+        const target = document.getElementById(button.dataset.reveal);
+        if (!target) return;
+        const isOpen = target.classList.toggle('show');
+        if (button.classList.contains('situation-btn')) {
+          const situation = button.querySelector('.situation-text')?.outerHTML || '';
+          button.innerHTML = isOpen ? button.dataset.open + situation : button.dataset.closed + situation;
+        } else {
+          button.textContent = isOpen ? button.dataset.open : button.dataset.closed;
+        }
+      });
+    });
+
+    document.querySelectorAll('[data-quiz]').forEach((quiz) => {
+      const buttons = quiz.querySelectorAll('button[data-correct]');
+      const feedback = quiz.querySelector('.feedback');
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          buttons.forEach(b => { b.classList.remove('correct', 'wrong'); b.disabled = false; });
+          const correct = button.dataset.correct === 'true';
+          button.classList.add(correct ? 'correct' : 'wrong');
+          feedback.classList.add('show');
+          feedback.innerHTML = correct
+            ? '<strong>Boa decisão.</strong> A IA pode apoiar o estudo, mas a responsabilidade, a verificação e a autoria continuam a ser tuas.'
+            : '<strong>Atenção.</strong> Esta opção aumenta o risco de erro, cópia, exposição de dados ou dano a outras pessoas. Pensa antes de usar ou partilhar.';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
